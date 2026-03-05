@@ -2,21 +2,22 @@
 @use "../../mixins/mini" as *;
 @use "../../mixins/disable-mob-hover"as *;
 
-@mixin news-card {
-  .news-card {
+  .blog-card {
 	height: 100%;
-	display: grid;
-	grid-template-columns: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 2.3rem;
 	position: relative;
 	z-index: 1;
+
+
 
 	&__box {
 	  height: 100%;
 	  display: flex;
 	  flex-direction: column;
-	  gap: 1.6rem;
+	  gap: 2.5rem;
 	  justify-content: flex-end;
-	  padding: 1.6rem;
 	  min-width: 0;
 
 	  .h3 {
@@ -44,10 +45,29 @@
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		letter-spacing: 0.008em;
+		margin-bottom: auto;
+
+		@include  desktop{
+		  -webkit-line-clamp: 3;
+		  letter-spacing: 0.01em;
+
+		  @include  for-laptop{
+			max-width: 95%;
+		  }
+		}
+
+		@include  mobile{
+		  -webkit-line-clamp: 4;
+
+		  @include for-small-ios{
+			max-width: 95%;
+		  }
+		}
 	  }
 
-	  * {
-		color: var(--cl-a);
+	  @include mobile{
+		gap: 16px;
 	  }
 	}
 
@@ -57,6 +77,11 @@
 	  gap: 1.6rem;
 	  flex-wrap: nowrap;
 	  min-width: 0;
+	  margin-top: -0.2rem;
+
+	  @include  mobile{
+		margin: -1px 0 0 2px;
+	  }
 	}
 
 	&__info {
@@ -90,14 +115,12 @@
 	}
 
 	&__image {
-	  position: absolute;
 	  z-index: -1;
 	  width: 100%;
-	  height: 100%;
-	  left: 0;
-	  top: 0;
 	  overflow: hidden;
-	  pointer-events: none;
+	  display: flex;
+	  flex-shrink: 0;
+	  height: 30rem;
 
 	  img, picture, svg {
 		width: 100%;
@@ -105,20 +128,8 @@
 		transition: all .5s;
 	  }
 
-	  &:before {
-		content: "";
-		position: absolute;
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
-		width: 100%;
-		height: 25rem;
-		left: 0;
-		bottom: 0;
-		z-index: 2;
-		pointer-events: none;
-
-		@include mobile {
-		  height: 100%;
-		}
+	  @include  mobile{
+		height: 200px;
 	  }
 	}
 
@@ -131,74 +142,14 @@
 	}
 
 	@include hover {
-		.news-card__image{
-		  img, picture, svg{
-			transform: scale(1.06);
-		  }
+	  .blog-card__image{
+		img, picture, svg{
+		  transform: scale(1.06);
 		}
-	}
-
-	&.small {
-	  min-height: initial;
-	  grid-template-columns: clamp(207px, 21.53vw, 31rem) 1fr;
-	  gap: 2.4rem 2rem;
-	  height: 14.7rem;
-
-	  .news-card {
-
-		&__box {
-		  padding: 0;
-
-
-		  * {
-			color: var(--cl-b);
-		  }
-
-		  @include  tablet{
-			gap: 14px;
-		  }
-		}
-
-		&__bottom {
-		  @include for-desktop {
-			margin-left: 0.3rem;
-		  }
-		}
-
-		&__image {
-		  position: relative;
-		  display: flex;
-
-		  &:before {
-			content: none;
-		  }
-
-		  @include  mobile{
-			height: 169px;
-		  }
-		}
-	  }
-
-	  @media (max-width: 1439px) {
-		grid-template-columns: 207px 1fr;
-	  }
-
-	  @include tablet {
-		height: 145px;
-	  }
-
-	  @include mobile {
-		height: initial;
-		grid-template-columns: 100%;
 	  }
 	}
 
-	@include tablet {
-	  min-height: clamp(300px, 68.88vw, 529px);
-	}
-
-	@include  mobile{
-	  min-height: 302px;
+	@include mobile{
+	  gap: 24px;
 	}
   }
-}

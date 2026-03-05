@@ -54,8 +54,8 @@
   }
 }
 
-@mixin small-ios {
-  @media (max-width: 376px) {
+@mixin for-small-ios {
+  @media (min-width: 376px) {
     @content;
   }
 }
@@ -89,7 +89,6 @@
     @content;
   }
 }
-
 
 @mixin mini-tablet {
   @media (max-width: (991px)) {

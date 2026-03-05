@@ -1,47 +1,47 @@
 // ----------------- MAIN COMPONENTS -----------------
-@use "../components/main-components/main-form";
-@use "../components/main-components/main-top";
-@use "../components/main-components/accordion";
-@use "../components/main-components/filters";
-@use "../components/main-components/lang-switcher";
-@use "../components/main-components/socials";
-@use "../components/main-components/cta-baner";
-@use "../components/main-components/breadcrumbs";
+//@use "../components/main-components/main-form";
+//@use "../components/main-components/main-top";
+//@use "../components/main-components/accordion";
+//@use "../components/main-components/filters";
+//@use "../components/main-components/lang-switcher";
+//@use "../components/main-components/socials";
+//@use "../components/main-components/cta-baner";
+//@use "../components/main-components/breadcrumbs";
 // @use "../components/main-components/pagination";
-@use "../components/main-components/post-nav";
-@use "../components/main-components/tags";
-@use "../components/main-components/decor-lines";
-@use "../components/main-components/mobile-btns";
+//@use "../components/main-components/post-nav";
+//@use "../components/main-components/tags";
+//@use "../components/main-components/decor-lines";
+//@use "../components/main-components/mobile-btns";
 
 //
 //// ----------------- BLOCK COMPONENTS -----------------
-@use "../components/info-list";
-@use "../components/services-list";
-@use "../components/items-list";
-@use "../components/program-list";
-@use "../components/options-list";
-@use "../components/levels-list";
-@use "../components/gift-list";
-@use "../components/comment";
+@use "../components/blog-list";
+//@use "../components/services-list";
+//@use "../components/items-list";
+//@use "../components/program-list";
+//@use "../components/options-list";
+//@use "../components/levels-list";
+//@use "../components/gift-list";
+//@use "../components/comment";
 
 
 
 
-@use "../components/our-list";
-@use "../components/content-list";
-@use "../components/greenhouse-list";
-@use "../components/step-list";
-@use "../components/team-list";
-@use "../components/comment-form";
-@use "../components/comment-list";
-
-@use "../components/blog-sort";
-@use "../components/blog-posts";
-@use "../components/popular-posts";
-@use "../components/widget";
-@use "../components/blog-aside";
-@use "../components/blog-search";
-@use "../components/anchor-tags";
+//@use "../components/our-list";
+//@use "../components/content-list";
+//@use "../components/greenhouse-list";
+//@use "../components/step-list";
+//@use "../components/team-list";
+//@use "../components/comment-form";
+//@use "../components/comment-list";
+//
+//@use "../components/blog-sort";
+//@use "../components/blog-posts";
+//@use "../components/popular-posts";
+//@use "../components/widget";
+//@use "../components/blog-aside";
+//@use "../components/blog-search";
+//@use "../components/anchor-tags";
 //@use "../components/info-list";
 //@use "../components/about-slider";
 //@use "../components/product-list";
@@ -51,17 +51,17 @@
 //@use "../components/product-slider";
 //
 //// ----------------- CARD COMPONENTS -----------------
-@use "../components/cards/our-card";
-@use "../components/cards/content-card";
-@use "../components/cards/greenhouse-card";
-@use "../components/cards/review-card";
-@use "../components/cards/testimonial-card";
-@use "../components/cards/project-card";
-@use "../components/cards/other-card";
-@use "../components/cards/info-card";
-@use "../components/cards/written-card";
-@use "../components/cards/service-card";
+@use "../components/cards/blog-card";
+//@use "../components/cards/content-card";
+//@use "../components/cards/greenhouse-card";
+//@use "../components/cards/review-card";
+//@use "../components/cards/testimonial-card";
+//@use "../components/cards/project-card";
+//@use "../components/cards/other-card";
+//@use "../components/cards/info-card";
+//@use "../components/cards/written-card";
+//@use "../components/cards/service-card";
 
 //// ----------------- SLIDERS COMPONENTS -----------------
-@use "../components/sliders/project-slider";
-@use "../components/sliders/cta-slider";
+//@use "../components/sliders/project-slider";
+//@use "../components/sliders/cta-slider";

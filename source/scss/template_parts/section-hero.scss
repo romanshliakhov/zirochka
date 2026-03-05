@@ -36,7 +36,7 @@
 	grid-template-columns: 1fr auto;
 
 	@include for-desktop {
-	  padding: 0 11.4rem 0 8.6rem;
+	  padding: 0 12.4rem 0 7.7rem;
 	}
 	@include desktop {
 	  @include for-laptop {
@@ -216,83 +216,192 @@
 	  z-index: 1;
 	  padding-bottom: 24px;
 
-	&:before {
-	  content: "";
-	  position: absolute;
-	  background: #CCC;
-	  pointer-events: none;
-	  height: 1px;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	  top: -24px;
-	  width: 100vw;
+	  &:before {
+		content: "";
+		position: absolute;
+		background: #CCC;
+		pointer-events: none;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		top: -24px;
+		width: 100vw;
 
+	  }
 	}
-  }
 
-	@include small-ios{
-	  &:nth-child(2){
-		.h3{
+	@include small-ios {
+	  &:nth-child(2) {
+		.h3 {
 		  margin-bottom: 5px;
 		}
 	  }
 	}
-}
+  }
 
-&__list {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  &__list {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 
-  &:before {
-	content: "";
-	position: absolute;
-	height: 100%;
-	width: 0.1rem;
-	left: -2rem;
-	transform: translateX(-50%);
-	background: #CCC;
-	pointer-events: none;
+	&:before {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  width: 0.1rem;
+	  left: -2rem;
+	  transform: translateX(-50%);
+	  background: #CCC;
+	  pointer-events: none;
+
+	  @include tablet {
+		top: -20px;
+		width: 100%;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		@include mobile {
+		  top: -23.5px;
+		  width: 100vw;
+		}
+	  }
+	}
+
+	@include mobile {
+	  gap: 24px;
+	}
+  }
+
+  &__inner {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4rem;
+
+	@include desktop {
+	  @include for-tablet {
+		grid-template-columns: calc(50% + 0.5rem - 2rem) calc(50% - 2.5rem);
+	  }
+	}
 
 	@include tablet {
-	  top: -20px;
-	  width: 100%;
-	  height: 1px;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
+	  grid-template-columns: 100%;
+	}
+	@include mobile {
+	  gap: 47px;
+	}
+  }
+}
 
-	  @include mobile {
-		top: -23.5px;
+.blog-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+
+  & + .cta-section {
+	@include for-mobile {
+	  margin-top: 0.8rem;
+	}
+
+	@include mobile {
+	  margin-top: 3px;
+	}
+  }
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__item {
+	@include mobile {
+	  position: relative;
+	  z-index: 1;
+	  padding-bottom: 24px;
+
+	  &:before {
+		content: "";
+		position: absolute;
+		background: #CCC;
+		pointer-events: none;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		top: -24px;
 		width: 100vw;
+
+	  }
+	}
+
+	@include small-ios {
+	  &:nth-child(2) {
+		.h3 {
+		  margin-bottom: 5px;
+		}
 	  }
 	}
   }
 
-  @include mobile {
-	gap: 24px;
-  }
-}
+  &__list {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 
-&__inner {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem;
+	&:before {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  width: 0.1rem;
+	  left: -2rem;
+	  transform: translateX(-50%);
+	  background: #CCC;
+	  pointer-events: none;
 
-  @include desktop {
-	@include for-tablet {
-	  grid-template-columns: calc(50% + 0.5rem - 2rem) calc(50% - 2.5rem);
+	  @include tablet {
+		top: -20px;
+		width: 100%;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		@include mobile {
+		  top: -23.5px;
+		  width: 100vw;
+		}
+	  }
+	}
+
+	@include mobile {
+	  gap: 24px;
 	}
   }
 
-  @include tablet {
-	grid-template-columns: 100%;
+  &__inner {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4rem;
+
+	@include desktop {
+	  @include for-tablet {
+		grid-template-columns: calc(50% + 0.5rem - 2rem) calc(50% - 2.5rem);
+	  }
+	}
+
+	@include tablet {
+	  grid-template-columns: 100%;
+	}
+	@include mobile {
+	  gap: 47px;
+	}
   }
-  @include mobile {
-	gap: 47px;
-  }
-}
 
 
 }

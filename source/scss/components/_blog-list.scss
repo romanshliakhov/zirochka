@@ -1,0 +1,195 @@
+@use "../mixins/breakpoint" as *;
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4rem;
+  margin-right: -0.5rem;
+
+
+  &__item {
+	position: relative;
+	z-index: 1;
+	grid-column: span 3;
+
+	&:nth-child(even) {
+	  &:not(.mode) {
+		&:before {
+		  @include for-mini-tablet {
+			content: none;
+		  }
+		}
+	  }
+	}
+
+	&:first-of-type {
+	  &:before {
+		@include mini-tablet {
+		  content: none;
+		}
+	  }
+	}
+
+	&:before {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  width: 0.1rem;
+	  right: -2rem;
+	  transform: translateX(50%);
+	  background: #CCC;
+	  pointer-events: none;
+
+	  @include mini-tablet {
+		top: -20px;
+		width: 100vw;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		@include mobile {
+		  top: -23.5px;
+
+		}
+	  }
+	}
+
+	&.mode {
+	  grid-column: span 2;
+	  z-index: 3;
+	  margin: 4rem 0;
+
+	  &:nth-child(5n) {
+		&:before {
+		  @include for-mini-tablet {
+			content: none;
+		  }
+		}
+	  }
+
+	  &.highlight {
+		position: relative;
+		z-index: 2;
+
+		@include for-mini-tablet {
+		  &:after {
+			position: absolute;
+			content: '';
+			width: 100vw;
+			z-index: -1;
+			pointer-events: none;
+			height: calc(100% + 8rem);
+			background: var(--cl-g);
+			top: 50%;
+			left: calc(50% - .5rem);
+			transform: translate(-50%, -50%);
+		  }
+		}
+
+		@include mini-tablet {
+		  margin: -43px 0 -41px;
+		  z-index: 4;
+
+		  &:after {
+			height: calc(100% + 7.5rem);
+		  }
+
+		  & + .mode{
+			z-index: 5;
+		  }
+		}
+		@include mobile {
+		  margin: -40px 0 -40px;
+
+		  & + .mode{
+			margin-bottom: 31px;
+		  }
+		}
+	  }
+
+	  &:has(+ .highlight) {
+		@include mini-tablet {
+		  &:before {
+			content: none !important;
+		  }
+		}
+
+		@include  mobile{
+		  margin-top: 9px;
+
+		  &:after{
+			height: calc(100% + 64px);
+		  }
+		}
+
+		@include small-ios{
+		  &:after{
+			height: calc(100% + 64px);
+		  }
+		}
+
+
+	  }
+
+	  .blog-card {
+
+		&__box {
+		  p:not([class]) {
+			-webkit-line-clamp: 3;
+
+			@include desktop {
+			  @include for-mobile {
+				-webkit-line-clamp: 4;
+			  }
+			}
+
+			@include  mobile{
+			  max-width: 100%;
+			  -webkit-line-clamp: 4;
+			}
+		  }
+		}
+	  }
+
+	  @include mini-tablet {
+		margin: 40px 0;
+		&:after {
+		  position: absolute;
+		  content: '';
+		  width: 100vw;
+		  z-index: -1;
+		  pointer-events: none;
+		  height: calc(100% + 8rem);
+		  background: var(--cl-g);
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		}
+	  }
+
+	  @include mobile {
+
+	  }
+	}
+
+	@include mini-tablet {
+	  grid-column: initial !important;
+	}
+  }
+
+  @include desktop {
+	gap: 42px 40px;
+	margin: 0 -7px 0 3px;
+  }
+  @include laptop {
+	margin: 0 -5px 0 0;
+  }
+  @include mini-tablet {
+	margin: 0;
+	grid-template-columns: 100%;
+	gap: 40px;
+  }
+  @include mobile {
+	gap: 47px;
+  }
+}
