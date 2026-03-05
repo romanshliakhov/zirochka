@@ -1,0 +1,43 @@
+.acf-repeater .acf-row-handle.order {
+  background: #2271b1 !important;
+  color: #fff !important;
+}
+
+.acf-repeater .acf-row-handle.remove {
+  background: #dc3232;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.acf-repeater .acf-row-handle.remove:hover {
+  background: #aa0000;
+}
+
+.acf-repeater .acf-row {
+  border: 1px solid #ccd0d4;
+  margin-bottom: 15px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.col-5 .acf-row {
+  margin: 0;
+}
+.col-5 .acf-table tbody {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.col-5 .acf-table tbody .acf-label {
+  display: none;
+}
+.col-5 .acf-table tbody .acf-field-image {
+  padding: 0;
+}
+.col-5 .acf-table tbody .acf-field-image img {
+  margin: 0;
+}
+
+.quiz_fields [data-required="1"] .acf-label > label {
+  display: none;
+}
+/*# sourceMappingURL=global.css.map */

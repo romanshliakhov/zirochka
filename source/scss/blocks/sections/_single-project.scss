@@ -1,0 +1,180 @@
+@use "../../mixins/breakpoint" as *;
+
+.single-project {
+  overflow: hidden;
+  padding-bottom: 24px;
+
+  @include mobile {
+    padding-bottom: 0;
+  }
+
+  .container {
+    @include mobile {
+      padding: 0;
+		}
+  }
+
+  &__wrapp {
+    position: relative;
+    height: calc(100svh - var(--header-height) - 48px);
+    display: flex;
+  }
+
+  .breadcrumbs {
+    position: absolute;
+    top: clamp(12px, 4.167vw, 32px);
+    left: clamp(12px, 4.167vw, 32px);
+    z-index: 20;
+  }
+
+  &__tags {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: clamp(12px, 1.563vw, 16px);
+
+    @include for-mobile {
+      top: 32px;
+      right: 32px;
+    }
+
+    @include mobile {
+      top: 54px;
+      left: 12px;
+      right: 12px;
+    }
+  }
+
+  &__tag {
+    padding: clamp(8px, 0.977vw, 10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.24);
+    border-radius: 36px;
+    backdrop-filter: blur(26.100000381469727px);
+  }
+
+  &__slider {
+    overflow: hidden;
+    width: 100%;
+    // height: 100%;
+
+    @include for-mobile {
+      border-radius: 12px;
+    }
+
+    .swiper-container {
+      height: 100%;
+    }
+
+    .swiper-slide {
+      // height: 100%;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+        transition: all 0.3s ease;
+      }
+
+      &.no-before {
+        &::before {
+          background: transparent;
+        }
+      }
+    }
+
+    @include mobile {
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  &__image {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    picture,
+    img {
+        width: 100%;
+        height: 100%;
+
+        @include for-mobile {
+          border-radius: 12px;
+        }
+    }
+  }
+
+  .swiper-pagination {
+    width: fit-content;
+    bottom: clamp(12px, 3.125vw, 32px);
+    right: clamp(12px, 3.125vw, 32px);
+    top: initial;
+    left: initial;
+
+    @include mobile {
+      right: initial;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+    }
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    background: transparent;
+
+    @include small-tablet {
+      display: none;
+    }
+
+    &.prev {
+      left: 32px;
+      border: 2px solid var(--br-a);
+      border-radius: 12px;
+    }
+
+    &.next {
+      right: 32px;
+      border: 2px solid var(--br-a);
+      border-radius: 12px;
+    }
+    
+  }
+
+  &__content {
+    @include for-mobile {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      z-index: 5;
+      bottom: 32px;
+      padding: 0 32px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    @include mobile {
+      position: relative;
+      padding: 54px 12px 65px;
+      display: flex;
+      align-items: flex-end;
+
+      .editor {
+        position: relative;
+        z-index: 5;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@use "../mixins/disable-mob-hover" as *;
+@use "../mixins/breakpoint" as *;
+
+.products-slider {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	align-items: center;
+	gap: 25px 15px;
+	max-width: 100%;
+
+	@include mobile {
+		grid-template-columns: repeat(2, auto) 1fr;
+
+		.main-top {
+			grid-column: 1/-1;
+			order: -2;
+		}
+	}
+
+	.swiper-pagination {
+		grid-column: 1/-1;
+
+		@include mobile {
+			grid-column: 3;
+			justify-content: flex-end;
+			width: 100%;
+		}
+	}
+
+	.swiper-container {
+		max-width: 100%;
+		overflow: initial;
+		cursor: grab;
+		grid-column: 1/-1;
+		width: 100%;
+
+		@include mobile {
+			order: -1;
+		}
+	}
+
+	.swiper-slide {
+		height: initial;
+		transition: all .4s;
+
+		filter: grayscale(100%);
+		opacity: .2;
+	}
+
+	@include for-mobile {
+		.swiper-slide-active,
+		.swiper-slide-next,
+		.swiper-slide-next + .swiper-slide {
+			filter: grayscale(0%);
+			opacity: 1;
+		}
+	}
+
+	@include mobile {
+		.swiper-slide-active,
+		.swiper-slide-next {
+			filter: grayscale(0%);
+			opacity: 1;
+		}
+	}
+
+
+}

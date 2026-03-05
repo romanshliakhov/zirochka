@@ -1,0 +1,39 @@
+@use '../../mixins/breakpoint' as *;
+
+@mixin pagination-wrapper {
+  .pagination-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      &__item {
+        padding: 0.5rem 1rem;
+        font-family: var(--font-main);
+        background-color: rgba(208, 196, 184, 0.45);
+        text-align: center;
+
+        &:disabled {
+          opacity: 0.64;
+          pointer-events: none;
+        }
+
+        &.active {
+          background-color: var(--cl-f);
+          font-weight: 700;
+        }
+      }
+
+      &__next,
+      &__prev {
+        background-color: transparent;
+        color: red;
+      }
+    }
+  }
+}

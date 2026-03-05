@@ -1,0 +1,206 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/burger" as *;
+@use "../mixins/disable-mob-hover"as *;
+
+@use "../components/menu" as *;
+@use "../components/main-components/langs" as *;
+@use "../components/main-components/social" as *;
+
+@include langs;
+@include social;
+@include menu;
+
+.header {
+  padding: 10px 0;
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: var(--cl-f);
+
+  @include tablet {
+    padding: 0;
+  }
+
+  &.open-menu {
+    z-index: 30;
+  }
+
+  &__box {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  &__logo {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__top{
+    display: flex;
+    justify-content:  flex-end;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    .burger{
+      display: none;
+    }
+  }
+
+  &__nav {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__currency {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    line-height: 150%;
+    font-weight: 400;
+  }
+
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.042vw, 20px);
+
+    @include tablet {
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+
+    &-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      span {
+        font-size: 1.4rem;
+        line-height: 150%;
+        color: var(--cl-d);
+      }
+
+      a {
+        font-family: var(--font-heading);
+        font-size: 1.4rem;
+        line-height: 150%;
+        font-weight: 700;
+        color: var(--cl-d);
+        transition: all 0.3s ease-in;
+
+        @include hover {
+          color: var(--cl-h);
+        }
+      }
+    }
+
+    &-slider {
+      display: none;
+
+      @include for-tablet {
+        display: block;
+        width: 100%;
+        height: 2rem; /* Высота контейнера */
+        overflow: hidden;        
+  
+        .swiper-container {
+          width: 100%;
+          height: 100%; /* Растягиваем на всю высоту */
+        }
+  
+        .swiper-wrapper {
+          display: flex;
+          flex-direction: column; /* Включаем вертикальное расположение слайдов */
+          height: 100%;
+        }
+  
+        .swiper-slide {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+        }
+      } 
+    }
+
+    &-btn {
+      position: relative;
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      line-height: 150%;
+      font-weight: 700;
+      color: var(--cl-h);
+
+      &::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        height: 0.3rem;
+        background-color: var(--cl-h);
+        z-index: 2;
+        transition: all 0.4s ease;
+      }
+
+      @include hover {
+        &::before {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+
+    &-worktime {
+      font-family: var(--font-third);
+      font-size: 1.4rem;
+      line-height: 150%;
+      font-weight: 300;
+      color: var(--cl-d);
+    }
+  }
+
+
+  .burger {
+    justify-self: end;
+    color: var(--cl-b);
+
+    @include burger;
+
+    @include mobile {
+      --burger-width: 22px;
+      --burger-height: 34px;
+    }
+  }
+}

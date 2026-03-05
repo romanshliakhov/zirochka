@@ -1,0 +1,102 @@
+@use "../../mixins/breakpoint" as *;
+
+@mixin filters {
+  .filters {
+    display: grid;
+    align-items: center;
+    grid-gap: clamp(16px, 3.125vw, 32px);
+
+    @include for-tablet {
+      grid-template-columns: repeat(3, 286px);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include small-tablet {
+      grid-template-columns: 100%;
+    }
+
+    &__box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @include small-tablet {
+        width: 100%;
+      }
+
+      & > span {
+          color: var(--cl-e);
+      }
+    }
+
+    .select-field {
+			padding: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 48px;
+			background-color: #262626;
+			font-family: var(--font-main);
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 150%;
+			border-radius: 8px;
+      border: 1px solid #505050;
+			cursor: pointer;
+		}
+
+		.selected-option {
+			background-color: transparent;
+			padding: 0;
+		}
+
+		.placeholder {
+			font-family: var(--font-main);
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 150%;
+			color: rgba(237, 237, 237, 0.64);
+		}
+
+		.arrow-down {
+			font-size: 20px;
+			line-height: 20px;
+			display: flex;
+		}
+
+		.options-container {
+			border: 1px solid rgba(237, 237, 237, 0.50);
+			background-color: var(--bg-d);
+
+			li {
+				border-top: 1px solid rgba(237, 237, 237, 0.50);
+
+				&:first-child {
+					border-top: none;
+				}
+			}
+		}
+
+		.option.active {
+			background-color: transparent;
+		}
+
+		.option-text {
+			font-family: var(--font-main);
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 150%;
+			color: rgba(237, 237, 237, 0.64);
+		}
+
+		.custom-select .option:hover:not(.disabled) {
+			background-color: transparent;
+		}
+  }
+}

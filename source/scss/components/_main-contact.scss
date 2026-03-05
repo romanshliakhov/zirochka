@@ -1,0 +1,49 @@
+@use "../mixins/disable-mob-hover" as *;
+@use "../mixins/breakpoint" as *;
+
+.main-contact {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(20px, 2.5vw, 36px);
+
+	&__item {
+		color: rgba(var(--cl-a),1.0);
+		display: grid;
+		grid-template-columns: 30px 1fr;
+		gap: 23px;
+		align-items: center;
+		width: fit-content;
+
+		@include hover {
+			color: rgba(var(--cl-b),0.7);
+
+			.icon {
+				transform: translateX(30%);
+			}
+		}
+	}
+
+	&__link {
+		color: rgba(var(--cl-a),1.0);
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: normal;
+		display: flex;
+		flex-direction: column;
+		transition: all .4s;
+
+		@include hover {
+			color: rgba(var(--cl-b),0.7);
+		}
+
+		&[data-text] {
+			&:after {
+				content: attr(data-text);
+				font-size: 18px;
+				font-style: normal;
+				font-weight: 400;
+			}
+		}
+	}
+}

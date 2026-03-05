@@ -1,0 +1,205 @@
+.quiz-modal {
+  max-width: 1120px;
+  width: 95vw;
+  border-radius: 10px;
+  background: rgba(var(--bg-a),1.0);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  border-top: 25px solid var(--br-c);
+
+
+  .modal__box {
+    padding: 70px 20px;
+    width: 100%;
+  }
+
+  .quiz-box {
+    max-width: 670px;
+    margin: 0 auto;
+
+
+
+    &__box {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .editor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        h1,h2,h3,h4,h5,h6 {
+          color: rgba(var(--cl-b),1.0);
+          font-family: var(--font-main);
+          font-size: clamp(20px, 3.41796875vw, 40px);
+
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+
+        * {
+          color: rgba(var(--cl-b),1.0);
+        }
+      }
+    }
+
+    .swiper {
+
+      &-container {
+        max-width: 100%;
+        overflow: initial;
+      }
+
+      &-slide {
+        opacity: 0;
+        transition: all .8s;
+
+        &-active {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__list {
+      display: grid;
+      max-width: 100%;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    &__item {
+
+
+    }
+
+    .range-box {
+      grid-column: 1/-1;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 20px;
+      align-items: center;
+
+
+      &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+
+      }
+
+      &__value {
+        display: flex;
+        padding: 10px 20px 10px 0;
+        border-radius: 30px;
+        background: rgba(var(--bg-h), 0.3);
+
+        color:  #243B55;
+
+        /* text */
+        font-family: var(--font-main);
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+
+        input {
+          width: 50px;
+          text-indent: 20px;
+          text-align: right;
+          font-family: var(--font-main);
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          color:  #243B55;
+        }
+      }
+
+      [data-text] {
+        position: relative;
+
+        &:before {
+          content: attr(data-text);
+          position: absolute;
+          white-space: nowrap;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%) translateY(-100%);
+          line-height: 1.5;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgba(var(--cl-b),1.0);
+        }
+      }
+
+      &__slider {
+        position: relative;
+
+        i {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+
+          &:before,
+          &:after {
+            width: 12px;
+            display: flex;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--br-c);
+            position: absolute;
+            content: '';
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &:before {
+            right: 0;
+          }
+
+          &:after {
+            left: 0;
+          }
+        }
+
+        &:before,
+        &:after {
+          position: absolute;
+          font-size: 14px;
+          font-weight: var(--font-main-alt);
+          top: 0;
+          transform: translateY(-130%) translateX(25%);
+          color: rgba(var(--cl-c),1.0);
+        }
+
+        &:before {
+          content: attr(data-min);
+          left: 0;
+        }
+
+        &:after {
+          content: attr(data-max);
+          right: 0;
+        }
+      }
+    }
+
+    &__nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__btn {
+      width: 56px;
+      aspect-ratio: 2/1;
+      border-radius: 7px;
+      background: rgba(var(--bg-c),1.0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@use "../mixins/breakpoint" as *;
+
+.our-list{
+  display: grid;
+  gap: 20px;
+  width: 100%;
+
+  @include for-mobile{
+    grid-template-columns: repeat(auto-fill, minmax(clamp(360px, 31.25vw, 450px), 1fr));
+  }
+
+  @include mobile{
+    grid-template-columns: 100%;
+  }
+}

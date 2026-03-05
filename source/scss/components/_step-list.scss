@@ -1,0 +1,136 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/mini" as *;
+
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  counter-reset: li;
+  position: relative;
+  z-index: 1;
+
+  @include  small-tablet{
+	padding-left: 15px;
+  }
+
+  &__item {
+	counter-increment: li;
+	position: relative;
+	z-index: 1;
+	padding-left: clamp(33px, 4.167vw, 60px);
+
+	*{
+	  padding-left: clamp(20px, 5.903vw, 85px);
+
+	  @include  mobile{
+		padding-left: 25px;
+	  }
+	}
+
+	&:before{
+	  content: '';
+	  left: 0;
+	  width: 2px;
+	  bottom: -30px;
+	  top: 0;
+	  background: var(--Text-Gray_light, #C8CBCF);
+	  position: absolute;
+	  z-index: 1;
+	}
+
+	&:after{
+	  position: absolute;
+	  content: '';
+	  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='33' height='33' fill='none'%3E%3Ccircle cx='16.5' cy='16.667' r='15' fill='%23F6F6F6' stroke='%23C8CBCF' stroke-width='2' transform='rotate(90 16.5 16.667)'/%3E%3C/svg%3E");
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-position: center;
+	  width: 33px;
+	  height: 33px;
+	  left: 0;
+	  transform: translate(-50%, 95%);
+	  top: 0;
+	  z-index: 2;
+
+	  @include  small-tablet{
+		transform: translate(-50%,35%);
+	  }
+	}
+
+	&:first-of-type{
+	  &:before{
+		top: clamp(46px, 4.861vw, 70px);
+	  }
+
+	  &:after{
+		top: clamp(46px, 4.861vw, 70px);
+		transform: translate(-50%, -95%);
+	  }
+	}
+
+	&:last-of-type {
+	  &:before {
+		bottom: initial;
+		height: clamp(40px, 3.125vw, 45px);
+	  }
+	}
+
+	&.active{
+		&:after{
+		  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='33' height='32' fill='none'%3E%3Ccircle cx='16.5' cy='16' r='15' fill='%23F6F6F6' stroke='%234BAF47' stroke-width='2' transform='rotate(90 16.5 16)'/%3E%3Ccircle cx='16.5' cy='16' r='5' fill='%234BAF47' transform='rotate(90 16.5 16)'/%3E%3C/svg%3E");
+		}
+	}
+
+	@include headers {
+	  &:first-of-type {
+		position: relative;
+		z-index: 1;
+
+		&:before {
+		  content: counter(li);
+		  color: var(--cl-g);
+		  font-family: var(--font-main);
+		  font-size: clamp(52px, 6.389vw, 92px);
+		  font-style: normal;
+		  font-weight: 500;
+		  line-height: 95%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  display: inline-block;
+		}
+
+		@include  mobile{
+		  padding-left: 53px;
+		}
+	  }
+	}
+  }
+
+  .editor {
+
+	@include headers {
+	  margin-bottom: clamp(12px, 1.528vw, 22px);
+	  color: var(--cl-g);
+	  font-family: var(--font-main);
+	  font-size: clamp(24px, 2.5vw, 36px);
+	  font-style: normal;
+	  font-weight: 500;
+	  line-height: 120%;
+	}
+
+	p {
+	  color: var(--cl-g);
+	  font-family: var(--second-family);
+	  font-size: clamp(16px, 1.389vw, 20px);
+	  font-style: normal;
+	  font-weight: 400;
+	  line-height: 150%;
+	  margin-bottom: clamp(12px, 1.528vw, 22px);
+	}
+
+	&:last-child {
+	  margin-bottom: 0px !important;
+	}
+  }
+}

@@ -1,0 +1,13 @@
+@use "../mixins/breakpoint" as *;
+
+@mixin views {
+    .views {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        svg {
+            fill: transparent;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+.choose-repeater thead {
+  display: none !important;
+}
+.choose-repeater tr {
+  margin-bottom: 0 !important;
+  flex-grow: 1;
+}
+.choose-repeater tr td:nth-of-type(2) {
+  flex-grow: 1;
+}
+.choose-repeater .acf-label {
+  display: none !important;
+}
+.choose-repeater table > tbody {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+/*# sourceMappingURL=choose-repeater.css.map */

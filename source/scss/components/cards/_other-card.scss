@@ -1,0 +1,146 @@
+@use '../../mixins/breakpoint' as *;
+
+.other-card {
+    position: relative;
+    overflow: hidden;
+    height: clamp(320px, 30vw, 576px);
+    border-radius: 12px;
+
+    &__thumbnail {
+        display: flex;
+        height: 100%;
+        width: 100%;
+
+        picture,
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+    }
+
+    &__slider {
+        height: 100%;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+
+        .swiper-container {
+            height: 100%;
+        }
+
+        .swiper-slide {
+            picture,
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 12px;
+            }
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            background: transparent;
+
+            @include small-tablet {
+                display: none;
+            }
+
+            &.prev {
+                left: 24px;
+                border: 2px solid var(--br-a);
+                border-radius: 12px;
+            }
+
+            &.next {
+                right: 24px;
+                border: 2px solid var(--br-a);
+                border-radius: 12px;
+            }
+        }
+
+        .swiper-pagination {
+            @include for-small-tablet {
+                display: none;
+            }
+
+            @include small-tablet {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    &__tags {
+        position: absolute;
+        top: clamp(16px, 2.344vw, 24px);
+        left: clamp(16px, 2.344vw, 24px);
+        right: clamp(16px, 2.344vw, 24px);
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: clamp(12px, 1.563vw, 16px);
+
+        @include for-small-tablet {
+            li:last-child {
+                margin-left: auto;
+            }
+        }
+
+        @include small-tablet {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__tag {
+        padding: clamp(8px, 0.977vw, 10px);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(0, 0, 0, 0.24);
+        border-radius: 36px;
+        backdrop-filter: blur(26.100000381469727px);
+    }
+
+    &__bottom {
+        position: absolute;
+        bottom: clamp(16px, 2.344vw, 24px);
+        left: clamp(16px, 2.344vw, 24px);
+        right: clamp(16px, 2.344vw, 24px);
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        gap: clamp(16px, 2.344vw, 24px);
+
+        @include for-tablet {
+            align-items: flex-end;
+        }
+
+        @include tablet {
+            flex-direction: column;
+        }
+
+        @include small-tablet {
+            bottom: 40px;
+        }
+
+        .main-button {
+            flex-shrink: 0;
+        }
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        font-size: clamp(24px, 1.667vw, 32px);
+        line-height: 120%;
+        font-weight: 500;
+        color: var(--cl-a);
+    }
+}

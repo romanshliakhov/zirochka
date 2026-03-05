@@ -1,0 +1,66 @@
+[data-btn-modal] {
+  svg {
+    pointer-events: none;
+  }
+}
+
+.modal {
+  position: relative;
+  margin: auto;
+  transform: scale(.8);
+  display: none;
+
+  &::before {
+    position: absolute;
+    content: "";
+    z-index: -1;
+    pointer-events: none;
+    inset: 0;
+  }
+
+  [data-loader] {
+    &::before {
+      background-color: rgba(217, 219, 218, 0);
+      inset: -5px;
+    }
+  }
+
+  [data-loader="true"] {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    transform: scale(1);
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    right: 15px;
+    top: 15px;
+    transition: all .3s;
+    color:  var(--cl-a);
+    opacity: .5;
+    cursor: pointer;
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+
+  .close svg {
+    pointer-events: none;
+  }
+}

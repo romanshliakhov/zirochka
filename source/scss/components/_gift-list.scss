@@ -1,0 +1,27 @@
+@use "../mixins/breakpoint" as *;
+
+.gift-list {
+    display: flex;
+    flex-direction: column;
+	gap: clamp(12px, 2.344vw, 24px);
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: clamp(12px, 2.344vw, 24px);
+    }
+
+    &__icon {
+        svg {
+            width: clamp(24px, 3.418vw, 35px);
+            height: clamp(24px, 3.418vw, 35px);
+        }
+    }
+
+	&__text {
+		font-size: clamp(16px, 2.344vw, 24px);
+		line-height: 150%;
+		font-weight: 500;
+	}
+
+}

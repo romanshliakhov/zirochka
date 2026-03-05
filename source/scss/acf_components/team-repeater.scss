@@ -1,0 +1,70 @@
+.team-list {
+
+  .team-list {
+    padding: 10px 0 !important;
+
+    .acf-repeater .acf-row-handle.order {
+      background: #05a921 !important;
+    }
+
+    table > tbody {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    [data-name="link"] {
+      padding: 0 !important;
+    }
+
+    .link-wrap {
+      display: inline-flex !important;
+      flex-wrap: wrap;
+    }
+
+    .link-url,
+    .link-title {
+      padding: 0 5px !important;
+      margin: 0 -5px;
+      white-space: nowrap;
+      width: 100%;
+      max-width: 120px !important;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      position: relative;
+
+      &:hover {
+        z-index: 20;
+        overflow-x: auto;
+        text-overflow: initial;
+      }
+    }
+  }
+
+  thead {
+    display: none !important;
+  }
+
+  tr {
+    margin-bottom: 0 !important;
+    flex-grow: 1;
+
+
+
+    td:nth-of-type(2) {
+      flex-grow: 1;
+      //min-width: 300px;
+    }
+
+
+  }
+
+  .acf-label {
+    display: none !important;
+  }
+
+  table > tbody {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

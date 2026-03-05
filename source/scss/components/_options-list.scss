@@ -1,0 +1,60 @@
+@use "../mixins/breakpoint" as *;
+
+.options-list {
+	display: grid;
+	grid-gap: clamp(12px, 1.25vw, 24px);
+
+	@include for-tablet {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include tablet {
+		@include for-mobile {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@include mobile {
+		grid-template-columns: 100%;
+	}
+
+	&__box {
+		padding: clamp(16px, 1.667vw, 32px);
+		display: flex;
+		align-items: flex-start;
+		gap: clamp(24px, 2.5vw, 48px);
+		background: #292929;
+		border-radius: 12px;
+		backdrop-filter: blur(8px);
+
+		@include mobile {
+			flex-direction: column;
+		}
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	&__icon {
+		svg {
+			width: clamp(32px, 3.333vw, 64px);
+			height: clamp(32px, 3.333vw, 64px);
+		}
+	}
+
+	&__title {
+		font-size: clamp(20px, 1.667vw, 32px);
+		line-height: 120%;
+		font-weight: 500;
+		color:  var(--cl-g);
+	}
+
+	&__text {
+		font-size: clamp(14px, 1.25vw, 24px);
+		line-height: 150%;
+		font-weight: 500;
+	}
+}

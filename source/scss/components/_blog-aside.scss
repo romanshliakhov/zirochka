@@ -1,0 +1,29 @@
+@use "../mixins/breakpoint" as *;
+
+
+
+@mixin blog-aside{
+    .blog-aside{
+        display: flex;
+        flex-direction: column;
+        gap: 42px;
+
+        &__inner{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @include small-tablet{
+                h4{
+                    display: none;
+                }
+
+                margin-bottom: -6px;
+            }
+        }
+        
+        @include small-tablet{
+            display: contents;
+        }
+    }
+}

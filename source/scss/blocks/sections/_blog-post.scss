@@ -1,0 +1,154 @@
+@use "../../mixins/breakpoint" as *;
+@use "../../components/comment" as *;
+@use "../../mixins/disable-mob-hover"as *;
+
+.blog-post {
+  overflow: hidden;
+  padding: clamp(32px, 2.083vw, 40px) 0 clamp(36px, 3.333vw, 64px);
+
+  .breadcrumbs {
+    margin-bottom: 12px;
+  }
+
+  &__top {
+    margin-bottom: clamp(24px, 1.667vw, 32px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 1.667vw, 32px);
+
+    @include for-mobile {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    & > time,
+    & > span {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: clamp(14px, 1.563vw, 16px);
+        line-height: 150%;
+        font-weight: 500;
+        color: var(--cl-e);
+
+        svg {
+          width: clamp(24px, 3.125vw, 32px);
+          height: clamp(24px, 3.125vw, 32px);
+        }
+    }
+  }
+
+  &__excerpt {
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: clamp(14px, 1.563vw, 16px);
+    color: var(--cl-a);
+    line-height: 150%;
+  }
+
+  &__image {
+    margin-bottom: clamp(24px, 1.667vw, 32px);
+    width: 100%;
+    border-radius: 12px;
+    height: clamp(210px, 50.586vw, 518px);
+    overflow: hidden;
+
+    img,
+    picture {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .editor {
+    margin-bottom: clamp(24px, 1.667vw, 32px);
+    gap: 24px;
+
+    img {
+        height: 335px;
+        width: 100%;
+        border-radius: 12px;
+    }
+  }
+
+  &__share {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 16px clamp(16px, 2.344vw, 24px);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border: 1px solid rgba(237, 237, 237, 0.50);
+    border-radius: 60px;
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    span {
+      font-size: clamp(16px, 1.953vw, 20px);
+      line-height: 120%;
+      font-weight: 500;
+    }
+
+    .addtoany_list {
+      display: flex;
+      align-items: center;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--cl-f);
+
+        @include hover {
+          color: var(--cl-a);
+
+          svg {
+            transform: scale(1.2);
+          }
+        }
+
+        svg {
+          width: clamp(24px, 3.125vw, 32px);
+          height: clamp(24px, 3.125vw, 32px);
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+
+  &__comments {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    &-box {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      & > span {
+        font-size: clamp(24px, 3.125vw, 32px);
+        line-height: 100%;
+        font-weight: 500;
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  @include comment;
+}

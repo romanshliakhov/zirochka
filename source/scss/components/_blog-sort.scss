@@ -1,0 +1,26 @@
+@use "../mixins/breakpoint" as *;
+
+@mixin blog-sort{
+    .blog-sort{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        
+        & > span{
+            color: var(--cl-b);
+            font-family: var(--font-main);
+            font-size: clamp(16px, 2.0513vw, 24px);
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+
+            @include small-tablet{
+                display: none;
+            }
+        }
+
+        @include for-small-tablet{
+            margin-bottom: 4px;
+        }
+    }
+}

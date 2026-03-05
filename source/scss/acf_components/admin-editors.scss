@@ -1,0 +1,23 @@
+.admin-editors {
+  thead {
+    display: none !important;
+  }
+
+  tr {
+    margin-bottom: 0 !important;
+    flex-grow: 1;
+    display: flex;
+
+    td:nth-of-type(2) {
+      flex-grow: 1;
+    }
+  }
+
+  .acf-label {
+    display: none !important;
+  }
+
+  table > tbody {
+    display: flex;
+  }
+}

@@ -1,0 +1,401 @@
+@use "../mixins/breakpoint" as *;
+
+.cta-section {
+  margin: var(--default-padding) 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: var(--cl-f);
+  padding: clamp(32px, 5.21vw, 4rem) 0;
+
+  &__bg {
+	position: absolute;
+	z-index: -1;
+	inset: 0;
+	pointer-events: none;
+
+	img, picture, svg {
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	}
+
+
+  }
+
+  &__box {
+	max-width: 120.8rem;
+	margin: 0 auto;
+	display: grid;
+	width: 100%;
+	align-items: center;
+	overflow: hidden;
+	gap: 1.6rem clamp(40px, 5.14vw, 7.4rem);
+
+	grid-template-columns: 1fr auto;
+
+	@include for-desktop {
+	  padding: 0 11.4rem 0 8.6rem;
+	}
+	@include desktop {
+	  @include for-laptop {
+		padding: 0 124px 0 77px;
+	  }
+	}
+	@include laptop {
+	  padding: 0;
+	}
+
+	.editor {
+	  .main-button {
+		min-width: 310px;
+
+		@include tablet {
+		  min-width: 260px;
+		}
+		@include small-tablet {
+		  margin: 0 auto;
+		}
+		@include mobile {
+		  min-width: 100%;
+		}
+	  }
+	}
+
+	@include laptop {
+	  @include for-small-tablet {
+		gap: 36px;
+	  }
+	}
+	@include small-tablet {
+	  grid-template-columns: 100%;
+	}
+  }
+
+  &.mode {
+	background: transparent;
+	padding: 0;
+
+	.container {
+	  @include laptop {
+		padding: 0;
+	  }
+	}
+
+	.cta-section {
+	  &__box {
+		background: var(--cl-c);
+		position: relative;
+		z-index: 1;
+
+		@include for-desktop {
+		  padding: clamp(32px, 5.21vw, 4rem) 10rem;
+		}
+		@include desktop {
+		  @include for-laptop {
+			padding: clamp(32px, 5.21vw, 4rem) 10rem;
+		  }
+		}
+		@include laptop {
+		  padding: clamp(32px, 5.21vw, 4rem) clamp(16px, 5.21vw, 40px);
+
+		  @include for-tablet {
+			gap: 1.6rem clamp(70px, 5.14vw, 7.4rem);
+		  }
+		}
+		@include for-laptop {
+		  grid-template-columns: 1fr auto;
+		}
+		@include mobile {
+		  padding: 24px 16px;
+		}
+	  }
+
+	  &__bg {
+		inset: initial;
+		left: 0;
+		width: 419px;
+		height: 448px;
+		bottom: 0;
+		transform: translate(-41%, 47%);
+
+		img, picture, svg {
+		  object-fit: contain;
+		}
+
+		@include mobile {
+		  height: auto;
+		  width: 489px;
+		  transform: translate(-37%, 47%) rotate(90deg);
+		}
+	  }
+	}
+
+	@include laptop {
+	  max-width: var(--container-width);
+	  margin: 0 var(--container-offset);
+	}
+  }
+}
+
+.tags-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+  background: var(--cl-d);
+  padding: clamp(32px, 10.42vw, 8rem) 0;
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+	& > .editor {
+	  * {
+		color: var(--cl-a);
+	  }
+	}
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: clamp(12px, 2.08vw, 1.6rem);
+  }
+
+  &__content {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+
+	& > .main-button {
+	  align-self: center;
+	  min-width: 310px;
+
+	  @include for-tablet {
+		margin-right: -0.4rem;
+	  }
+
+	  @include mobile {
+		min-width: 100%;
+	  }
+	}
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  @include mobile {
+	padding: 32px 0;
+  }
+}
+
+.selected-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__item {
+	@include mobile {
+	  position: relative;
+	  z-index: 1;
+	  padding-bottom: 24px;
+
+	&:before {
+	  content: "";
+	  position: absolute;
+	  background: #CCC;
+	  pointer-events: none;
+	  height: 1px;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  top: -24px;
+	  width: 100vw;
+
+	}
+  }
+
+	@include small-ios{
+	  &:nth-child(2){
+		.h3{
+		  margin-bottom: 5px;
+		}
+	  }
+	}
+}
+
+&__list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &:before {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 0.1rem;
+	left: -2rem;
+	transform: translateX(-50%);
+	background: #CCC;
+	pointer-events: none;
+
+	@include tablet {
+	  top: -20px;
+	  width: 100%;
+	  height: 1px;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+
+	  @include mobile {
+		top: -23.5px;
+		width: 100vw;
+	  }
+	}
+  }
+
+  @include mobile {
+	gap: 24px;
+  }
+}
+
+&__inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+
+  @include desktop {
+	@include for-tablet {
+	  grid-template-columns: calc(50% + 0.5rem - 2rem) calc(50% - 2.5rem);
+	}
+  }
+
+  @include tablet {
+	grid-template-columns: 100%;
+  }
+  @include mobile {
+	gap: 47px;
+  }
+}
+
+
+}
+
+.section-hero {
+  overflow: hidden;
+  padding: var(--default-padding) 0;
+
+  .breadcrumbs {
+	order: -2;
+	grid-column: 1 / -1;
+
+	@include for-mobile {
+	  margin-bottom: -4px;
+	}
+
+	@include mobile {
+	  margin-bottom: 9px;
+	}
+  }
+
+  &__inner {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr;
+	grid-gap: 36px clamp(35px, 8.4746vw, 117px);
+
+	@include small-tablet {
+	  grid-template-columns: 100%;
+	}
+  }
+
+  &__image {
+	padding: 15px 15px 0;
+	border-radius: 24px;
+	background: var(--bg-c);
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+	height: 100%;
+
+	svg, img, picture {
+	  margin-top: auto;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	//@include for-small-tablet{
+	//    max-height: clamp(325px, 42.74vw, 500px);
+	//}
+
+	@include small-tablet {
+	  order: -1;
+	  //max-height: 500px;
+	  width: fit-content;
+	  justify-self: center;
+	}
+  }
+
+  &__images {
+	margin-top: auto;
+	display: flex;
+	align-items: center;
+	gap: 10px clamp(17px, 3.2595vw, 25px);
+	justify-content: center;
+	flex-wrap: wrap;
+  }
+
+  &__coll {
+	display: flex;
+	flex-direction: column;
+	gap: 36px;
+
+	@include small-tablet {
+	  display: contents;
+
+	  .editor {
+		order: -2;
+		gap: 24px;
+		align-items: center;
+
+		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4 {
+		  text-align: center;
+		}
+
+		.main-button {
+		  margin-top: 12px;
+		}
+	  }
+	}
+  }
+
+  &__logo {
+	height: clamp(36px, 6.91vw, 53px);
+	width: auto;
+
+	i {
+	  width: auto;
+	  height: 100%;
+
+	  svg {
+		width: auto;
+		height: 100%;
+	  }
+	}
+  }
+}

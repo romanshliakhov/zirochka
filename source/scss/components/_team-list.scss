@@ -1,0 +1,87 @@
+@use "../mixins/breakpoint" as *;
+
+@mixin team-list {
+  .team-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: clamp(18px, 2.6076vw, 20px);
+
+    @include mobile {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      padding: 0 16px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    &__item {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      max-height: 327px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 24px;
+
+      @include mobile {
+        width: 212px;
+        height: 327px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+
+      img,
+      picture {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 24px;
+      background: var(--bg-l);
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      right: 8px;
+      height: fit-content;
+      z-index: 2;
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__name {
+      color: var(--cl-m);
+      font-family: var(--font-main);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+
+    &__text {
+      color: var(--cl-j);
+      font-family: var(--font-main);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}

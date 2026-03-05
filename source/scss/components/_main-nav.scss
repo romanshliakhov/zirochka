@@ -1,0 +1,23 @@
+.main-nav {
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: Max(30px, 30px) clamp(30px, 3.90625vw, 60px);
+  }
+
+  & > ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  a {
+    color:  rgba(var(--cl-a),1.0);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+  }
+}

@@ -1,0 +1,151 @@
+@use "../../mixins/breakpoint" as *;
+
+.lang-switcher{
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  color: var(--cl-a);
+
+  & > .lang-item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &:before{
+      content: "\e907";
+      color: inherit;
+      font-family: 'icomoon' !important;
+      speak: never;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      font-size: clamp(20px, 2.222vw, 32px);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      @include  tablet{
+        font-size: 32px;
+      }
+    }
+
+    &:after{
+      content: "\e903";
+      color: inherit;
+      font-family: 'icomoon' !important;
+      speak: never;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      font-size: clamp(20px, 2.222vw, 32px);
+      transition: all .3s;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      @include  tablet{
+        font-size: 32px;
+      }
+    }
+  }
+
+  @include  for-tablet{
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  @include  tablet{
+    flex-direction: column;
+    width: fit-content;
+
+  }
+
+  &:hover{
+    .lang-dropdown {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @include  for-tablet{
+      & > .lang-item:after{
+        transform: scaleY(-1);
+      }
+    }
+  }
+
+  &.active{
+    & > .lang-item:after{
+      transform: scaleY(-1);
+    }
+  }
+
+  .lang-item{
+
+    a, span {
+      color: var(--cl-a);
+      font-family: var(--second-family);
+      font-size: clamp(14px, 1.25vw, 18px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%;
+
+      @include  tablet{
+        font-size: 18px;
+      }
+    }
+  }
+
+  .lang-dropdown {
+    display: flex;
+
+    @include  for-tablet{
+      max-height: initial;
+    }
+
+    @include  tablet{
+      flex-direction: column;
+    }
+
+    .lang-code{
+      color: var(--cl-b);
+      transition: all .3s;
+
+      &:hover{
+        color: var(--bg-c);
+      }
+
+      @include  tablet{
+        color: var(--cl-a);
+      }
+    }
+
+    li {
+      padding: 5px 10px;
+      display: flex;
+
+      & > * {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    }
+
+    @include  for-tablet{
+        position: absolute;
+        transition: .3s;
+        visibility: hidden;
+        opacity: 0;
+        left: calc(clamp(20px, 2.222vw, 32px) - 5px);
+        top: 100%;
+        transform: translateY(0);
+        border-radius: 8px;
+        border: solid 1px var(--bg-c);
+        background-color: var(--bg-a);
+        flex-direction: column;
+        gap: 0;
+    }
+  }
+}

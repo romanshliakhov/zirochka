@@ -1,0 +1,18 @@
+@use "../../mixins/breakpoint" as *;
+
+.tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(4px, 1.172vw, 12px);
+
+    &__item {
+        padding: 10px;
+        background: var(--bg-f);
+        border-radius: 36px;
+
+        a {
+            font-size: clamp(12px, 2.083vw, 16px);
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@use "../mixins/breakpoint" as *;
+
+.content-list{
+  gap: 20px;
+  width: 100%;
+
+  @include for-tablet{
+	grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include  tablet{
+    @include  for-mobile{
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include  for-mobile{
+    display: grid;
+  }
+
+  @include  mobile{
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    width: calc(100% + (var(--container-offset) * 2));
+    padding: 0 var(--container-offset);
+    scroll-snap-type: x mandatory;
+  }
+
+  &__item{
+    @include  mobile{
+      scroll-margin: 20px;
+      scroll-snap-align: start;
+      scroll-snap-stop: normal;
+    }
+  }
+}

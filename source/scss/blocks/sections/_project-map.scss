@@ -1,0 +1,212 @@
+@use "../../mixins/breakpoint" as *;
+@use "../../mixins/disable-mob-hover"as *;
+
+.project-map {
+  overflow: hidden;
+  padding: clamp(36px, 5.208vw, 100px) 0;
+
+  @include for-tablet {
+		background-color: var(--cl-d);
+	}
+
+  &__wrapp {
+    display: grid;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--bg-c);
+
+    @include for-tablet {
+      grid-template-columns: 41% 1fr;
+      align-items: stretch;
+		}
+
+    @include tablet {
+      grid-template-columns: 100%;
+		}
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(12px, 3.125vw, 24px);
+
+    .editor {
+      .main-button {
+        @include for-mobile {
+          margin-top: clamp(12px, 4.688vw, 36px);
+        }
+
+        @include mobile {
+          width: fit-content;
+        }
+      }
+    }
+
+    @include for-tablet {
+      padding-left: clamp(16px, 3.333vw, 64px);
+      padding-right: clamp(16px, 4.167vw, 80px);
+		}
+
+    @include tablet {
+      padding: clamp(16px, 4.167vw, 32px);
+		}
+  }
+
+  &__frame {
+        min-height: clamp(360px, 31.25vw, 600px);
+
+        .gm-style-iw {
+            padding: 0 !important;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+            border-radius: none; 
+
+            @include mobile {
+            max-width: 320px !important;
+            }
+        }
+
+        .gm-style-iw-chr {
+            display: none;
+        }
+
+        .gm-style-iw-d {
+            overflow: initial !important;
+            max-height: initial !important;
+        }
+
+        .gm-style-iw-tc::after {
+            height: 12px;
+            top: -5px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+        }
+
+        .location-card {
+            position: relative;
+            width: 482px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+
+            @include mobile {
+                width: 300px;
+            }
+
+            &__thumbnail {
+                position: absolute;
+                inset: 0;
+                display: flex;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+                    transition: 0.3s ease;
+
+                    @include for-tablet {
+                        border-radius: 12px;
+                    }
+                }
+
+                picture,
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            &__tags {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 6px;
+                font-family: var(--font-main);
+                font-size: 12px;
+                line-height: 18px;
+                
+                @include for-small-tablet {
+                    li:last-child {
+                        margin-left: auto;
+                    }
+                }
+
+                @include small-tablet {
+                    flex-wrap: wrap;
+                }
+            }
+
+            &__tag {
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                background: rgba(0, 0, 0, 0.24);
+                border-radius: 36px;
+                backdrop-filter: blur(26.100000381469727px);
+            }
+
+            &__bottom {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                padding: 12px;
+                z-index: 1;
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+
+                .main-button {
+                    flex-shrink: 0;
+                }
+            }
+
+            &__title {
+                display: flex;
+                align-items: center;
+                font-size: 20px;
+                line-height: 120%;
+                font-weight: 500;
+                color: var(--cl-a);
+            }
+
+            &__link {
+            width: fit-content;
+            height: 34px;
+            padding: 0 12px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-main);
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            color: var(--cl-a);
+            text-decoration: none;
+            transition: all .3s;
+            cursor: pointer;
+            background: var(--bg-f);
+            border: 2px solid var(--br-c);
+
+            @include hover {
+                background: var(--bg-i);
+                border: 2px solid var(--br-i);
+            }
+
+            &:active {
+                border: 2px solid var(--br-j);
+                background: var(--br-j);
+            }
+            }
+        }
+    }
+}

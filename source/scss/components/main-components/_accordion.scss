@@ -1,0 +1,62 @@
+@use "../../mixins/breakpoint" as *;
+
+@mixin accordion {
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 24px;
+
+    &__item {
+      border-radius: 24px;
+      background: var(--bg-c);
+      padding: clamp(16px, 3.1291vw, 24px);
+    }
+
+    &__btn {
+      width: 100%;
+      display: flex;
+      grid-gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      text-align: start;
+      transition: all .3s;
+      border-radius: 24px;
+      font-size: clamp(16px, 2.344vw, 24px);
+      line-height: 150%;
+      font-weight: 500;
+
+      & > svg {
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        width: clamp(32px, 4.688vw, 48px);
+        height: clamp(32px, 4.688vw, 48px);
+      }
+
+      &.active {
+        & > svg {
+          transform: rotate(90deg);
+        }
+      }
+
+      @include mobile {
+        align-items: flex-start;
+      }
+    }
+  
+    &__content {
+      width: 100%;
+    }
+
+    .editor {
+      border-radius: inherit;
+      width: 100%;
+      display: inline-block;
+      padding-top: 24px;
+
+      ul:not([class]) li {
+        list-style-type: disc;
+        list-style-position: inside;
+      }
+    }
+  }
+}

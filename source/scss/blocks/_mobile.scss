@@ -1,0 +1,321 @@
+@use "../mixins/breakpoint" as *;
+@use '../components/cards/service-card'as *;
+
+.mobile {
+  @include for-tablet {
+    display: none;
+  }
+
+  @include tablet {
+    position: fixed;
+    top: var(--header-height);
+    right: 0px;
+    width: 100%;
+    height: calc(100svh - var(--header-height));
+    bottom: 0;
+    z-index: 90;
+    transition: all 0.3s ease;
+    transform: translateX(110%);
+    background: var(--bg-c);
+    padding: 0 clamp(14px, 2.604vw, 20px) clamp(16px, 3.125vw, 24px);
+  }
+
+  &.active {
+    transform: translateX(0);
+
+    // @include tablet {
+    //   overflow-y: auto;
+    // }
+  }
+
+  &__box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    @include for-tablet {
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      // height: calc(100svh - var(--header-height));
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2.344vw, 24px);
+    // flex-grow: 1;
+
+    @include tablet {
+      overflow-y: auto;
+    }
+
+    &-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      align-items: center;
+      gap: 0 8px;
+
+      &.active {
+        background-color: var(--bg-c);
+        z-index: 5;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 0 16px 14px;
+
+        .menu-button {
+          order: -1;
+          transform: scale(-1);
+        }
+      }
+
+      .menu-button {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-family: var(--font-main);
+          font-size: 16px;
+          line-height: 150%;
+          font-weight: 500;
+        }
+
+        &.active {
+          span {
+            transform: scale(-1);
+          }
+        }
+      }
+    }
+
+    &-body {
+      grid-column: 1 / -1;
+      align-self: flex-start;
+
+      &.active {
+        margin-top: 16px;
+        max-height: calc(100svh - var(--header-height) - 40px) !important;
+        overflow-y: auto;
+        padding-bottom: 16px;
+      }
+    }
+
+    &-services {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .tags__item {
+          padding: clamp(8px, 1.302vw, 10px);
+
+          a {
+            font-size: clamp(10px, 2.083vw, 16px);
+          }
+        }
+      }
+    }
+
+    &-additionals {
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+
+        a {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+
+          & > div {
+            height: 103px;
+            display: flex;
+            border-radius: 12px;
+            overflow: hidden;
+
+            picture,
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    &-locations {
+      &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .tabs-nav {
+          width: initial;
+        }
+
+        .tabs-nav__item {
+          width: 100%;
+        }
+
+        .tabs-nav__btn { 
+          width: 100%;
+          
+          span {
+            min-width: initial;
+            width: 100%;
+          }
+        }
+      }
+
+      &__list {
+        display: grid;
+        gap: 16px;
+
+        @include tablet {
+          @include for-small-tablet {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
+        @include small-tablet {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        a {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+
+      &__image {
+        height: 103px;
+        display: flex;
+        border-radius: 12px;
+        overflow: hidden;
+
+        &.empty-img {
+          border: 1px solid rgba(251, 251, 251, 0.1);
+          align-items: center;
+          justify-content: center;
+
+          picture,
+          img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+          }
+        }
+
+        picture,
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &-types {      
+      &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+
+        a {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+
+          & > div {
+            height: 103px;
+            display: flex;
+            border-radius: 12px;
+            overflow: hidden;
+
+            picture,
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .additionals-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .additionals-more {
+      width: 100%;
+      height: 44px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--br-a);
+      border-radius: 12px;
+
+      svg {
+        transition: 0.2s ease;
+        transform: rotate(90deg);
+      }
+
+      &.active {
+        svg {
+          transform: rotate(90deg) scale(-1);
+        }
+      }
+    }
+  }
+
+  &__controls {
+    @include for-tablet {
+      display: none;
+    }
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+
+      .main-button {
+        width: 100%;
+        height: clamp(40px, 4.688vw, 48px);
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  @include service-card;
+}

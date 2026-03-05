@@ -1,0 +1,37 @@
+@use "../../mixins/breakpoint" as *;
+
+@mixin cta-baner{
+    .cta-baner{
+        padding: clamp(16px, 6.2581vw, 48px);
+        border-radius: clamp(16px, 3.1291vw, 24px);
+        background:  var(--bg-color);
+        width: 100%;
+
+        h1,h2,h3,h4,h5{
+        color: var(--cl-a);
+        }
+
+        p{
+        color: var(--cl-l);
+        }
+
+        .main-button{
+        color: var(--cl-j);
+
+            @include small-tablet{
+                margin-top: 16px;
+            }
+        }
+
+        @include small-tablet{
+        .editors{
+            grid-template-columns: 100%;
+            gap: 24px;
+        }
+    
+        .editor{
+            gap: 8px;
+        }
+        }
+    }
+}

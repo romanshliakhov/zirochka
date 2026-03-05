@@ -1,0 +1,192 @@
+@use "../../mixins/breakpoint" as *;
+
+// .steps-section {
+//   position: relative;
+//   z-index: 1;
+
+//   &__box {
+//     display: flex;
+//     flex-direction: column;
+//     gap: clamp(30px, 3.7607vw, 44px);
+
+//     @include for-small-tablet {
+//       padding-bottom: calc(clamp(55px, 6.8376vw, 80px) + 40px);
+//     }
+//   }
+
+//   .pinned-tabs__list {
+//     display: grid;
+//     grid-template-columns: repeat(4, 1fr);
+//     align-items: center;
+//     gap: clamp(20px, 4.6154vw, 54px);
+//     counter-reset: li;
+
+//     @include small-tablet {
+//       display: none;
+//     }
+
+//     .tab {
+//       width: 100%;
+//       counter-increment: li;
+//       position: relative;
+//       z-index: 1;
+//       border-radius: 14px;
+//       border: 1px solid rgba(var(--bg-f), 1);
+//       height: clamp(50px, 5.4701vw, 64px);
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       color: rgba(var(--cl-a), 1);
+//       text-align: center;
+//       font-family: var(--second-family);
+//       font-size: clamp(12px, 1.1966vw, 14px);
+//       font-style: normal;
+//       font-weight: 600;
+//       line-height: 142.857%;
+//       padding-left: 40px;
+//       cursor: pointer;
+
+//       &::before {
+//         content: counter(li);
+//         color: rgba(var(--cl-a), 1);
+//         text-align: center;
+//         font-family: var(--second-family);
+//         font-size: clamp(14px, 1.3675vw, 16px);
+//         font-style: normal;
+//         font-weight: 700;
+//         line-height: 100%;
+//         width: clamp(35px, 4.2735vw, 50px);
+//         height: clamp(35px, 4.2735vw, 50px);
+//         flex-shrink: 0;
+//         aspect-ratio: 1/1;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         border-radius: 8px;
+//         background: rgba(var(--bg-f), 1);
+//         position: absolute;
+//         top: 50%;
+//         transform: translateY(-50%);
+//         left: 6px;
+//         transition: all 0.3s;
+//       }
+
+//       &::after {
+//         width: calc(clamp(20px, 4.6154vw, 54px) - 14px);
+//         right: -9px;
+//         content: "";
+//         height: 1px;
+//         position: absolute;
+//         top: 50%;
+//         transform: translate(100%, -50%);
+//         content: "";
+//         border: solid 1px var(--br-a);
+//         pointer-events: none;
+//       }
+
+//       &:last-of-type {
+//         &::after {
+//           content: none;
+//         }
+//       }
+
+//       &.-active {
+//         border-color: rgba(var(--bg-e), 1);
+
+//         &::before {
+//           background: rgba(var(--bg-e), 1);
+//           color: rgba(var(--cl-g), 1);
+//         }
+
+//         &:after {
+//           border-color: rgba(var(--bg-e), 1);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .pinned-tabs {
+//   &__cards {
+//     position: relative;
+//     @include for-small-tablet {
+//       margin-top: clamp(30px, 3.7607vw, 44px);
+//     }
+
+//     @include small-tablet {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 20px;
+//     }
+//   }
+// }
+// .pinned-tab__item {
+//   @include for-small-tablet {
+//     pointer-events: none;
+
+//     &.-active {
+//       pointer-events: auto;
+//     }
+//   }
+// }
+
+// .pinned-tab__card {
+//   @include for-small-tablet {
+//     transform-origin: top;
+//     top: 0;
+//     position: absolute;
+//     width: 100%;
+//     height: 400px;
+
+//     &:first-child {
+//       position: relative;
+//       z-index: 1;
+//     }
+
+//     &:nth-child(2) {
+//       margin-top: 32px;
+//       z-index: 2;
+
+//       .steps-card {
+//         background: linear-gradient(
+//           180deg,
+//           rgba(24, 24, 26, 0) 0%,
+//           #18181a 100%
+//         );
+//         backdrop-filter: blur(50.20000076293945px);
+//       }
+//     }
+
+//     &:nth-child(3) {
+//       z-index: 3;
+//       margin-top: 80px;
+
+//       .steps-card {
+//         background: linear-gradient(
+//           180deg,
+//           rgba(24, 24, 26, 0) 0%,
+//           #18181a 100%
+//         );
+//         backdrop-filter: blur(50.20000076293945px);
+//       }
+//     }
+//     &:nth-child(4) {
+//       z-index: 4;
+//       margin-top: 120px;
+
+//       .steps-card {
+//         background: linear-gradient(
+//           180deg,
+//           rgba(24, 24, 26, 0) 0%,
+//           #18181a 100%
+//         );
+//         backdrop-filter: blur(50.20000076293945px);
+//       }
+//     }
+
+//     &.-active {
+//       pointer-events: auto;
+//       z-index: 10;
+//     }
+//   }
+// }

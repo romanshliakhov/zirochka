@@ -1,0 +1,43 @@
+@use "../../mixins/breakpoint" as *;
+@use "../../mixins/disable-mob-hover"as *;
+
+@mixin social {
+  .social {
+    position: relative;
+    display: flex;
+
+    &__trigger {
+      display: flex;
+      cursor: pointer;
+    }
+
+    &__body {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: calc(100% + 1rem);
+    }
+
+    &__list {
+      padding: 1rem;
+      background-color: var(--cl-c);
+      border-radius: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      span {
+        font-family: var(--font-main);
+        font-size: 1.6rem;
+        line-height: 150%;
+        font-weight: 400;
+      }
+    }
+  }
+}

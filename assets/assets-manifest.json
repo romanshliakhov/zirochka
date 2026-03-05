@@ -1,0 +1,17 @@
+{
+  "js": {
+    "vendors": {
+      "file": "js/vendors.bundle.js",
+      "dependencies": [
+        "jquery"
+      ]
+    },
+    "main": {
+      "file": "js/main.bundle.js",
+      "dependencies": [
+        "jquery",
+        "vendors"
+      ]
+    }
+  }
+}

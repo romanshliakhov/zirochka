@@ -1,0 +1,42 @@
+@mixin blog-search {
+  .blog-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 24px;
+    border: 1px solid var(--br-d);
+
+    &__input {
+      color: var(--cl-b);
+      font-family: var(--font-main);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      &::placeholder {
+        font-family: var(--font-main);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: var(--cl-g);
+      }
+    }
+
+    &__submit {
+      transition: all 0.3s;
+      display: flex;
+      color: var(--cl-h);
+
+      .icon-search {
+        font-size: 18px;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}

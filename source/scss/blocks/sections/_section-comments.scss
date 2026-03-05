@@ -1,0 +1,25 @@
+@use "../../mixins/breakpoint" as *;
+@use "../../components/comment-form" as *;
+@use "../../components/comment" as *;
+@use "../../components/comment-list" as *;
+
+.section-comments {
+  overflow: hidden;
+  padding:72px 0;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3.5156vw, 36px);
+  }
+
+  & + .section-posts{
+    margin-top: calc(var(--default-padding) * -1);
+  }
+
+  @include comment-form;
+  @include comment-list;
+  @include comment;
+}
+
+

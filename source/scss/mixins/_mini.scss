@@ -1,0 +1,60 @@
+/* stylelint-disable */
+
+@mixin image-set($pathToImage) {
+  background-image: url("#{$pathToImage}.png");
+  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
+  background-image: image-set(
+    /* stylelint-disable-next-line function-comma-newline-after */
+    /* "#{$pathToImage}.avif"type("image/avif") */
+                  "#{$pathToImage}.webp"type("image/webp"),
+                  "#{$pathToImage}.png"type("image/png")
+  );
+}
+
+@mixin footerToBottom {
+  display: grid;
+  min-height: 100vh;
+
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+}
+
+@mixin line-clamp($value) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $value;
+  overflow: hidden;
+}
+
+@mixin gradient-border($background, $border-width) {
+  position: relative;
+  &::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: #{$border-width};
+    background: #{$background};
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+
+@mixin text-border($thickness, $color) {
+  text-shadow:
+          -#{$thickness}px -#{$thickness}px 0 $color,
+          #{$thickness}px -#{$thickness}px 0 $color,
+          -#{$thickness}px #{$thickness}px 0 $color,
+          #{$thickness}px #{$thickness}px 0 $color;
+}
+
+@mixin headers {
+  .h1, .h2, .h3, .h4, .h5, .h6,h1, h2, h3, h4, h5, h6 {
+    @content;
+  }
+}

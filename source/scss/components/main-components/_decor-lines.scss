@@ -1,0 +1,26 @@
+@use '../../mixins/breakpoint' as *;
+
+:root {
+  --decor-line: url("data:image/svg+xml,%3Csvg width='1920' height='1004' viewBox='0 0 1920 1004' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.8'%3E%3Cline x1='-677.002' y1='1003.65' x2='405.998' y2='-79.3536' stroke='%232E7BB2'/%3E%3Cline x1='-133.678' y1='1003.65' x2='949.322' y2='-79.3536' stroke='%232E7BB2'/%3E%3Cline x1='409.646' y1='1003.65' x2='1492.65' y2='-79.3536' stroke='%232E7BB2'/%3E%3Cline x1='952.971' y1='1003.65' x2='2035.97' y2='-79.3536' stroke='%232E7BB2'/%3E%3Cline x1='1496.29' y1='1003.65' x2='2579.29' y2='-79.3536' stroke='%232E7BB2'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.decor-lines {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    z-index: -1;
+
+    @include tablet {
+        display: none;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        background-image: var(--decor-line);
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+

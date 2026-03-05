@@ -1,0 +1,13 @@
+@mixin comment-list{
+    .comment-list{
+        display: flex;
+        flex-direction: column;
+        gap: clamp(24px, 3.5156vw, 36px);
+
+        &__item{
+            display: flex;
+            flex-direction: column;
+            gap: clamp(16px, 2.3438vw, 24px);
+        }
+    }
+}

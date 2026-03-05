@@ -1,0 +1,5 @@
+{
+    "require": {
+        "log1x/acf-composer": "^3.4"
+    }
+}

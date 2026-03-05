@@ -1,0 +1,15 @@
+@use "../../mixins/breakpoint" as *;
+@use "../../components/cards/post-card" as *;
+
+.more-posts {
+  overflow: hidden;
+  padding: clamp(32px, 2.083vw, 40px) 0 clamp(32px, 3.333vw, 64px);
+
+  &__wrapp {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 1.667vw, 32px);
+  }
+
+  @include post-card;
+}

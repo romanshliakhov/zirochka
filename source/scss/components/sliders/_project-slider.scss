@@ -1,0 +1,45 @@
+@use '../../mixins/breakpoint' as *;
+
+.projects-slider{
+	width: 100%;
+
+  .swiper-slide{
+	display: grid;
+	grid-template-columns:  clamp(300px, 32.431vw, 467px) 1fr;
+	gap: 20px;
+
+
+	&.swiper-slide-active{
+	  @include  for-tablet {
+		transform: scale(1);
+		opacity: 1;
+	  }
+	}
+
+
+
+	@include laptop{
+	  @include  for-tablet {
+		grid-template-columns: .4fr 1fr;
+	  }
+	}
+
+	@include  for-tablet{
+	  opacity: 0;
+	  transition:opacity 0.2s ease-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+	  transform: scale(.8);
+	}
+
+	@include  tablet{
+	  grid-template-columns: 100%;
+	}
+  }
+
+  &__nav{
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 20px;
+	margin-bottom: 10px;
+  }
+}

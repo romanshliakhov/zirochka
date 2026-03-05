@@ -1,0 +1,34 @@
+@use "../mixins/breakpoint" as *;
+
+@mixin typeof-list {
+  .typeof-list {
+    display: grid;
+    grid-gap: 24px;
+
+    @include for-tablet {
+      grid-template-columns: repeat(5, 1fr);
+		}
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+		}
+
+    &__link {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    &__image {
+      width: 100%;
+      height: clamp(100px, 20.703vw, 212px);
+
+      img,
+      picture {
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+      }
+    }
+  }
+}

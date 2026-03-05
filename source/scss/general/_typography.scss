@@ -1,0 +1,345 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/mini" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+h1,
+.h1 {
+  color: var(--cl-b);
+  font-family: var(--font-main);
+  font-size: clamp(28px, 5.21vw, 4rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+h2,
+.h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--cl-b);
+  font-family: var(--font-main);
+  font-size: clamp(21px, 3.65vw, 2.8rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: .003em;
+
+  .sprite{
+    svg{
+      max-width: 2.9rem;
+      max-height: 2.8rem;
+    }
+  }
+}
+
+h3,
+.h3 {
+  color: var(--cl-b);
+  font-family: var(--font-main);
+  font-size: 2.1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+h4,
+.h4 {
+  color: var(--cl-b);
+  font-family: var(--font-main);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+h5,
+.h5{
+  color: var(--cl-b);
+  font-family: var(--font-main);
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.tag{
+  color: var(--cl-b);
+  font-family: var(--font-main);
+  font-size: clamp(14px, 2.08vw, 1.6rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  height: 2.7rem;
+  white-space:  nowrap;
+  display: flex;
+  padding: 0.4rem 0.8rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: var(--cl-f);
+  letter-spacing: 0.003em;
+  
+  @include  mobile{
+    height: 24px;
+    font-size: 14px;
+  }
+}
+
+.editor {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  .wpcf7 {
+    width: 100%;
+
+    @include for-mobile {
+      max-width: 618px;
+    }
+
+    @include small-tablet {
+      max-width: 576px;
+    }
+  }
+
+  p:has(iframe) {
+    height: 100%;
+  }
+
+  p:has(image) {
+    display: flex;
+  }
+
+
+  .accent-label {
+    @include mobile {
+      margin: 0 auto;
+    }
+  }
+
+  iframe {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  p:not([class]) {
+    font-family: var(--font-second);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+/////////
+  ul:not([class]) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li {
+      font-family: var(--font-main);
+      font-size: clamp(14px, 1.563vw, 16px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      position: relative;
+
+      div {
+        display: flex;
+        align-items: center;
+        font-size: clamp(16px, 3.125vw, 24px);
+        line-height: 150%;
+        font-weight: 500;
+      }
+
+      i {
+        margin-right: clamp(16px, 3.125vw, 24px);
+
+        svg {
+          width: clamp(24px, 4.557vw, 35px);
+          height: clamp(24px, 4.557vw, 35px);
+        }
+      }
+    }
+  }
+
+  ol:not([class]) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li {
+      font-family: var(--font-main);
+      font-size: clamp(14px, 1.563vw, 16px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      position: relative;
+
+      div {
+        display: flex;
+        align-items: center;
+        font-size: clamp(16px, 3.125vw, 24px);
+        line-height: 150%;
+        font-weight: 500;
+      }
+
+      i {
+        margin-right: clamp(16px, 3.125vw, 24px);
+
+        svg {
+          width: clamp(24px, 4.557vw, 35px);
+          height: clamp(24px, 4.557vw, 35px);
+        }
+      }
+    }
+  }
+
+  &s {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-gap: clamp(35px, 8.4746vw, 117px);
+
+    &__coll {
+      &:only-of-type {
+        grid-column: 1/-1;
+      }
+    }
+  }
+
+  table:not([class]) {
+    border-radius: 24px;
+    border: 1px solid var(--bg-d);
+    border-collapse: initial !important;
+
+    tr:first-child {
+      overflow: hidden;
+      width: 100%;
+
+      td {
+        color: var(--cl-m);
+        background: var(--bg-l);
+
+        &:first-of-type {
+          border-radius: 24px 0 0 0;
+        }
+
+        &:last-of-type {
+          border-radius: 0 24px 0 0;
+        }
+      }
+    }
+
+    tr {
+      td {
+        border-bottom: solid 1px var(--bg-d);
+      }
+
+      &:last-child {
+        td {
+          border: none !important;
+        }
+      }
+    }
+
+    td {
+      padding: 16px 0;
+      color: var(--cl-j);
+      font-family: var(--font-main);
+      font-size: clamp(14px, 1.563vw, 16px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+    }
+  }
+
+  .row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0 24px;
+
+    &:has(.main-button:only-child) {
+      display: initial;
+    }
+
+    .main-button {
+      @include mobile {
+        width: 100%;
+      }
+    }
+  }
+
+  blockquote {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 450px;
+    margin: 0 auto;
+    border-radius: 2px;
+    padding-left: 18px;
+    border-left: solid 2px #c4ee50;
+
+    p:not([class]) {
+      font-family: var(--font-main);
+      font-size: clamp(12px, 1.5625vw, 16px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+
+      &:last-of-type{
+        @include mobile{
+          max-width: 200px;
+          margin-left: auto;
+        }
+      }
+    }
+
+    span {
+      font-family: var(--font-main);
+      font-size: clamp(18px, 2.3438vw, 24px);
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: capitalize;
+
+      @include mobile {
+        font-family: var(--second-family);
+      }
+    }
+
+    @include mobile{
+      margin-left: 16px;
+    }
+  }
+
+  & > div:not([class]) {
+    font-size: clamp(16px, 1.25vw, 24px);
+    line-height: 150%;
+    font-weight: 500;
+
+    @include small-tablet {
+      br {
+        display: none;
+      }
+    }
+  }
+
+  img {
+    display: block;
+        
+    &.aligncenter {
+      margin: 0 auto;
+    }
+
+    &.alignleft{
+      margin-right: auto;
+    }
+
+    &.alignright{
+      margin-left: auto;
+    }
+  }
+}

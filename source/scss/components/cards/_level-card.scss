@@ -1,0 +1,121 @@
+@use "../../mixins/breakpoint" as *;
+
+@mixin level-card {
+  .level-card {
+    position: relative;
+    background: linear-gradient(223deg, #363636 0%, #282828 94.9%);
+    border-radius: 12px;
+
+    @include for-small-tablet { 
+        padding: 101px clamp(20px, 2.361vw, 34px) 27px;
+    }
+
+    @include small-tablet { 
+        padding: 57px clamp(20px, 2.361vw, 34px) 14px;
+    }
+
+    &__counter {
+        position: absolute; 
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        padding: 10px;
+        background: var(--body-bg);
+
+        @include for-small-tablet { 
+            width: 132px;
+            height: 132px;
+            top: -66px;
+        }
+
+        @include small-tablet { 
+            width: 80px;
+            height: 80px;
+            top: -40px;
+        }
+
+        &:before{
+            content: counter(li);
+            position: absolute;
+            background: linear-gradient(225deg, #363636 0%, #282828 98.99%), #292929;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 120%;
+            font-weight: 500;
+            color: var(--cl-f);
+
+            @include for-small-tablet { 
+                font-size: 60px;
+                width: 109px;
+                height: 109px;
+            }
+
+            @include small-tablet { 
+                font-size: 34px;
+                width: 62px;
+                height: 62px;
+            }
+        }
+    }
+
+    &__top {
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        border-bottom: 1px solid rgba(163, 163, 163, 0.6);
+    }
+
+    &__text {
+        line-height: 150%;
+        font-weight: 500;
+        text-align: center;
+
+        @include for-small-tablet { 
+            font-size: 24px;
+		}
+
+        @include small-tablet { 
+            font-size: 14px;
+		}
+    }
+
+    &__number {
+        line-height: 120%;
+        font-weight: 500;
+
+        @include for-small-tablet { 
+            font-size: 48px;
+		}
+
+        @include small-tablet { 
+            font-size: 28px;
+		}
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(6px, 0.833vw, 12px);
+    }
+
+    &__price {
+        line-height: 120%;
+        font-weight: 500;
+        color: var(--cl-g);
+
+        @include for-small-tablet { 
+            font-size: 60px;
+		}
+
+        @include small-tablet { 
+            font-size: 35px;
+		}
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.socials{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__link{
+    width: 42px;
+    height: 42px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg,img{
+      transition: all .3s;
+      width: 100%;
+      max-width: 23px;
+      height: auto;
+    }
+
+	&:hover{
+      svg,img{
+        transform: scale(1.2);
+      }
+    }
+  }
+}

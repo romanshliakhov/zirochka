@@ -1,0 +1,28 @@
+.breadcrumbs-nav {
+
+	&__list {
+		display: flex;
+		gap: Max(5px, 5px);
+	}
+
+	&__item {
+		display: flex;
+		gap: Max(10px, 10px);
+
+		color: rgba(var(--cl-a),1.0);
+		font-size: Max(16px, 16px);
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+
+		&:not(:last-of-type) {
+			&:after {
+				content: '/';
+			}
+		}
+
+		a {
+			@extend .breadcrumbs-nav__item;
+		}
+	}
+}

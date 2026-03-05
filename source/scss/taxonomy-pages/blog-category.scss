@@ -1,0 +1,115 @@
+// @use "../mixins/breakpoint" as *;
+// @use "../components/cards/post-card" as *;
+// @use "../components/blog-sort" as *;
+// @use "../components/blog-posts" as *;
+// @use "../components/popular-posts" as *;
+// @use "../components/widget" as *;
+// @use "../components/main-components/pagination" as *;
+
+// @include post-card;
+// @include blog-posts;
+// @include pagination;
+// @include popular-posts;
+// @include widget;
+
+// .blog-section {
+//   padding: var(--default-padding) 0 calc(var(--default-padding) * 2);
+
+//   &__inner {
+//     display: grid;
+//     grid-template-columns: 3fr clamp(300px, 35.9375vw, 368px);
+//     gap: 20px;
+
+//     @include for-small-tablet {
+//       align-items: flex-start;
+//       grid-template-rows: auto 1fr auto;
+//     }
+
+//     @include small-tablet {
+//       grid-template-columns: 100%;
+//       display: contents;
+
+//       .blog-aside__inner {
+//         order: -6;
+//       }
+
+//       .widget {
+//         display: none;
+//       }
+
+//       .widget.mode {
+//         display: flex;
+//         order: -3;
+//       }
+
+//       .blog-posts {
+//         order: -2;
+//       }
+
+//       .pagination-wrapper {
+//         order: -1;
+//       }
+//     }
+//   }
+
+//   &__title {
+//     margin-bottom: var(--default-padding);
+
+//     @include small-tablet {
+//       order: -7;
+//     }
+//   }
+
+//   .breadcrumbs {
+//     margin-bottom: 32px;
+
+//     @include mobile {
+//       margin-bottom: 45px;
+//     }
+//   }
+
+//   .blog-aside {
+//     @include for-small-tablet {
+//       grid-column: 2;
+//       grid-row: 1/-1;
+//     }
+//   }
+
+//   .blog-sort {
+//     @include for-small-tablet {
+//       grid-column: 1;
+//     }
+//     @include small-tablet {
+//       order: -5;
+//        margin-bottom: -4px;
+//     }
+//   }
+
+//   [data-category] {
+//     @include for-small-tablet {
+//       display: none;
+//     }
+
+//     @include small-tablet {
+//       order: -4;
+//       margin-bottom: -4px;
+//     }
+//   }
+
+//   .container {
+//     @include small-tablet {
+//       display: flex;
+//       flex-direction: column;
+//       gap: 20px;
+//     }
+//   }
+
+//   .pagination-wrapper {
+//     margin-top: 4px;
+//     grid-column: 1/-1;
+
+//     @include small-tablet {
+//       margin-bottom: 52px;
+//     }
+//   }
+// }

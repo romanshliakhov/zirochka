@@ -1,0 +1,39 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/mini" as *;
+
+@mixin comment {
+  .comment {
+    padding: clamp(12px, 3.125vw, 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 12px;
+    border: 1px solid rgba(237, 237, 237, 0.44);
+    backdrop-filter: blur(6.449999809265137px);
+
+
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    &__author {
+      font-size: clamp(20px, 3.125vw, 32px);
+      line-height: 100%;
+      font-weight: 500;
+    }
+
+    &__pubtime {
+      font-size: clamp(12px, 1.563vw, 16px);
+      line-height: 150%;
+      font-weight: 500;
+      color: var(--cl-e);
+    }
+
+    &__text {
+      font-size: clamp(14px, 1.563vw, 16px);
+    }
+  }
+}

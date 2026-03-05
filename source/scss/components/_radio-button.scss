@@ -1,0 +1,95 @@
+.radio-button {
+  display: flex;
+  position: relative;
+
+  border-radius: 7px;
+
+  background: rgba(var(--bg-a),1.0);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+
+    &:before {
+      inset: -10px;
+      position: absolute;
+      content: '';
+      background-color: rgba(var(--bg-f),1.0);
+      z-index: -1;
+      border-radius: 7px;
+      transition: all .2s;
+    }
+
+    span:not([class]) {
+      padding: 12px 15px 2px 0px;
+      //background-color: rgba(var(--bg-a),1.0);
+      border-radius: 0 0 5px 5px;
+      background-color: rgba(var(--bg-f),1.0);
+      transition: all .2s;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 20px;
+        aspect-ratio: 1;
+        background: var(--check);
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        left: 0px;
+        opacity: 0;
+        transition: opacity .2s;
+      }
+    }
+  }
+
+  &__image {
+    display: flex;
+
+    img {
+      border-radius: 5px 5px 0 0;
+      aspect-ratio: 2 / 1.4;
+      width: 100%;
+    }
+  }
+
+  input {
+    visibility: hidden;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  input:checked ~ .radio-button__label {
+
+
+    &:before {
+      background-color: rgba(var(--bg-c),1.0);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    span:not([class]) {
+      padding: 12px 15px 2px 25px;
+      background-color: rgba(var(--bg-c),1.0);
+      color: #fff;
+
+      &:before {
+        opacity: 1;
+      }
+    }
+
+  }
+}

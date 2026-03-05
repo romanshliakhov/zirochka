@@ -1,0 +1,74 @@
+// @use "../mixins/breakpoint" as *;
+// // @use "../components/cards/post-card" as *;
+// // @use "../components/popular-posts" as *;
+// // @use "../components/widget" as *;
+// // @use "../components/main-components/pagination" as *;
+
+// // @include post-card;
+// // @include pagination;
+// // @include popular-posts;
+// // @include widget;
+
+// .archive-projects {
+//   overflow: hidden;
+//   padding: var(--default-padding) 0;
+
+//   .breadcrumbs {
+//     margin-bottom: 32px;
+
+//     @include mobile {
+//       margin-bottom: 45px;
+//     }
+//   }
+
+//   &__inner {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 32px;
+
+//     .swiper-container {
+//       @include for-tablet {
+//         overflow: hidden;
+//         width: 100%;
+//         border-radius: clamp(16px, 3.1291vw, 24px);
+//       }
+
+//       @include tablet {
+//         width: calc(100% + (var(--container-offset) * 2));
+//         margin-left: calc(var(--container-offset) * -1);
+//         padding: 0 var(--container-offset);
+//       }
+//     }
+
+//     @include mobile {
+//       gap: 24px;
+//     }
+//   }
+
+//   .container {
+//     .post-card {
+//       &__thumb {
+//         @include for-small-tablet {
+//           height: clamp(300px, 24.44vw, 352px);
+//         }
+
+//         @include mobile {
+//           width: 100%;
+//           height: 167px;
+//         }
+//       }
+
+//       @include for-small-tablet {
+//         display: grid;
+//         grid-template-columns: 1fr clamp(300px, 36.7188vw, 376px);
+//         grid-gap: 24px;
+//         background: var(--bg-c);
+//       }
+
+//       @include mobile {
+//         flex-direction: column;
+//       }
+//     }
+//   }
+// }
+
