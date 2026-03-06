@@ -2,154 +2,152 @@
 @use "../../mixins/mini" as *;
 @use "../../mixins/disable-mob-hover"as *;
 
-  .blog-card {
+.blog-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  position: relative;
+  z-index: 1;
+
+  &__box {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: 2.3rem;
-	position: relative;
-	z-index: 1;
+	gap: 2.5rem;
+	justify-content: flex-end;
+	min-width: 0;
 
+	.h3 {
+	  margin-bottom: auto;
 
-
-	&__box {
-	  height: 100%;
-	  display: flex;
-	  flex-direction: column;
-	  gap: 2.5rem;
-	  justify-content: flex-end;
-	  min-width: 0;
-
-	  .h3 {
-		margin-bottom: auto;
-
-		@include  mobile{
-		  min-height: 30px;
-		}
-	  }
-
-	  .h2, .h3 {
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	  }
-
-	  p:not([class]) {
-		font-family: var(--font-second);
-		display: -webkit-box;
-		line-height: 150%;
-		font-size: 1.6rem;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		letter-spacing: 0.008em;
-		margin-bottom: auto;
-
-		@include  desktop{
-		  -webkit-line-clamp: 3;
-		  letter-spacing: 0.01em;
-
-		  @include  for-laptop{
-			max-width: 95%;
-		  }
-		}
-
-		@include  mobile{
-		  -webkit-line-clamp: 4;
-
-		  @include for-small-ios{
-			max-width: 95%;
-		  }
-		}
-	  }
-
-	  @include mobile{
-		gap: 16px;
+	  @include mobile {
+		min-height: 30px;
 	  }
 	}
 
-	&__bottom {
-	  display: flex;
-	  align-items: center;
-	  gap: 1.6rem;
-	  flex-wrap: nowrap;
-	  min-width: 0;
-	  margin-top: -0.2rem;
-
-	  @include  mobile{
-		margin: -1px 0 0 2px;
-	  }
-	}
-
-	&__info {
-	  display: flex;
-	  align-items: center;
-	  gap: 0.8rem;
-	  white-space: nowrap;
-	  flex-shrink: 0;
-	  font-size: 1.4rem;
-	  font-style: normal;
-	  font-weight: 500;
-	  line-height: normal;
-
-	  &:last-child {
-		flex: 1;
-		min-width: 0;
-
-		span {
-		  display: block;
-		  flex: 1;
-		  min-width: 0;
-		  overflow: hidden;
-		  text-overflow: ellipsis;
-		  white-space: nowrap;
-		}
-	  }
-
-	  svg {
-		flex-shrink: 0;
-	  }
-	}
-
-	&__image {
-	  z-index: -1;
-	  width: 100%;
+	.h2, .h3 {
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
 	  overflow: hidden;
-	  display: flex;
-	  flex-shrink: 0;
-	  height: 30rem;
-
-	  img, picture, svg {
-		width: 100%;
-		height: 100%;
-		transition: all .5s;
-	  }
-
-	  @include  mobile{
-		height: 200px;
-	  }
+	  text-overflow: ellipsis;
 	}
 
-	.tag {
-	  position: absolute;
-	  top: 0.8rem;
-	  left: 0.8rem;
-	  background-color: var(--cl-d);
-	  color: var(--cl-a);
-	}
+	p:not([class]) {
+	  font-family: var(--font-second);
+	  display: -webkit-box;
+	  line-height: 150%;
+	  font-size: 1.6rem;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  letter-spacing: 0.008em;
+	  margin-bottom: auto;
 
-	@include hover {
-	  .blog-card__image{
-		img, picture, svg{
-		  transform: scale(1.06);
+	  @include desktop {
+		-webkit-line-clamp: 3;
+		letter-spacing: 0.01em;
+
+		@include for-laptop {
+		  max-width: 95%;
+		}
+	  }
+
+	  @include mobile {
+		-webkit-line-clamp: 4;
+
+		@include for-small-ios {
+		  max-width: 95%;
 		}
 	  }
 	}
 
-	@include mobile{
-	  gap: 24px;
+	@include mobile {
+	  gap: 16px;
 	}
   }
+
+  &__bottom {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	flex-wrap: nowrap;
+	min-width: 0;
+	margin-top: -0.2rem;
+
+	@include mobile {
+	  margin: -1px 0 0 2px;
+	}
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
+	}
+  }
+
+  &__image {
+	z-index: -1;
+	width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-shrink: 0;
+	height: 30rem;
+
+	img, picture, svg {
+	  width: 100%;
+	  height: 100%;
+	  transition: all .5s;
+	}
+
+	@include mobile {
+	  height: 200px;
+	}
+  }
+
+  .tag {
+	position: absolute;
+	top: 0.8rem;
+	left: 0.8rem;
+	background-color: var(--cl-d);
+	color: var(--cl-a);
+  }
+
+  @include hover {
+	.blog-card__image {
+	  img, picture, svg {
+		transform: scale(1.06);
+	  }
+	}
+  }
+
+  @include mobile {
+	gap: 24px;
+  }
+}

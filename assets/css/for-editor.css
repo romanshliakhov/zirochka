@@ -112,12 +112,20 @@ h2 .sprite svg,
 
 h3,
 .h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
   color: var(--cl-b);
   font-family: var(--font-main);
   font-size: 2.1rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+h3 .sprite svg,
+.h3 .sprite svg {
+  max-width: 2.9rem;
+  max-height: 2.8rem;
 }
 
 h4,
@@ -363,6 +371,35 @@ h5,
   border-color: var(--cl-a);
   background: transparent;
 }
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: clamp(32px, 7.29vw, 5.5rem) auto 0;
+}
+
+.slider-btn {
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: solid 1px var(--cl-a);
+  cursor: pointer;
+  color: var(--cl-a);
+}
+.slider-btn.swiper-button-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+.slider-btn svg {
+  width: 3.2rem;
+  height: 3.2rem;
+}
 @media (min-width: 576px) {
   .editor .wpcf7 {
     max-width: 618px;
@@ -371,6 +408,11 @@ h5,
 @media (max-width: 1440px) {
   :root {
     --container-offset: clamp(16px, 5.21vw, 4rem);
+  }
+}
+@media (max-width: 1024px) and (min-width: 1020px) {
+  .slider-controls {
+    margin-top: 57px;
   }
 }
 @media (max-width: 766px) {
@@ -405,6 +447,19 @@ h5,
   }
   .editor blockquote {
     margin-left: 16px;
+  }
+  .slider-controls {
+    margin: 32px auto 0;
+  }
+}
+@media (hover: hover) {
+  .slider-btn:hover svg {
+    transform: scale(1.2);
+  }
+}
+@media (hover: none) {
+  .slider-btn:active svg {
+    transform: scale(1.2);
   }
 }
 /*# sourceMappingURL=for-editor.css.map */

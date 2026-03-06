@@ -1,4 +1,5 @@
 @use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
 
 .cta-section {
   margin: var(--default-padding) 0;
@@ -30,13 +31,13 @@
 	display: grid;
 	width: 100%;
 	align-items: center;
-	overflow: hidden;
+
 	gap: 1.6rem clamp(40px, 5.14vw, 7.4rem);
 
 	grid-template-columns: 1fr auto;
 
 	@include for-desktop {
-	  padding: 0 12.4rem 0 7.7rem;
+	  padding: 0 12.6rem 0 7.7rem;
 	}
 	@include desktop {
 	  @include for-laptop {
@@ -48,10 +49,18 @@
 	}
 
 	.editor {
+	  p {
+		@include laptop {
+		  @include for-tablet {
+			margin-top: 1px;
+		  }
+		}
+	  }
+
 	  .main-button {
 		min-width: 310px;
 
-		@include tablet {
+		@media (max-width: 1024px) {
 		  min-width: 260px;
 		}
 		@include small-tablet {
@@ -66,6 +75,10 @@
 	@include laptop {
 	  @include for-small-tablet {
 		gap: 36px;
+
+		.main-button {
+		  margin-right: -7px;
+		}
 	  }
 	}
 	@include small-tablet {
@@ -88,6 +101,15 @@
 		background: var(--cl-c);
 		position: relative;
 		z-index: 1;
+		overflow: hidden;
+
+		p {
+		  margin: 0;
+		}
+
+		.main-button {
+		  margin: 0;
+		}
 
 		@include for-desktop {
 		  padding: clamp(32px, 5.21vw, 4rem) 10rem;
@@ -100,7 +122,7 @@
 		@include laptop {
 		  padding: clamp(32px, 5.21vw, 4rem) clamp(16px, 5.21vw, 40px);
 
-		  @include for-tablet {
+		  @media (min-width: 1025px) {
 			gap: 1.6rem clamp(70px, 5.14vw, 7.4rem);
 		  }
 		}
@@ -133,8 +155,12 @@
 	}
 
 	@include laptop {
-	  max-width: var(--container-width);
-	  margin: 0 var(--container-offset);
+	  max-width: calc(var(--container-width) + 7px);
+	  margin: var(--default-padding) calc(var(--container-offset) - 7px) var(--default-padding) var(--container-offset);
+	}
+
+	@include mini-tablet {
+	  margin: var(--default-padding) var(--container-offset);
 	}
   }
 }
@@ -270,6 +296,7 @@
 	  }
 	}
 
+
 	@include mobile {
 	  gap: 24px;
 	}
@@ -286,11 +313,29 @@
 	  }
 	}
 
+	@media (max-width: 1025px) {
+	  @media (min-width: 1020px) {
+		margin-right: 5px;
+	  }
+	}
+
 	@include tablet {
 	  grid-template-columns: 100%;
 	}
 	@include mobile {
 	  gap: 47px;
+	}
+  }
+
+  @include laptop {
+	@include for-tablet {
+	  margin-top: calc(var(--default-padding) - 3px);
+	}
+  }
+
+  @include mobile {
+	& + .books-section {
+	  margin-top: -4px;
 	}
   }
 }
@@ -406,41 +451,269 @@
 
 }
 
-.section-hero {
+.books-section {
   overflow: hidden;
-  padding: var(--default-padding) 0;
+  margin: var(--default-padding) 0;
+  background: var(--cl-d);
+  padding: clamp(32px, 10.42vw, 8rem) 0;
 
-  .breadcrumbs {
-	order: -2;
-	grid-column: 1 / -1;
+  &__more {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	color: var(--cl-a);
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	white-space: nowrap;
+	transition: all .4s;
+	text-decoration: underline;
+	text-underline-offset: 0.4rem;
+	text-decoration-color: transparent;
 
-	@include for-mobile {
-	  margin-bottom: -4px;
+	svg {
+	  width: 2.4rem;
+	  height: 2.4rem;
 	}
 
-	@include mobile {
-	  margin-bottom: 9px;
+	@include hover {
+	  text-decoration-color: inherit;
+	}
+
+	@media (max-width: 1025px) {
+	  @media (min-width: 1020px) {
+		margin-right: -5px;
+	  }
 	}
   }
 
-  &__inner {
-	display: grid;
-	grid-template-columns: 1.2fr 1fr;
-	grid-gap: 36px clamp(35px, 8.4746vw, 117px);
+  &__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1.6rem;
 
-	@include small-tablet {
+	& > .editor {
+	  * {
+		color: var(--cl-a);
+	  }
+	}
+  }
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__slider {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&:before, &:after {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  top: 0;
+	  width: 50vw;
+	  z-index: 3;
+	  pointer-events: none;
+	}
+
+	&:before {
+	  right: 0;
+	  background: linear-gradient(270deg, rgba(65, 71, 85, 1) 98%, rgba(65, 71, 85, 0) 100%);
+	  transform: translateX(100%);
+	}
+
+	&:after {
+	  left: 0;
+	  background: linear-gradient(90deg, rgba(65, 71, 85, 1) 98%, rgba(65, 71, 85, 0) 100%);
+	  transform: translateX(-100%);
+	}
+
+	.swiper-container {
+	  overflow: initial;
+	}
+
+	.swiper-slide {
+	  height: auto;
+	  display: flex;
+	}
+
+	@include desktop {
+	  margin: 0 -7px 0 0;
+	}
+	@include laptop {
+	  margin: 0 -5px 0 0;
+	}
+	@include mini-tablet {
+	  margin: 0;
+	}
+  }
+
+  @include mobile {
+	padding: 32px 0;
+	margin-bottom: 18px;
+  }
+}
+
+.hero-section {
+  overflow: hidden;
+  margin-bottom: var(--default-padding);
+  background: var(--cl-g);
+
+  &__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	justify-content: space-between;
+	padding: 7rem 0;
+
+	& > .h3 {
+	  margin-left: -0.2rem;
+	}
+
+	.editor {
+	  margin-top: -2.4rem;
+	  gap: 2.4rem;
+
+	  .h1 {
+		letter-spacing: 0.005em;
+	  }
+
+	  p:not([class]) {
+		letter-spacing: 0.0063em;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include desktop {
+		  max-width: 95%;
+		}
+
+		@include mobile {
+		  max-width: 100%;
+		  -webkit-line-clamp: 4;
+		}
+	  }
+
+	  @include desktop {
+		margin-top: -1px;
+	  }
+	}
+
+	@include laptop {
+	  padding: 33px 0 34px;
+	}
+
+	@media (max-width: 1024px) {
+	  padding: 47px 0 45px;
+	}
+
+	@include mini-tablet {
+	  padding: 0 0 41px;
+
+	  @include for-mobile {
+		gap: 38px;
+	  }
+	}
+
+	@include mobile {
+	  gap: 24px;
+	  padding: 0 0 32px;
+	}
+  }
+
+  &__box {
+	display: grid;
+	grid-template-columns: 1fr .85fr;
+	gap: 4rem;
+
+	@include desktop {
+	  grid-template-columns: 1fr .93fr;
+	}
+
+	@include laptop {
+	  grid-template-columns: 1fr .9fr;
+	}
+
+	@include mini-tablet {
 	  grid-template-columns: 100%;
+	}
+
+	@include mobile {
+	  gap: 23px;
+	}
+  }
+
+  &__bottom {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	flex-wrap: nowrap;
+	min-width: 0;
+
+	@include mobile {
+	  margin-top: -2px;
+	}
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
 	}
   }
 
   &__image {
-	padding: 15px 15px 0;
-	border-radius: 24px;
-	background: var(--bg-c);
 	display: flex;
-	align-items: flex-end;
-	width: 100%;
-	height: 100%;
+	position: relative;
+	z-index: 1;
+
+
+	.tag {
+	  position: absolute;
+	  top: 0.8rem;
+	  left: 0.8rem;
+	  background-color: var(--cl-d);
+	  color: var(--cl-a);
+
+	  @include mini-tablet {
+		left: var(--container-offset);
+	  }
+	}
 
 	svg, img, picture {
 	  margin-top: auto;
@@ -448,63 +721,23 @@
 	  height: 100%;
 	}
 
-	//@include for-small-tablet{
-	//    max-height: clamp(325px, 42.74vw, 500px);
-	//}
+	@include for-mini-tablet {
+	  height: 600px;
+	  width: calc(100% + var(--container-offset));
+	  margin-right: calc(-1 * var(--container-offset));
+	}
 
-	@include small-tablet {
+	@include mini-tablet {
 	  order: -1;
-	  //max-height: 500px;
-	  width: fit-content;
-	  justify-self: center;
+	  height: 400px;
+	  width: calc(100% + (var(--container-offset) * 2));
+	  margin-left: calc(-1 * var(--container-offset));
+	}
+
+	@include mobile {
+	  height: 300px;
 	}
   }
 
-  &__images {
-	margin-top: auto;
-	display: flex;
-	align-items: center;
-	gap: 10px clamp(17px, 3.2595vw, 25px);
-	justify-content: center;
-	flex-wrap: wrap;
-  }
 
-  &__coll {
-	display: flex;
-	flex-direction: column;
-	gap: 36px;
-
-	@include small-tablet {
-	  display: contents;
-
-	  .editor {
-		order: -2;
-		gap: 24px;
-		align-items: center;
-
-		h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4 {
-		  text-align: center;
-		}
-
-		.main-button {
-		  margin-top: 12px;
-		}
-	  }
-	}
-  }
-
-  &__logo {
-	height: clamp(36px, 6.91vw, 53px);
-	width: auto;
-
-	i {
-	  width: auto;
-	  height: 100%;
-
-	  svg {
-		width: auto;
-		height: 100%;
-	  }
-	}
-  }
 }

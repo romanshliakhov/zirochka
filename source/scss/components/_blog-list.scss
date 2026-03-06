@@ -4,7 +4,6 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 4rem;
-  margin-right: -0.5rem;
 
 
   &__item {
@@ -177,6 +176,9 @@
 	}
   }
 
+  //@include  for-desktop{
+	//margin-right: -0.5rem;
+  //}
   @include desktop {
 	gap: 42px 40px;
 	margin: 0 -7px 0 3px;

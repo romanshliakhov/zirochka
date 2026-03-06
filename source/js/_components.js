@@ -1,8 +1,8 @@
 import './components/animateBtn';
-import './components/mobile-menu';
+import './components/mobile-menu'; //use
 import './components/modals';
-import './components/sliders';
-import './components/dinamicHeight';
+import './components/sliders'; //use
+import './components/dinamicHeight'; //use
 import './components/fancybox';
 import './components/form-validate';
 

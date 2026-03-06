@@ -2,10 +2,56 @@
 $shower = get_sub_field('shower');
 
 if (!$shower) : ?>
-    <section class="section-hero">
 
-    </section>
 <?php endif; ?>
+
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-section__box">
+            <div class="hero-section__inner">
+                <span class="h3">
+                     <i class="sprite">
+                            <?php sprite(29, 28, 'star_icon') ?>
+                        </i>
+                    Вибір редакції
+                </span>
+
+                <div class="editor">
+                    <p class="h1">Тріщини в жорстокому іранському режимі тепер помітні</p>
+                    <p>Дональд Трамп погіршує кризу доступності в Сполучених Штатах та має історично низькі рейтинги схвалення. Він, ймовірно, сподівається, що війни за кордоном відвернуть увагу громадськості від його невдач у внутрішній політиці.</p>
+                </div>
+
+                <div class="hero-section__bottom">
+                                <span class="hero-section__info">
+                                     <i class="sprite">
+                                        <?php sprite(16, 16, 'clock') ?>
+                                    </i>
+                                 15 хв
+                                </span>
+                    <span class="hero-section__info">
+                                     <i class="sprite">
+                                        <?php sprite(16, 16, 'calendar') ?>
+                                    </i>
+                                14.01.26
+                                </span>
+                    <span class="hero-section__info">
+                                     <i class="sprite">
+                                        <?php sprite(16, 16, 'user') ?>
+                                    </i>
+                                   <span>Василина Яременко</span>
+                                </span>
+                </div>
+            </div>
+            <div class="hero-section__image">
+                <img width="870" height="706"
+                     src="<?= esc_url(get_template_directory_uri() . '/assets/img/image.png'); ?>"
+                     loading="lazy"/>
+
+                <span class="tag"># Політика</span>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="cta-section mode">
     <div class="container">
@@ -276,7 +322,7 @@ if (!$shower) : ?>
                     </li>
 
                     <li class="selected-section__item">
-                        <a  href="#" class="news-card small">
+                        <a href="#" class="news-card small">
                             <div class="news-card__image">
                                 <img width="310" height="146"
                                      src="<?= esc_url(get_template_directory_uri() . '/assets/img/img4.png'); ?>"
@@ -319,6 +365,231 @@ if (!$shower) : ?>
     </div>
 </section>
 
+<section class="books-section">
+    <div class="container">
+        <div class="books-section__box">
+            <div class="books-section__top">
+                <div class="editor">
+                    <h2 class="h1">
+                        <i class="sprite">
+                            <?php sprite(29, 28, 'star_icon') ?>
+                        </i>
+                        Огляди книг</h2>
+                </div>
+
+                <a href="#" class="books-section__more">
+                    Усі огляди
+                    <?php sprite(24, 24, 'arrow-r'); ?>
+                </a>
+            </div>
+
+            <div class="books-section__slider">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <div class="book-card">
+                                <div class="book-card__image">
+                                    <img width="186" height="260"
+                                         src="<?= esc_url(get_template_directory_uri() . '/assets/img/book1.png'); ?>"
+                                         loading="lazy"/>
+                                </div>
+
+                                <div class="book-card__box">
+                                            <span class="h2">
+                                                Пожежа в Тарту, яка приносить світло
+                                            </span>
+
+                                    <div class="book-card__bottom">
+                                                <span class="book-card__info">
+                                                       <i class="sprite">
+                                                        <?php sprite(16, 16, 'calendar') ?>
+                                                    </i>
+                                                   15.01.26
+                                                </span>
+                                        <span class="book-card__info">
+                                                     <i class="sprite">
+                                                        <?php sprite(16, 16, 'user') ?>
+                                                    </i>
+                                                   <span>Ян Левченко</span>
+                                                </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="swiper-slide">
+                            <div class="book-card">
+                                <div class="book-card__image">
+                                    <img width="186" height="260"
+                                         src="<?= esc_url(get_template_directory_uri() . '/assets/img/book2.png'); ?>"
+                                         loading="lazy"/>
+                                </div>
+
+                                <div class="book-card__box">
+                                            <span class="h2">
+                                              Назад у нікуди
+                                            </span>
+
+                                    <div class="book-card__bottom">
+                                                <span class="book-card__info">
+                                                       <i class="sprite">
+                                                        <?php sprite(16, 16, 'calendar') ?>
+                                                    </i>
+                                                   15.01.26
+                                                </span>
+                                        <span class="book-card__info">
+                                                     <i class="sprite">
+                                                        <?php sprite(16, 16, 'user') ?>
+                                                    </i>
+                                                   <span>Ян Левченко</span>
+                                                </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="book-card">
+                                <div class="book-card__image">
+                                    <img width="186" height="260"
+                                         src="<?= esc_url(get_template_directory_uri() . '/assets/img/book3.png'); ?>"
+                                         loading="lazy"/>
+                                </div>
+
+                                <div class="book-card__box">
+                                            <span class="h2">
+                                             Слова написані у повітрі
+                                            </span>
+
+                                    <div class="book-card__bottom">
+                                                <span class="book-card__info">
+                                                       <i class="sprite">
+                                                        <?php sprite(16, 16, 'calendar') ?>
+                                                    </i>
+                                                   15.01.26
+                                                </span>
+                                        <span class="book-card__info">
+                                                     <i class="sprite">
+                                                        <?php sprite(16, 16, 'user') ?>
+                                                    </i>
+                                                   <span>Ян Левченко</span>
+                                                </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="book-card">
+                                <div class="book-card__image">
+                                    <img width="186" height="260"
+                                         src="<?= esc_url(get_template_directory_uri() . '/assets/img/book4.png'); ?>"
+                                         loading="lazy"/>
+                                </div>
+
+                                <div class="book-card__box">
+                                            <span class="h2">
+                                           Район Атлантида. Що варто знати естонським читачам про роман Андрія Бєлого «Петербург»
+                                            </span>
+
+                                    <div class="book-card__bottom">
+                                                <span class="book-card__info">
+                                                       <i class="sprite">
+                                                        <?php sprite(16, 16, 'calendar') ?>
+                                                    </i>
+                                                   15.01.26
+                                                </span>
+                                        <span class="book-card__info">
+                                                     <i class="sprite">
+                                                        <?php sprite(16, 16, 'user') ?>
+                                                    </i>
+                                                   <span>Ян Левченко</span>
+                                                </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="book-card">
+                                <div class="book-card__image">
+                                    <img width="186" height="260"
+                                         src="<?= esc_url(get_template_directory_uri() . '/assets/img/book5.png'); ?>"
+                                         loading="lazy"/>
+                                </div>
+
+                                <div class="book-card__box">
+                                            <span class="h2">
+                                         Література прагнення вийти з літератури
+                                            </span>
+
+                                    <div class="book-card__bottom">
+                                                <span class="book-card__info">
+                                                       <i class="sprite">
+                                                        <?php sprite(16, 16, 'calendar') ?>
+                                                    </i>
+                                                   15.01.26
+                                                </span>
+                                        <span class="book-card__info">
+                                                     <i class="sprite">
+                                                        <?php sprite(16, 16, 'user') ?>
+                                                    </i>
+                                                   <span>Ян Левченко</span>
+                                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide">
+                            <div class="book-card">
+                                <div class="book-card__image">
+                                    <img width="186" height="260"
+                                         src="<?= esc_url(get_template_directory_uri() . '/assets/img/book1.png'); ?>"
+                                         loading="lazy"/>
+                                </div>
+
+                                <div class="book-card__box">
+                                            <span class="h2">
+                                                Пожежа в Тарту, яка приносить світло
+                                            </span>
+
+                                    <div class="book-card__bottom">
+                                                <span class="book-card__info">
+                                                       <i class="sprite">
+                                                        <?php sprite(16, 16, 'calendar') ?>
+                                                    </i>
+                                                   15.01.26
+                                                </span>
+                                        <span class="book-card__info">
+                                                     <i class="sprite">
+                                                        <?php sprite(16, 16, 'user') ?>
+                                                    </i>
+                                                   <span>Ян Левченко</span>
+                                                </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="slider-controls">
+                        <div class="slider-btn prev">
+                            <?php sprite(32, 32, 'arrow-l'); ?>
+                        </div>
+                        <div class="slider-btn next">
+                            <?php sprite(32, 32, 'arrow-r'); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
 <section class="blog-section">
     <div class="container">
         <div class="blog-section__box">
@@ -343,7 +614,9 @@ if (!$shower) : ?>
 
                         <div class="blog-card__box">
                             <span class="h2">«На дотик усе тут як диван та пісок» — незрячі кияни про свої улюблені місця в столиці</span>
-                            <p>Наша редакція попросила незрячих мешканців Києва розповісти про особливі для них місцини, а Євгенія Полосіна, не знаючи, про які саме локації йдеться, відобразила їх у ілюстраціях.</p>
+                            <p>Наша редакція попросила незрячих мешканців Києва розповісти про особливі для них місцини,
+                                а Євгенія Полосіна, не знаючи, про які саме локації йдеться, відобразила їх у
+                                ілюстраціях.</p>
 
                             <div class="blog-card__bottom">
                                 <span class="blog-card__info">
@@ -380,7 +653,8 @@ if (!$shower) : ?>
 
                         <div class="blog-card__box">
                             <span class="h2">Невдала російська революція? Повстання декабристів 1825 року</span>
-                            <p>У грудні 1825 року невелика група російських офіцерів розпочала невдале повстання, яке радянська влада відзначила як Першу російську революцію.</p>
+                            <p>У грудні 1825 року невелика група російських офіцерів розпочала невдале повстання, яке
+                                радянська влада відзначила як Першу російську революцію.</p>
 
                             <div class="blog-card__bottom">
                                 <span class="blog-card__info">
@@ -418,7 +692,8 @@ if (!$shower) : ?>
 
                         <div class="blog-card__box">
                             <span class="h2">Віталій Манський: «Мій фільм — для наступних поколінь українців»</span>
-                            <p>В українських кінотеатрах стартували покази «Часу підльоту» — документального фільму Віталія Манського про ілюзорне мирне життя тилового Львова. </p>
+                            <p>В українських кінотеатрах стартували покази «Часу підльоту» — документального фільму
+                                Віталія Манського про ілюзорне мирне життя тилового Львова. </p>
 
                             <div class="blog-card__bottom">
                                 <span class="blog-card__info">
@@ -455,7 +730,9 @@ if (!$shower) : ?>
 
                         <div class="blog-card__box">
                             <span class="h2">Чому всі обговорюють «безсмертя» Бернара Арно?</span>
-                            <p>Бернар Арно, 76-річний засновник імперії товарів люкс Louis Vuitton Moët Hennessy (LVMH), отримав статус «безсмертного» — довічного члена Академії моральних і політичних наук.</p>
+                            <p>Бернар Арно, 76-річний засновник імперії товарів люкс Louis Vuitton Moët Hennessy (LVMH),
+                                отримав статус «безсмертного» — довічного члена Академії моральних і політичних
+                                наук.</p>
 
                             <div class="blog-card__bottom">
                                 <span class="blog-card__info">
@@ -492,7 +769,8 @@ if (!$shower) : ?>
 
                         <div class="blog-card__box">
                             <span class="h2">Від Анаксімандра до Маркса, або Як я провів одну половину свого життя в «революційній» секті, а іншу — зʼясовуючи чому </span>
-                            <p>Ця стаття є другою частиною міркувань британського троцькістського активіста та робітника Боба Маєрса про своє активістське минуле у Робітничій революційній партії.</p>
+                            <p>Ця стаття є другою частиною міркувань британського троцькістського активіста та робітника
+                                Боба Маєрса про своє активістське минуле у Робітничій революційній партії.</p>
 
                             <div class="blog-card__bottom">
                                 <span class="blog-card__info">
