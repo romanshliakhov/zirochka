@@ -114,25 +114,7 @@ if (!$shower) : ?>
 <!--    </div>-->
 <!--</section>-->
 <!---->
-<!--<section class="cta-section mode">-->
-<!--    <div class="container">-->
-<!--        <div class="cta-section__box">-->
-<!--            <div class="cta-section__bg">-->
-<!--                <img width="248" height="240"-->
-<!--                     src="--><?php //= esc_url(get_template_directory_uri() . '/assets/img/sprite/star.svg'); ?><!--"-->
-<!--                     loading="lazy"/>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="editor">-->
-<!--                <p class="h2">Підписуйтесь на новини від Зірочка *</p>-->
-<!--                <p>Долучайтесь до спільноти, підтримуйте якісну україномовну журналістику</p>-->
-<!--            </div>-->
-<!--            <div class="editor">-->
-<!--                <button class="main-button">Підписатися</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+
 <!---->
 <!--<section class="tags-section">-->
 <!--    <div class="container">-->
@@ -861,22 +843,3 @@ if (!$shower) : ?>
 <!--    </div>-->
 <!--</section>-->
 <!---->
-<!--<section class="cta-section">-->
-<!--    <div class="cta-section__bg">-->
-<!--        <img width="1920" height="153"-->
-<!--             src="--><?php //= esc_url(get_template_directory_uri() . '/assets/img/sprite/star_bg.svg'); ?><!--"-->
-<!--             loading="lazy"/>-->
-<!---->
-<!--    </div>-->
-<!--    <div class="container">-->
-<!--        <div class="cta-section__box">-->
-<!--            <div class="editor">-->
-<!--                <p class="h2">Хочете розмістити свою статтю на Зірочка?</p>-->
-<!--                <p>Надсилайте її у форму і ми опублікуємо на сайті</p>-->
-<!--            </div>-->
-<!--            <div class="editor">-->
-<!--                <button class="main-button">Надіслати статтю</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->

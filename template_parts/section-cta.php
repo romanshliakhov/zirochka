@@ -1,35 +1,67 @@
 <?php
-	$shower  = get_sub_field( 'shower' );
-	$image   = get_sub_field( 'image' );
-	$editor  = get_sub_field( 'editor' );
-	$link    = get_sub_field( 'link' );
+$cta_sections       = get_sub_field( 'cta_section' );
 
-	if ( ! $shower ) : ?>
-        <section class="section-cta">
-			<?php if (!empty($image)) : ?>
-				<div class="section-cta__image">
-					<?= wp_get_attachment_image($image['ID'], 'full'); ?>
-				</div>
-			<?php endif; ?>
+if ( $cta_sections ) :
+    foreach ( $cta_sections as $cta ) :
 
-            <div class="container">
-                <div class="section-cta__wrapp">
-					<?php if (!empty($editor)) : ?>
-						<div class="section-cta__editor editor">
-							<?= $editor; ?>
-						</div>
-					<?php endif; ?>
+        if ( $cta['acf_fc_layout'] === 'cta_1' ) :
+            $section_id = get_field( 'section_id' );
+            $editor1 = $cta['editor'] ?? [];
+            $editor2 = $cta['editor2'] ?? []; ?>
 
-					<?php if ( $link ) :
-						$link_url = $link['url'];
-						$link_title = $link['title'];
-						$link_target = $link['target'] ? $link['target'] : '_self';
-						?>
-						<a class="button button--animated" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
-							<?php echo esc_html( $link_title ); ?>
-						</a>
-					<?php endif; ?>
+            <section class="cta-section mode" <?= $section_id ? 'id="' . esc_attr( $section_id ) . '"' : ''; ?>>
+                <div class="container">
+                    <div class="cta-section__box">
+                        <div class="cta-section__bg">
+                            <img width="248" height="240"
+                                 src="<?= esc_url(get_template_directory_uri() . '/assets/img/sprite/star.svg'); ?>"
+                                 loading="lazy"/>
+                        </div>
+
+                        <?php if (!empty($editor1)) : ?>
+                            <div class="editor">
+                                <?= wp_kses_post($editor1); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($editor2)) : ?>
+                            <div class="editor">
+                                <?= wp_kses_post($editor2); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-        </section>
-	<?php endif; ?>
+            </section>
+        <?php endif;
+
+        if ( $cta['acf_fc_layout'] === 'cta_2' ) :
+            $section_id = get_field( 'section_id' );
+            $editor1 = $cta['editor'] ?? [];
+            $editor2 = $cta['editor2'] ?? [];
+            $bg = $cta['bg'] ?? []; ?>
+
+            <section class="cta-section">
+                <?php if ($bg): ?>
+                    <?= display_image($bg, 1920, 153, 'cta-section__bg'); ?>
+                <?php endif; ?>
+                <div class="container">
+                    <div class="cta-section__box">
+                        <?php if (!empty($editor1)) : ?>
+                            <div class="editor">
+                                <?= wp_kses_post($editor1); ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($editor2)) : ?>
+                            <div class="editor">
+                                <?= wp_kses_post($editor2); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </section>
+        <?php endif;
+
+    endforeach;
+endif;
+
+
+

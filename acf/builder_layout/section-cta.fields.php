@@ -1,76 +1,84 @@
 <?php
 
-	use StoutLogic\AcfBuilder\FieldsBuilder;
+use StoutLogic\AcfBuilder\FieldsBuilder;
 
-	function section_cta( $layout_name ) {
+function section_cta( $layout_name ) {
 
-		$layout = new FieldsBuilder( $layout_name );
-		$layout
-			->addTrueFalse( 'shower', [
-				'label'             => __( 'Hide section?', 'ACF' ),
-				'instructions'      => __( 'Activate to hide the block.', 'ACF' ),
-				'required'          => 0,
-				'conditional_logic' => [],
-				'wrapper'           => [
-					'width' => 100 / 3,
-					'class' => '',
-					'id'    => '',
-				],
-				'message'           => '',
-				'default_value'     => 0,
-				'ui'                => 1,
-				'ui_on_text'        => __( 'Hide', 'ACF' ),
-				'ui_off_text'       => __( 'Show', 'ACF' ),
-			])
-			->addImage('image', [
-				'label' => 'Background Image',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => [],
-				'wrapper' => [
-					'width' => 100 / 3,
-					'class' => '',
-					'id' => '',
-				],
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-				'library' => 'all',
-				'min_width' => '',
-				'min_height' => '',
-				'min_size' => '',
-				'max_width' => '',
-				'max_height' => '',
-				'max_size' => '',
-				'mime_types' => '',
-			])
-			->addWysiwyg('editor', [
-				'label'        => '',
-				'instructions' => 'Add slide content here.',
-				'wrapper'      => [
-					'width' => '100%',
-					'class' => '',
-					'id'    => '',
-				],
-				'tabs'         => 'visual',
-				'toolbar'      => 'all',
-				'media_upload' => 0,
-			])
-			->addLink('link', [
-				'label' => 'Посилання',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => [],
-				'wrapper' => [
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				],
-				'return_format' => 'array',
-			]);
+    $layout = new FieldsBuilder( $layout_name );
+    $layout
+        ->addText( 'section_id', [
+            'label'        => __( 'ID fields', 'ACF' ),
+            'instructions' => __( 'You can set a unique id for the section (And add them to the navigation)', 'ACF' ),
+            'wrapper'      => [
+                'width' => '50',
+                'class' => '',
+                'id'    => '',
+            ],
+        ] )
 
-		return [
-			'layout'  => $layout,
-			'display' => 'block',
-		];
-	}
+        ->addFlexibleContent('cta_section', [
+            'label'        => __('Editors', 'ACF'),
+            'button_label' => __('Add Section', 'ACF'),
+            'max'    => 1,
+        ])
+        ->addLayout('cta_1', [
+            'label'   => __('CTA №1', 'ACF'),
+            'display' => 'block',
+        ])
+
+        ->addWysiwyg('editor', [
+            'label' => false,
+            'media_upload' => 0,
+            'wrapper' => [
+                'class' => 'auto-height-editor',
+                'width' => '50',
+            ]
+        ])
+
+        ->addWysiwyg('editor2', [
+            'label' => false,
+            'media_upload' => 0,
+            'wrapper' => [
+                'class' => 'auto-height-editor',
+                'width' => '50',
+            ]
+        ])
+
+
+        ->addLayout('cta_2', [
+            'label'   => __('CTA №2', 'ACF'),
+            'display' => 'block',
+        ])
+        ->addImage('bg', [
+            'label' => 'Background image',
+            'return_format' => 'array',
+            'wrapper' => [
+                'width' => '20',
+            ]
+        ])
+        ->addWysiwyg('editor', [
+            'label' => false,
+            'media_upload' => 0,
+            'wrapper' => [
+                'class' => 'auto-height-editor',
+                'width' => '40',
+            ]
+        ])
+
+        ->addWysiwyg('editor2', [
+            'label' => false,
+            'media_upload' => 0,
+            'wrapper' => [
+                'class' => 'auto-height-editor',
+                'width' => '40',
+            ]
+        ])
+        ->endFlexibleContent();
+
+
+    return [
+        'layout'  => $layout,
+        'display' => 'block',
+    ];
+}
 

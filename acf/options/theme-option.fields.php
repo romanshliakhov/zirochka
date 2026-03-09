@@ -31,79 +31,6 @@ add_action('acf/init', function () {
             'layout' => 'block'
         ])
             ->addTab('contact_tab_1', [
-                'label' => 'Контактна інформація',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => [],
-                'wrapper' => [
-                'width' => '',
-                'class' => '',
-                'id' => '',
-                ],
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-                'placement' => 'left',
-            ])
-                ->addLink('tel_rent', [
-                    'label' => 'Основний номер Оренди',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => [],
-                    'wrapper' => [
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                    'return_format' => 'array',
-                ])
-                ->addLink('tel_sell', [
-                    'label' => 'Основний номер Продажів',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => [],
-                    'wrapper' => [
-                    'width' => '50',
-                    'class' => '',
-                    'id' => '',
-                    ],
-                    'return_format' => 'array',
-                ])
-            ->addTab('contact_tab_2', [
-                'label' => 'Режим роботи',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => [],
-                'wrapper' => [
-                'width' => '',
-                'class' => '',
-                'id' => '',
-                ],
-                'default_value' => '',
-                'placeholder' => '',
-                'prepend' => '',
-                'append' => '',
-                'maxlength' => '',
-                'placement' => 'left',
-            ])
-                ->addText('worktime', [
-                    'label' => 'Робочий графік',
-                    'instructions' => '',
-                    'required' => 0,
-                    'wrapper' => [
-                        'width' => '100',
-                        'class' => '',
-                        'id' => '',
-                    ],
-                    'default_value' => '',
-                    'placeholder' => '',
-                    'prepend' => '',
-                    'append' => '',
-                    'maxlength' => '',
-                ])
-            ->addTab('contact_tab_3', [
                 'label' => 'Соціальні мережі',
                 'instructions' => '',
                 'required' => 0,
@@ -120,54 +47,45 @@ add_action('acf/init', function () {
                 'maxlength' => '',
                 'placement' => 'left',
             ])
-                ->addLink('instagram', [
-                    'label' => 'Instagram',
+                ->addRepeater( 'social', [
+                    'label'        => 'Наші соцмережi',
+                    'button_label' => __( 'Додати соцмережу', 'ACF' ),
+                    'layout'       => 'block'
+                ] )
+                ->addImage('social_image', [
+                    'label' => 'Лого соцмережi',
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                    'width' => 100 / 2,
-                    'class' => '',
-                    'id' => '',
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
                     ],
                     'return_format' => 'array',
+                    'preview_size' => 'thumbnail',
+                    'library' => 'all',
+                    'min_width' => '',
+                    'min_height' => '',
+                    'min_size' => '',
+                    'max_width' => '',
+                    'max_height' => '',
+                    'max_size' => '',
+                    'mime_types' => '',
                 ])
-                ->addLink('facebook', [
-                    'label' => 'Facebook',
+                ->addLink('social_link', [
+                    'label' => 'Посилання на соцмережу',
                     'instructions' => '',
                     'required' => 0,
                     'conditional_logic' => [],
                     'wrapper' => [
-                    'width' => 100 / 2,
-                    'class' => '',
-                    'id' => '',
+                        'width' => '50',
+                        'class' => '',
+                        'id' => '',
                     ],
                     'return_format' => 'array',
                 ])
-                ->addLink('youtube', [
-                    'label' => 'YouTube',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => [],
-                    'wrapper' => [
-                    'width' => 100 / 2,
-                    'class' => '',
-                    'id' => '',
-                    ],
-                    'return_format' => 'array',
-                ])
-                ->addLink('tiktok', [
-                    'label' => 'Tiktok',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => [],
-                    'wrapper' => [
-                    'width' => 100 / 2,
-                    'class' => '',
-                    'id' => '',
-                    ],
-                    'return_format' => 'array',
-                ])
+            ->endRepeater()
         ->endGroup();
 
     $options->setLocation('options_page', '==', 'settings');
