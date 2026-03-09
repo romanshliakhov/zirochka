@@ -24,7 +24,21 @@
   font-weight: 400;
   font-family: "Caslon-540-BT";
   font-display: swap;
-  src: url("../fonts/Caslon-Regular.woff2") format("woff2"), url("../fonts/Caslon-Regular.woff") format("woff");
+  src: url("../fonts/Caslon-540-BT.woff2") format("woff2"), url("../fonts/Caslon-540-BT.woff") format("woff");
+}
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "TTTravels";
+  font-display: swap;
+  src: url("../fonts/TTTravels-Regular.woff2") format("woff2"), url("../fonts/TTTravels-Regular.woff") format("woff");
+}
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "TTTravels";
+  font-display: swap;
+  src: url("../fonts/TTTravels-Medium.woff2") format("woff2"), url("../fonts/TTTravels-Medium.woff") format("woff");
 }
 /* stylelint-disable */
 /* stylelint-disable */
@@ -119,8 +133,6 @@
   --body-font-size: clamp(1.4rem, 1.563vw, 1.6rem);
   --content-width: 176rem;
   --content-width: 100%;
-  --container-small: 144rem;
-  --container-xs: 100rem;
   --container-offset: clamp(40px, 4.17vw, 8rem);
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
   --default-padding: calc(clamp(4rem, 8.33vw, 6.4rem) / 2);
@@ -134,7 +146,7 @@
   --select-focus-border: #FDFDFD;
   --font-main: "Brygada1918";
   --font-second: "Caslon-540-BT";
-  --font-third: "PlayfairDisplay";
+  --font-third: "TTTravels";
   --cl-a: #FFFFFF;
   --cl-b: #000000;
   --cl-c: #E3E3E3;
@@ -247,6 +259,52 @@ h5,
   gap: 1rem;
   background: var(--cl-f);
   letter-spacing: 0.003em;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.langs li:last-of-type a {
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+.langs a {
+  color: var(--cl-d);
+  font-family: "TT Travels";
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: all 0.3s;
+}
+.langs a b {
+  font-weight: inherit;
+}
+.langs a.active {
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+.search-form__btn {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cl-d);
+  border: solid 0.1rem #ccc;
+}
+.search-form__btn svg, .search-form__btn img {
+  transition: all 0.3s;
+  width: 2rem;
+  height: 2rem;
 }
 
 .editor {
@@ -747,6 +805,9 @@ select:-webkit-autofill:focus {
   :root {
     --container-offset: clamp(16px, 5.21vw, 4rem);
   }
+  .langs a b {
+    display: none;
+  }
 }
 @media (max-width: 1023px) {
   *::-webkit-scrollbar {
@@ -791,6 +852,22 @@ select:-webkit-autofill:focus {
   }
   .overlay {
     padding: 10px 0 !important;
+  }
+}
+@media (hover: hover) {
+  .langs a:hover {
+    color: var(--cl-e);
+  }
+  .search-form__btn:hover svg, .search-form__btn:hover img {
+    transform: scale(1.1);
+  }
+}
+@media (hover: none) {
+  .langs a:active {
+    color: var(--cl-e);
+  }
+  .search-form__btn:active svg, .search-form__btn:active img {
+    transform: scale(1.1);
   }
 }
 /*# sourceMappingURL=critical.css.map */

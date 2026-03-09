@@ -1,0 +1,133 @@
+@use "../mixins/breakpoint" as *;
+
+.team-section {
+  position: relative;
+  z-index: 1;
+  background: var(--cl-g);
+  margin-bottom: var(--default-padding);
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(32px, 7.29vw, 5.6rem);
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__image{
+	width: Min(21.54vw, 31rem);
+	height: Min(23.77vw,34.2rem) ;
+	grid-row: 1/3;
+	display: flex;
+	align-items: flex-end;
+
+	img,svg{
+	  width: 100%;
+	  height: 100%;
+	  object-fit: contain;
+	}
+
+	@include  tablet{
+	  flex-shrink: 0;
+	  width: Min(42.19vw, 324px);
+	  height: Min(46.48vw, 35.7779rem);
+	}
+
+	@include mobile{
+	  min-height: 180px;
+	  width: 100%;
+	}
+  }
+
+  &__list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4.5rem;
+
+	@include  tablet{
+	  gap: 40px;
+	}
+
+	@include mobile{
+	  gap: 16px;
+	}
+  }
+
+  &__item {
+	gap: 2.4rem 2.5rem;
+
+	height: 100%;
+	position: relative;
+	z-index: 1;
+
+	.h2 {
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  line-height: normal;
+	  font-weight: 400;
+
+	  @include  for-tablet{
+		align-self: flex-end;
+		letter-spacing: -0.005em;
+		font-family: var(--font-third);
+	  }
+	  @include tablet{
+		font-size: 21px;
+	  }
+	}
+
+	p:not([class]) {
+	  font-family: var(--font-second);
+	  font-size: 1.6rem;
+	  line-height: 150%;
+	  letter-spacing: 0.014em;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 3;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  align-self: flex-start;
+
+	  @include mobile{
+		margin-top: -8px;
+	  }
+	}
+
+	@include for-tablet{
+	  display: grid;
+	  align-items: center;
+	  grid-template-columns: auto 1fr;
+	  grid-template-rows: 1.07fr 1fr;
+	}
+
+	@include  tablet{
+	  display: flex;
+	  flex-direction: column;
+	}
+  }
+
+  & + .socials-section{
+	margin-top: -3rem;
+
+	@include mobile{
+	  margin-top: -21px;
+	}
+  }
+
+  @include tablet{
+	margin-top: -3.2rem;
+  }
+
+  @include  for-mobile{
+	padding: 5.5rem 0;
+  }
+  @include mobile{
+	padding: 32px 0;
+	margin-top: 22px;
+  }
+}

@@ -1,0 +1,148 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.mission-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--default-padding);
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(32px, 7.29vw, 5.6rem);
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__list {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3.9rem clamp(24px, 2.273vw, 4rem);
+
+	@include for-laptop {
+	  padding-left: 0.6rem;
+	}
+
+	@include tablet {
+	  grid-template-columns: 100%;
+	}
+
+	@include mobile{
+	  gap: 47px;
+	}
+  }
+
+  &__item {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	align-items: center;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+
+	&:not(:last-of-type) {
+	  &:before {
+		content: '';
+
+		background: #ccc;
+		position: absolute;
+		pointer-events: none;
+
+		@include for-tablet {
+		  top: 0;
+		  bottom: 1rem;
+		  width: 0.1rem;
+		  transform: translateX(50%);
+		  right: calc((clamp(24px, 2.273vw, 4rem) / 2) * -1);
+		}
+
+		@include tablet {
+		  bottom: -2rem;
+		  left: 50%;
+		  height: 0.1rem;
+		  width: 100vw;
+		  letter-spacing: 50%;
+		  transform: translate(-50%, -50%);
+		}
+
+		@include mobile{
+		  bottom: -23px;
+		}
+	  }
+	}
+
+	* {
+	  text-align: center;
+	}
+
+	.h2 {
+	  margin-bottom: auto;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+
+	  @include laptop {
+		@include for-tablet {
+		  font-size: 24px;
+		}
+	  }
+	}
+
+	p:not([class]) {
+	  font-family: var(--font-second);
+	  font-size: 1.6rem;
+	  line-height: 150%;
+	  letter-spacing: 0.005em;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 3;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+
+	  @include for-tablet {
+		margin-top: -0.2rem
+	  }
+
+	  @include  tablet{
+		max-width: 420px;
+		width: 100%;
+	  }
+
+	  @include mobile{
+		margin-top: -8px;
+	  }
+	}
+
+	.sprite {
+	  width: 6rem;
+	  height: 6.4rem;
+	  color: var(--cl-d);
+	  display: flex;
+
+	  svg {
+		width: 100%;
+		height: auto;
+	  }
+
+	  @include  mobile{
+		width: 44px;
+		height: 48px;
+	  }
+	}
+
+	@include  tablet{
+	  @include  for-mobile {
+		margin-left: -8px;
+	  }
+	}
+  }
+
+  @include  for-mobile{
+	padding: 5.5rem 0;
+  }
+}

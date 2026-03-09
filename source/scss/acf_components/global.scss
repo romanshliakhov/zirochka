@@ -1,12 +1,18 @@
+body.wp-admin {
+  background-color: #fff !important;
+}
+
 .acf-repeater .acf-row-handle.order {
   background: #2271b1 !important;
   color: #fff !important;
+  flex-shrink: 0;
 }
 
 .acf-repeater .acf-row-handle.remove {
   background: #dc3232;
   color: #fff;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .acf-repeater .acf-row-handle.remove:hover {
@@ -20,8 +26,27 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
+#edittag {
+  max-width: 100% !important;
 
-.col-5 {
+  .description, h2 {
+    display: none;
+  }
+}
+
+.link-wrap {
+  width: -webkit-fill-available;
+
+  .link-title,
+  .link-url {
+    padding: 0 !important;
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+  }
+}
+
+.hero-images-list {
   .acf-row {
     margin: 0;
   }
@@ -29,7 +54,7 @@
   .acf-table {
     tbody {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, auto);
 
       .acf-label {
         display: none;
@@ -46,10 +71,265 @@
   }
 }
 
-.quiz_fields {
-  [data-required="1"] {
-    .acf-label > label {
-      display: none;
+
+div.acf-postbox.seamless>.inside {
+  margin-left: -5px !important;
+  margin-right: -5px !important;
+}
+
+.acf-fields>.acf-field {
+  padding: 5px !important;
+}
+
+// Генерация col-2 до col-8
+@for $i from 2 through 8 {
+  .col-#{$i} > .acf-input > .acf-repeater {
+    .acf-table {
+      tbody {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(#{$i}, 1fr);
+
+        tbody {
+          grid-template-columns: 100%;
+        }
+      }
     }
   }
 }
+
+
+// Генерация col-2 до col-8
+@for $p from 2 through 5 {
+  .flex-#{$p} > .acf-input > .acf-repeater {
+    .acf-table {
+      tbody {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .acf-row {
+          max-width: calc(100% / (#{$p}));
+          flex-shrink: 1;
+          flex-grow: 1;
+          border: none;
+          display:grid;
+          grid-template-columns: auto 1fr auto;
+        }
+
+      }
+    }
+  }
+}
+
+
+
+
+
+
+[class*="flex-"],
+[class*="col-"] {
+  .acf-row {
+    margin: 0;
+  }
+
+  .acf-table {
+    tbody {
+      //.acf-label {
+      //  display: none;
+      //}
+
+      tr {
+        margin-bottom: 0 !important;
+        flex-grow: 1;
+        display: flex;
+
+        td:nth-of-type(2) {
+          flex-grow: 1;
+        }
+      }
+
+      .image-wrap {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .acf-field-image {
+
+        img {
+          margin: 0 auto;
+          aspect-ratio: 1;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+}
+
+.col-labels{
+
+  .acf-table {
+    .acf-fields {
+      .acf-label {
+        display: block;
+      }
+    }
+  }
+}
+
+@for $i from 2 through 8 {
+  .flexible-#{$i}  .acf-flexible-content > .values {
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(#{$i}, 1fr);
+    gap: 10px;
+
+    .layout {
+      margin: 0!important;
+    }
+
+  }
+}
+
+.flexible-2 {
+  .acf-flexible-content .layout:only-of-type {
+    grid-column: 1/-1;
+  }
+
+  .values:has(.layout + .layout + .layout) {
+
+    .layout {
+      &:nth-of-type(1) {
+        grid-column: 1 / -1;
+        order: -3;
+      }
+
+    }
+  }
+
+  .values:has(.layout + .layout + .layout + .layout) {
+
+    .layout {
+      &:nth-of-type(1) {
+        grid-column: initial;
+        order: initial;
+      }
+
+    }
+  }
+}
+
+.auto-height-editor {
+  min-height: initial !important;
+
+  iframe {
+    height: auto !important;
+  }
+}
+
+.mini-editor {
+  min-height: initial !important;
+
+  iframe {
+    height: auto !important;
+    min-height: 120px !important;
+  }
+}
+
+.acf-field-link {
+  &.center {
+    .link-wrap {
+      width: fit-content;
+      margin: 0 auto;
+      display: block !important;
+      min-width: 40%;
+    }
+  }
+}
+
+.taxonomy-grid-3 {
+  .acf-taxonomy-field {
+    ul {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 5px !important;
+
+      li {
+        margin: 0 !important;
+
+        &:not(.select2-search) {
+          font-size: 22px;
+          font-weight: 700;
+          text-align: center;
+          position: relative;
+          min-height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .select2-selection__choice__remove {
+          position: absolute !important;
+          right: 5px;
+          top: 5px;
+          line-height: 10px;
+        }
+      }
+
+      .select2-search {
+        grid-column: 1 /-1;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+}
+
+.acf-fc-top-actions,
+li[class*='acf-field-group'] {
+  display: none !important;
+}
+
+
+
+// кнопки переключения отображения редактора
+.wp-editor-wrap {
+  position: relative;
+
+  .wp-editor-tools {
+    opacity: 0;
+    transition: all .4s;
+    visibility: hidden;
+    position: absolute;
+    right: 20px;
+    bottom: -2px;
+
+    .wp-editor-tabs {
+      display: flex;
+      gap:5px;
+    }
+
+    .wp-switch-editor {
+      margin: 0;
+      border-bottom-color: #ccd0d4;
+      padding: 2px 4px;
+      font-size: 14px;
+    }
+  }
+
+  &:hover {
+    .wp-editor-tools  {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+
+

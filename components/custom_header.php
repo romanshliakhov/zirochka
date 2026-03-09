@@ -42,7 +42,7 @@
                             <a href="#">UA-L</a>
                         </li>
                         <li>
-                            <a href="#">ENG</a>
+                            <a href="#">EN<b>G</b></a>
                         </li>
                     </ul>
 
@@ -108,7 +108,7 @@
                             <a href="#">UA-L</a>
                         </li>
                         <li>
-                            <a href="#">ENG</a>
+                            <a href="#">EN</a>
                         </li>
                     </ul>
                 </div>

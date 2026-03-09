@@ -10,13 +10,9 @@
   --body-font-size: clamp(1.4rem, 1.563vw, 1.6rem);
   --content-width: 176rem;
   --content-width: 100%;
-  --container-small: 144rem;
-  --container-xs: 100rem;
   --container-offset: clamp(40px, 4.17vw, 8rem);
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
-  
-   //--default-gap: clamp(4rem, 8.33vw, 6.4rem);
-  // --default-padding: clamp(2.4rem, 3.333vw, 6.4rem);
+
   --default-padding: calc(clamp(4rem, 8.33vw, 6.4rem) / 2);
 
   @include desktop{
@@ -46,9 +42,7 @@
   // --------------- default font-family variable ---------------
   --font-main: "Brygada1918"; // var(--font-main);
   --font-second: "Caslon-540-BT"; // var(--font-second);
-
-
-  --font-third: "PlayfairDisplay"; // var(--font-third);
+  --font-third: "TTTravels"; // var(--font-third);
 
 
   // --------------- default color variables ---------------

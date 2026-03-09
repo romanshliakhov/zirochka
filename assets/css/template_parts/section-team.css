@@ -1,0 +1,121 @@
+/* stylelint-disable */
+.team-section {
+  position: relative;
+  z-index: 1;
+  background: var(--cl-g);
+  margin-bottom: var(--default-padding);
+}
+.team-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 7.29vw, 5.6rem);
+}
+.team-section__image {
+  width: min(21.54vw, 31rem);
+  height: min(23.77vw, 34.2rem);
+  grid-row: 1/3;
+  display: flex;
+  align-items: flex-end;
+}
+.team-section__image img, .team-section__image svg {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.team-section__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4.5rem;
+}
+.team-section__item {
+  gap: 2.4rem 2.5rem;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.team-section__item .h2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
+  font-weight: 400;
+}
+.team-section__item p:not([class]) {
+  font-family: var(--font-second);
+  font-size: 1.6rem;
+  line-height: 150%;
+  letter-spacing: 0.014em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-self: flex-start;
+}
+.team-section + .socials-section {
+  margin-top: -3rem;
+}
+@media (min-width: 576px) {
+  .team-section {
+    padding: 5.5rem 0;
+  }
+}
+@media (min-width: 1024px) {
+  .team-section__item .h2 {
+    align-self: flex-end;
+    letter-spacing: -0.005em;
+    font-family: var(--font-third);
+  }
+  .team-section__item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1.07fr 1fr;
+  }
+}
+@media (max-width: 1023px) {
+  .team-section__image {
+    flex-shrink: 0;
+    width: min(42.19vw, 324px);
+    height: min(46.48vw, 35.7779rem);
+  }
+  .team-section__list {
+    gap: 40px;
+  }
+  .team-section__item .h2 {
+    font-size: 21px;
+  }
+  .team-section__item {
+    display: flex;
+    flex-direction: column;
+  }
+  .team-section {
+    margin-top: -3.2rem;
+  }
+}
+@media (max-width: 575px) {
+  .team-section__box {
+    gap: 32px;
+  }
+  .team-section__image {
+    min-height: 180px;
+    width: 100%;
+  }
+  .team-section__list {
+    gap: 16px;
+  }
+  .team-section__item p:not([class]) {
+    margin-top: -8px;
+  }
+  .team-section + .socials-section {
+    margin-top: -21px;
+  }
+  .team-section {
+    padding: 32px 0;
+    margin-top: 22px;
+  }
+}
+/*# sourceMappingURL=section-team.css.map */

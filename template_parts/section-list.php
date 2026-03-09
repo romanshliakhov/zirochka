@@ -1,54 +1,42 @@
 <?php
-    $shower         = get_sub_field('shower');
-    $heading_block  = get_sub_field('heading-block');
-    $editor         = get_sub_field('editor');
-    $list           = get_sub_field('list');
+$shower = get_sub_field('shower');
+$editor = get_sub_field('editor');
+$list = get_sub_field('list');
 
-    if (!$shower) : ?>
-        <section class="section-list">
-            <div class="container">
-                <div class="section-list__inner">
-                    <?php if (!empty($editor) && !$heading_block) : ?>
-                        <div class="editor">
-                            <?= $editor; ?>
-                        </div>
-                    <?php endif; ?>
+if (!$shower) : ?>
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-section__box">
+                <?php if (!empty($editor)) : ?>
+                    <div class="editor">
+                        <h2 class="h1">
+                            <i class="sprite">
+                                    <?php sprite(29, 28, 'star_icon') ?>
+                            </i>
+                            <?= esc_html($editor); ?>
+                        </h2>
+                    </div>
+                <?php endif; ?>
 
-                    <?php if ($list) : ?>
-                        <ul class="items-list">
-                            <?php foreach ($list as $item) :
-                                $icon   = $item['icon'];
-                                $heading = $item['heading'];
-                                $title   = $item['title'];
-                                $text    = $item['description'];
+                <?php if ($list) : ?>
+                    <ul class="mission-section__list">
+                        <?php foreach ($list as $item) :
+                            $title = $item['title'];
+                            $text = $item['description'];
                             ?>
-                                <li class="items-list__box">
-                                    <div class="items-list__top">
-                                        <?php if ($icon) : ?>
-                                            <div class="items-list__icon">
-                                                <?= wp_get_attachment_image($icon['ID'], 'full'); ?>
-                                            </div>
-                                        <?php endif; ?>
+                            <li class="mission-section__item">
+                                <i class="sprite">
+                                    <?php sprite(60, 64, 'star_icon') ?>
+                                </i>
 
-                                        <?php if ($heading) : ?>
-                                            <span class="items-list__heading"><?= esc_html($heading); ?></span>
-                                        <?php endif; ?>
-                                    </div>
+                                <span class="h2"><?= esc_html($title); ?></span>
 
-                                    <div class="items-list__info">
-                                        <?php if ($title) : ?>
-                                            <div class="items-list__title"><?= esc_html($title); ?></div>
-                                        <?php endif; ?>
-
-                                        <?php if ($text) : ?>
-                                            <p class="items-list__text"><?= esc_html($text); ?></p>
-                                        <?php endif; ?>
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php endif; ?>
-                </div>
+                                <p><?= esc_html($text); ?></p>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
-        </section>
-    <?php endif; ?>
+        </div>
+    </section>
+<?php endif; ?>

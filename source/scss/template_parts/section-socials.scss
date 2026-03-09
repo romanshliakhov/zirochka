@@ -1,0 +1,98 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.socials-section {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--cl-d);
+  margin-bottom: var(--default-padding);
+
+  &:last-of-type{
+	margin-bottom: 0;
+  }
+
+  &__bg{
+	position: absolute;
+	top: 50%;
+	transform:  translateY(-49%);
+	right: 0;
+	pointer-events: none;
+	z-index: -1;
+	width: 46rem;
+	height: 76.1rem;
+
+	svg{
+	  width: 100%;
+	  height: 100%;
+	}
+
+	@include  tablet{
+	  right: 0.5rem;
+	}
+
+	@include mobile{
+	  right: 0;
+	  width: 311px;
+	  transform:  translateY(-50%);
+	}
+  }
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(32px, 7.29vw, 5.6rem);
+
+	& > .editor {
+	  * {
+		color: var(--cl-a);
+	  }
+	}
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+
+  &__list {
+	display: flex;
+	flex-direction:  column;
+	gap: 2.4rem;
+
+	li {
+	  a {
+		display: flex;
+		align-items: center;
+		gap: 4rem;
+		color: var(--cl-a);
+
+		svg, img, i {
+		  width: 3rem;
+		  transition: all .3s;
+		  height: 3rem;
+		}
+
+		@include  small-tablet{
+		  gap: 25px;
+		}
+		@include hover {
+		  svg, img, i {
+			transform: scale(1.1);
+		  }
+		}
+	  }
+	}
+
+  }
+
+  @include tablet{
+	margin-top: -3.2rem;
+  }
+
+  @include  for-mobile{
+	padding: 5.5rem 0;
+  }
+  @include mobile{
+	padding: 56px 0;
+  }
+}

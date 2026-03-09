@@ -23,83 +23,50 @@
 				'ui_on_text'        => __( 'Hide', 'ACF' ),
 				'ui_off_text'       => __( 'Show', 'ACF' ),
 			])
-			->addWysiwyg( 'editor', [
-				'label'        => '',
-				'instructions' => '',
-				'wrapper'      => [
-					'width' => '100%',
-					'class' => '',
-					'id'    => '',
-				],
-				'tabs'         => 'visual',
-				'toolbar'      => 'all',
-				'media_upload' => 0,
-			])
+            ->addText('editor', [
+                'label' => 'Section Title',
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ])
 			->addRepeater('team', [
 				'label'        => __('Team', 'ACF'),
 				'button_label' => __('Add Member', 'ACF'),
-				'instructions' => '',
 				'required' => 1,
-				'min' => 4,
-				'max' => '',
 				'layout' => 'block',
 				'wrapper' => [
 					'width' => '',
-					'class' => '',
+					'class' => 'col-2',
 					'id' => '',
 					],
 				])
-				->addImage('image', [
-					'label' => 'Icon Field',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => [],
-					'wrapper' => [
-						'width' => '30',
-						'class' => '',
-						'id' => '',
-					],
-					'return_format' => 'array',
-					'preview_size' => 'thumbnail',
-					'library' => 'all',
-					'min_width' => '',
-					'min_height' => '',
-					'min_size' => '',
-					'max_width' => '',
-					'max_height' => '',
-					'max_size' => '',
-					'mime_types' => '',
-				])
-				->addText('role', [
-					'label' => 'Position Field',
-					'instructions' => '',
-					'required' => 0,
-					'wrapper' => [
-						'width' => '35',
-						'class' => '',
-						'id' => '',
-					],
-					'default_value' => '',
-					'placeholder' => '',
-					'prepend' => '',
-					'append' => '',
-					'maxlength' => '',
-				])
-				->addText('name', [
-					'label' => 'Name Field',
-					'instructions' => '',
-					'required' => 0,
-					'wrapper' => [
-						'width' => '35',
-						'class' => '',
-						'id' => '',
-					],
-					'default_value' => '',
-					'placeholder' => '',
-					'prepend' => '',
-					'append' => '',
-					'maxlength' => '',
-				])
+            ->addImage('image', [
+                'label'   => __('Image', 'ACF'),
+                'wrapper' => [
+                    'width' => '40',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ])
+            ->addGroup('team_group', [
+                'label' => false,
+                'wrapper' => [
+                    'width' => '60',
+                ],
+            ])
+            ->addText('name', [
+                'label' => 'Name',
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ])
+            ->addText('role', [
+                'label' => 'Position',
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ])
+            ->endGroup()
 			->endRepeater();
 
 		return [

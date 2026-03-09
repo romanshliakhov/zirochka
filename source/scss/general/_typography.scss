@@ -96,6 +96,73 @@ h5,
   }
 }
 
+.langs{
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  li:last-of-type{
+    a{
+      font-family:  var(--font-main);
+      font-weight: 500;
+    }
+  }
+
+  a{
+    color:  var(--cl-d);
+    font-family: "TT Travels";
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: all .3s;
+
+    b{
+      font-weight: inherit;
+
+      @include  desktop{
+        display: none;
+      }
+    }
+
+    @include hover{
+      color: var(--cl-e);
+    }
+
+    &.active{
+      font-weight: 600;
+      pointer-events: none;
+    }
+  }
+}
+
+.search-form{
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+
+  &__btn{
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    color: var(--cl-d);
+    border: solid 0.1rem #ccc;
+
+    svg,img{
+      transition: all .3s;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    @include  hover{
+      svg,img{
+        transform: scale(1.1);
+      }
+    }
+  }
+}
 .editor {
   width: 100%;
   position: relative;

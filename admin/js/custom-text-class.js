@@ -21,42 +21,36 @@
                         updateLinkClass('');
                     }
                 },
-                // {
-                //     text: 'Custom label',
-                //     onclick: function () {
-                //         updateLinkClass('accent-label');
-                //     }
-                // },
-                // {
-                //     text: 'Custom label (white)',
-                //     onclick: function () {
-                //         updateLinkClass('accent-label white');
-                //     }
-                // },
                 {
-                    text: 'h1',
+                    text: 'h1 (font-size:40px)',
                     onclick: function () {
                         updateLinkClass('h1');
                     }
                 },
                 {
-                    text: 'h2',
+                    text: 'h2 (font-size:28px)',
                     onclick: function () {
                         updateLinkClass('h2');
                     }
                 },
                 {
-                    text: 'h3',
+                    text: 'h3 (font-size:21px)',
                     onclick: function () {
                         updateLinkClass('h3');
                     }
                 },
                 {
-                    text: 'h4',
+                    text: 'h4 (font-size:16px)',
                     onclick: function () {
                         updateLinkClass('h4');
                     }
                 },
+                {
+                    text: 'h5 (font-size:14px)',
+                    onclick: function () {
+                        updateLinkClass('h5');
+                    }
+                }
             ]
         });
 
@@ -74,3 +68,4 @@
         }
     });
 })();
+
