@@ -1,0 +1,199 @@
+/* stylelint-disable */
+/* stylelint-disable */
+.mission-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--default-padding);
+}
+.mission-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 7.29vw, 5.6rem);
+}
+.mission-section__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.9rem clamp(24px, 2.273vw, 4rem);
+}
+.mission-section__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.mission-section__item:not(:last-of-type):before {
+  content: "";
+  background: #ccc;
+  position: absolute;
+  pointer-events: none;
+}
+.mission-section__item * {
+  text-align: center;
+}
+.mission-section__item .h2 {
+  margin-bottom: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mission-section__item p:not([class]) {
+  font-family: var(--font-second);
+  font-size: 1.6rem;
+  line-height: 150%;
+  letter-spacing: 0.005em;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mission-section__item .sprite {
+  width: 6rem;
+  height: 6.4rem;
+  color: var(--cl-d);
+  display: flex;
+}
+.mission-section__item .sprite svg {
+  width: 100%;
+  height: auto;
+}
+.mission-section__icon {
+  max-width: 6.4rem;
+  width: auto;
+  height: 6.4rem;
+  aspect-ratio: 23/32;
+  display: flex;
+}
+.mission-section__icon i, .mission-section__icon svg, .mission-section__icon img {
+  width: auto;
+  height: 100%;
+}
+.mission-section__icon svg {
+  width: auto !important;
+  height: 100% !important;
+  fill: none;
+}
+.mission-section.red {
+  position: relative;
+  z-index: 1;
+}
+.mission-section.red:before {
+  width: 100vw;
+  height: calc(100% + var(--default-padding) * 3 + 0.3rem);
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  background: var(--cl-a);
+  top: calc(var(--default-padding) * -1);
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+.mission-section.red .mission-section__box > .editor .h1 {
+  color: var(--cl-e);
+}
+.mission-section.red .mission-section__item .h2 {
+  max-width: 40rem;
+  -webkit-line-clamp: 3;
+}
+@media (min-width: 576px) {
+  .mission-section {
+    padding: 5.5rem 0;
+  }
+}
+@media (min-width: 1024px) {
+  .mission-section__item:not(:last-of-type):before {
+    top: 0;
+    bottom: 1rem;
+    width: 0.1rem;
+    transform: translateX(50%);
+    right: calc(clamp(24px, 2.273vw, 4rem) / 2 * -1);
+  }
+  .mission-section__item p:not([class]) {
+    margin-top: -0.2rem;
+  }
+  .mission-section.red {
+    padding-top: 8.7rem;
+  }
+}
+@media (min-width: 1241px) {
+  .mission-section__list {
+    padding-left: 0.6rem;
+  }
+}
+@media (max-width: 1240px) and (min-width: 1024px) {
+  .mission-section__item .h2 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 1023px) {
+  .mission-section__list {
+    grid-template-columns: 100%;
+  }
+  .mission-section__item:not(:last-of-type):before {
+    bottom: -2rem;
+    left: 50%;
+    height: 0.1rem;
+    width: 100vw;
+    letter-spacing: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .mission-section__item p:not([class]) {
+    max-width: 420px;
+    width: 100%;
+  }
+  .mission-section.red {
+    padding: 85px 0 0;
+  }
+}
+@media (max-width: 1023px) and (min-width: 576px) {
+  .mission-section__item {
+    margin-left: -8px;
+  }
+  .mission-section.red .mission-section__item {
+    margin-left: -8px;
+  }
+}
+@media (max-width: 991px) and (min-width: 576px) {
+  .mission-section.red .mission-section__list {
+    margin-left: 7px;
+  }
+}
+@media (max-width: 766px) {
+  .mission-section.red {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 575px) {
+  .mission-section__box {
+    gap: 32px;
+  }
+  .mission-section__list {
+    gap: 47px;
+  }
+  .mission-section__item:not(:last-of-type):before {
+    bottom: -23px;
+  }
+  .mission-section__item p:not([class]) {
+    margin-top: -8px;
+  }
+  .mission-section__item .sprite {
+    width: 44px;
+    height: 48px;
+  }
+  .mission-section__icon {
+    height: 48px;
+  }
+  .mission-section.red .mission-section__list {
+    gap: 45px;
+  }
+  .mission-section.red .mission-section__item {
+    gap: 16px;
+  }
+}
+/*# sourceMappingURL=section-mission.css.map */

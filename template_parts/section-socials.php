@@ -1,14 +1,15 @@
 <?php
     $shower     = get_sub_field('shower');
+    $public     = get_sub_field('shower_2');
     $editor     = get_sub_field('editor');
     $team       = get_sub_field('team');
     $global_setting = get_field('global_contacts', 'settings');
     $socials = $global_setting['social'] ?? [];
-
+    $section_class = $public ? 'red' : '';
     if (!$shower) : ?>
-        <section class="socials-section">
+        <section class="socials-section <?= esc_attr($section_class); ?>">
             <div class="socials-section__bg">
-                <?php sprite(466, 761, 'star2') ?>
+                <?php sprite(466, 761, $public ? 'star-public' : 'star2'); ?>
             </div>
             <div class="container">
                 <div class="socials-section__box">

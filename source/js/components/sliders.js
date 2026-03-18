@@ -45,4 +45,44 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		}
 	}
+
+	const newsSlider = document.querySelector('.publications-section__slider');
+
+	if (newsSlider) {
+		const swiperContainer = newsSlider.querySelector('.swiper-container');
+		const nextBtn = newsSlider.querySelector('.slider-btn.next');
+		const prevBtn = newsSlider.querySelector('.slider-btn.prev');
+
+		if (swiperContainer) {
+			new Swiper(swiperContainer, {
+				modules: [Navigation],
+				slidesPerView: 4,
+				spaceBetween: 40,
+				speed: 1000,
+				watchOverflow: true,
+				navigation: {
+					nextEl: nextBtn,
+					prevEl: prevBtn,
+				},
+				breakpoints: {
+					320: {
+						slidesPerView: 2,
+						spaceBetween: 16,
+					},
+					650: {
+						slidesPerView: 3,
+						spaceBetween: 24,
+					},
+					750: {
+						slidesPerView: 3,
+						spaceBetween: 40,
+					},
+					1150: {
+						slidesPerView: 4,
+						spaceBetween: 40,
+					},
+				},
+			});
+		}
+	}
 });

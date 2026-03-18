@@ -81,7 +81,9 @@
 		'/helpers/remove_post_slug.php',
 
 		'/custom_posts/post_type_modals.php',
-
+        '/custom_posts/post_type_news.php',
+        '/custom_posts/post_type_authors.php',
+        '/custom_posts/post_type_books.php',
 
 		'/hooks/display_breadcrumbs.php',
 		'/hooks/display_editors_blocks.php',
@@ -100,6 +102,38 @@
 		$mimes['glb'] = 'model/gltf-binary';
 		return $mimes;
 	}
+
+    post_relationships([
+        [
+            'from'        => 'news',
+            'to'          => 'authors',
+
+            'field_from'  => 'authors',        // в новости
+            'field_to'    => 'news',          // у автора
+
+            'label_from'  => 'Authors',
+            'label_to'    => 'News',
+
+            'group_title' => 'Relations',
+            'menu_order'  => 20,
+        ],
+    ]);
+
+    post_relationships([
+        [
+            'from'        => 'books',
+            'to'          => 'authors',
+
+            'field_from'  => 'books',        // в книги
+            'field_to'    => 'Books',          // у автора
+
+            'label_from'  => 'Authors',
+            'label_to'    => 'Books',
+
+            'group_title' => 'Relations',
+            'menu_order'  => 20,
+        ],
+    ]);
 
 	// add_filter('tiny_mce_before_init', function ($init) {
 	// 	$map = [

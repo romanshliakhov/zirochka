@@ -1,0 +1,92 @@
+/* stylelint-disable */
+/* stylelint-disable */
+/* stylelint-disable */
+.founder-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: var(--default-padding);
+  padding: 5.5rem 0 7.6rem;
+}
+.founder-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 7.29vw, 5.6rem);
+}
+.founder-section__inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem clamp(20px, 3.175vw, 4rem);
+}
+.founder-section__inner > .editor {
+  max-width: 70rem;
+  width: 100%;
+  gap: 2.4rem;
+  margin-top: 0.2rem;
+}
+.founder-section__inner > .editor .h1, .founder-section__inner > .editor .h2, .founder-section__inner > .editor .h3 {
+  margin-bottom: -1.6rem;
+}
+.founder-section__inner > .editor p:not([class]) {
+  font-size: 1.6rem;
+  letter-spacing: 0.015em;
+}
+.founder-section__image {
+  width: clamp(162px, 19.206vw, 24.2rem);
+  height: clamp(162px, 19.206vw, 24.2rem);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.founder-section__image img, .founder-section__image picture {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 266px;
+  height: 261px;
+  pointer-events: none;
+}
+@media (max-width: 1023px) {
+  .founder-section__inner > .editor .h1, .founder-section__inner > .editor .h2, .founder-section__inner > .editor .h3 {
+    margin-bottom: -18px;
+  }
+  .founder-section__inner {
+    gap: 20px;
+  }
+  .founder-section {
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 766px) {
+  .founder-section__inner > .editor .h1, .founder-section__inner > .editor .h2, .founder-section__inner > .editor .h3 {
+    text-align: center;
+    align-self: center;
+  }
+  .founder-section__inner > .editor .h4, .founder-section__inner > .editor .h5 {
+    text-align: center;
+    align-self: center;
+  }
+  .founder-section__inner {
+    justify-content: center;
+    grid-template-columns: 100%;
+  }
+  .founder-section__image {
+    justify-self: center;
+  }
+}
+@media (max-width: 575px) {
+  .founder-section__box {
+    gap: 32px;
+  }
+  .founder-section__inner {
+    gap: 18px;
+  }
+  .founder-section__image {
+    width: 100px;
+    height: 100px;
+  }
+  .founder-section {
+    padding: 0 0 3px;
+    margin-top: 19px;
+  }
+}
+/*# sourceMappingURL=section-founder.css.map */

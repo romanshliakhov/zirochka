@@ -77,10 +77,53 @@
                 ],
             ])
 
+            ->addLayout('hero_3', [
+                'label'   => __('HERO №3 Small', 'ACF'),
+                'display' => 'block',
+            ])
+
+            ->addWysiwyg('editor', [
+                'label' => false,
+                'media_upload' => 0,
+                'toolbar' => 'based',
+                'wrapper' => [
+                    'width' => '60',
+                ],
+            ])
+
+            ->addImage('image', [
+                'label'   => __('Image', 'ACF'),
+                'wrapper' => [
+                    'width' => '40',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ])
+
+            ->addLayout('hero_4', [
+                'label'   => __('HERO №4 Organization', 'ACF'),
+                'display' => 'block',
+            ])
+
+            ->addWysiwyg('editor', [
+                'label' => false,
+                'media_upload' => 0,
+                'toolbar' => 'based',
+                'wrapper' => [
+                    'width' => '60',
+                ],
+            ])
+
+            ->addImage('image', [
+                'label'   => __('Image', 'ACF'),
+                'wrapper' => [
+                    'width' => '40',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ])
 
             ->endFlexibleContent()
-
-
         ;
 		return [
 			'layout'  => $layout,

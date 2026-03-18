@@ -5,6 +5,7 @@
 		__DIR__ . '/menu',
 		__DIR__ . '/options',
 		__DIR__ . '/builder.php',
+        __DIR__ . '/acf-helpers',
 	];
 
 	foreach ($acfDirs as $dir) {

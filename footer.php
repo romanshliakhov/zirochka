@@ -3,26 +3,6 @@
     $global_setting = get_field('global_contacts', 'settings');
     $header = get_field('header', 'header');
     $footer   = get_field('footer', 'footer'); 
-
-//    if($global_setting) {
-//        $tel_rent = $global_setting['tel_rent'];
-//        $tel_sell = $global_setting['tel_sell'];
-//        $worktime = $global_setting['worktime'];
-//        $instagram_link = $global_setting['instagram'];
-//        $facebook_link = $global_setting['facebook'];
-//        $youtube_link = $global_setting['youtube'];
-//        $tiktok_link = $global_setting['tiktok'];
-//    }
-//
-//    if ($header) {
-//        $logo = $header['logo'];
-//    }
-//
-//    if ($footer) {
-//        $location_link = $footer['location_link'];
-//        $footer_text = $footer['footer_text'];
-//        $partners = $footer['partners'];
-//    }
 ?>
 
 </main>
@@ -37,10 +17,10 @@
             <nav class="footer-nav">
                 <ul>
                     <li>
-                        <a href="#">Про нас</a>
+                        <a href="/pro-nas">Про нас</a>
                     </li>
                     <li>
-                        <a href="#">Звʼязатись з нами</a>
+                        <a href="/donate">Звʼязатись з нами</a>
                     </li>
                     <li>
                         <a href="#">Політика конфіденційності</a>
@@ -49,7 +29,7 @@
                         <a href="#">Правила користування</a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="/gromadska-organizacziya">
                             <?php sprite( 29, 16, 'MazepaInstitute' ) ?>
                         </a>
                     </li>

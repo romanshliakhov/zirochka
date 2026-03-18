@@ -1,0 +1,87 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+@use "../components/cards/publications-card" as *;
+
+
+.publications-section{
+  position: relative;
+  z-index: 1;
+  margin: 2.3rem 0;
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(32px, 7.29vw, 5.6rem);
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__slider {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&:before, &:after {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  top: 0;
+	  width: 50vw;
+	  z-index: 3;
+	  pointer-events: none;
+	}
+
+	&:before {
+	  right: 0;
+	  background: linear-gradient(270deg, rgba(250, 250, 251, 1) 98%, rgba(250, 250, 251, 0) 100%);
+	  transform: translateX(100%);
+	}
+
+	&:after {
+	  left: 0;
+	  background: linear-gradient(90deg, rgba(250, 250, 251, 1) 98%, rgba(250, 250, 251, 0) 100%);
+	  transform: translateX(-100%);
+	}
+
+	.swiper-container {
+	  overflow: initial;
+	}
+
+	.swiper-slide {
+	  height: auto;
+	  display: flex;
+	}
+
+	.slider-controls{
+	  @include mini-tablet{
+		margin-top: 68px;
+	  }
+
+	  @include mobile{
+		margin-top: 54px;
+	  }
+	}
+
+	@include desktop {
+	  margin: 0 -7px 0 0;
+	}
+	@include laptop {
+	  margin: 0 -5px 0 0;
+	}
+	@include mini-tablet {
+	  margin: 0;
+	}
+  }
+
+  @include  tablet{
+	margin-bottom: 88px;
+  }
+
+  @include mobile{
+	margin: 13px 0 64px;
+  }
+
+  @include publications-card;
+}

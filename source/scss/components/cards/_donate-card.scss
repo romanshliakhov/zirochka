@@ -1,0 +1,74 @@
+@use "../../mixins/breakpoint"as *;
+@use "../../mixins/mini" as *;
+@use "../../mixins/disable-mob-hover"as *;
+
+@mixin donate-card{
+  .donate-card{
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	padding: 3.2rem 1.6rem;
+	background:var(--cl-a);
+	width: 100%;
+	align-items: center;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+
+	&__image {
+	  width: 6.4rem;
+	  height: 6.4rem;
+	  display: flex;
+	  align-items:  center;
+	  justify-content: center;
+
+	  svg,img,picture {
+		width: auto;
+		height: 100%;
+	  }
+	}
+
+	* {
+	  text-align: center;
+	}
+
+	.main-button{
+	  width: 100%;
+	}
+
+	.h3 {
+	  margin-bottom: auto;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  letter-spacing: 0.06em;
+	}
+
+	p:not([class]) {
+	  font-family: var(--font-second);
+	  font-size: 1.6rem;
+	  line-height: 150%;
+	  letter-spacing: 0.005em;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 4;
+	  -webkit-box-orient: vertical;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	}
+
+	@include  tablet{
+	  max-width: 310px;
+	  align-self: center;
+	}
+
+	@include mobile{
+	  padding: 24px 16px;
+	}
+
+	@include ios{
+	  max-width: 100%;
+	}
+  }
+}

@@ -48,6 +48,14 @@
   transition: all 0.3s;
   height: 3rem;
 }
+.socials-section.red {
+  background: var(--cl-e);
+}
+.socials-section.red .socials-section__bg {
+  width: 65.1rem;
+  height: 61.8rem;
+  transform: translate(0.7%, -45%);
+}
 @media (min-width: 576px) {
   .socials-section {
     padding: 5.5rem 0;
@@ -77,6 +85,11 @@
   }
   .socials-section {
     padding: 56px 0;
+  }
+  .socials-section.red .socials-section__bg {
+    width: 552px;
+    height: 524px;
+    transform: translate(44%, -43%);
   }
 }
 @media (hover: hover) {

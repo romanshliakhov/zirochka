@@ -154,8 +154,8 @@
   --cl-e: #922522;
   --cl-f: #E2F3FD;
   --cl-g: #F5EFEF;
-  --cl-h: #80262c;
-  --cl-i: #953b41;
+  --cl-h: #DFEBDD;
+  --cl-i: #5AA04C;
   --cl-j: #f5f4f1;
   --cl-k: #e6e1db;
   --cl-l: #F4F0EC;
@@ -330,7 +330,7 @@ h5,
 }
 .editor p:not([class]) {
   font-family: var(--font-second);
-  font-size: 16px;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: 150%;

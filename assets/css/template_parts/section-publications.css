@@ -1,0 +1,153 @@
+/* stylelint-disable */
+/* stylelint-disable */
+/* stylelint-disable */
+.publications-section {
+  position: relative;
+  z-index: 1;
+  margin: 2.3rem 0;
+}
+.publications-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 7.29vw, 5.6rem);
+}
+.publications-section__slider {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.publications-section__slider:before, .publications-section__slider:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 50vw;
+  z-index: 3;
+  pointer-events: none;
+}
+.publications-section__slider:before {
+  right: 0;
+  background: linear-gradient(270deg, rgb(250, 250, 251) 98%, rgba(250, 250, 251, 0) 100%);
+  transform: translateX(100%);
+}
+.publications-section__slider:after {
+  left: 0;
+  background: linear-gradient(90deg, rgb(250, 250, 251) 98%, rgba(250, 250, 251, 0) 100%);
+  transform: translateX(-100%);
+}
+.publications-section__slider .swiper-container {
+  overflow: initial;
+}
+.publications-section__slider .swiper-slide {
+  height: auto;
+  display: flex;
+}
+.publications-section .publications-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.publications-section .publications-card__body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  min-width: 0;
+}
+.publications-section .publications-card__body .h3 {
+  margin-bottom: auto;
+}
+.publications-section .publications-card__body .h2, .publications-section .publications-card__body .h3 {
+  margin-bottom: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.publications-section .publications-card__body p:not([class]) {
+  font-family: var(--font-second);
+  display: -webkit-box;
+  line-height: 150%;
+  font-size: 1.6rem;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.025em;
+  -webkit-line-clamp: 1;
+}
+.publications-section .publications-card__thumb {
+  width: 100%;
+  height: 30.1rem;
+  overflow: hidden;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.publications-section .publications-card__thumb img, .publications-section .publications-card__thumb picture, .publications-section .publications-card__thumb svg {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+@media (max-width: 1440px) {
+  .publications-section__slider {
+    margin: 0 -7px 0 0;
+  }
+}
+@media (max-width: 1240px) {
+  .publications-section__slider {
+    margin: 0 -5px 0 0;
+  }
+}
+@media (max-width: 1023px) {
+  .publications-section {
+    margin-bottom: 88px;
+  }
+}
+@media (max-width: 991px) {
+  .publications-section__slider .slider-controls {
+    margin-top: 68px;
+  }
+  .publications-section__slider {
+    margin: 0;
+  }
+  .publications-section .publications-card__thumb {
+    height: 252px;
+  }
+}
+@media (max-width: 575px) {
+  .publications-section__box {
+    gap: 32px;
+  }
+  .publications-section__slider .slider-controls {
+    margin-top: 54px;
+  }
+  .publications-section {
+    margin: 13px 0 64px;
+  }
+  .publications-section .publications-card__body .h3 {
+    min-height: 30px;
+  }
+  .publications-section .publications-card__body {
+    gap: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .publications-section .publications-card__thumb {
+    height: 214px;
+  }
+}
+@media (hover: hover) {
+  .publications-section .publications-card:hover .publications-card__thumb img, .publications-section .publications-card:hover .publications-card__thumb picture, .publications-section .publications-card:hover .publications-card__thumb svg {
+    transform: scale(1.06);
+  }
+}
+@media (hover: none) {
+  .publications-section .publications-card:active .publications-card__thumb img, .publications-section .publications-card:active .publications-card__thumb picture, .publications-section .publications-card:active .publications-card__thumb svg {
+    transform: scale(1.06);
+  }
+}
+/*# sourceMappingURL=section-publications.css.map */

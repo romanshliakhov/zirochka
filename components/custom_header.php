@@ -92,7 +92,7 @@
                                 <a href="#">Блоги</a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/gromadska-organizacziya">
                                     <?php sprite( 29, 16, 'MazepaInstitute' ) ?>
                                 </a>
                             </li>

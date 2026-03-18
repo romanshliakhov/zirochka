@@ -37,6 +37,10 @@
     border-color: var(--cl-a);
     background: transparent;
   }
+
+  &--green{
+    background: var(--cl-i);
+  }
 }
 
 .slider-controls{
@@ -54,6 +58,13 @@
 
   @include mobile {
     margin: 32px auto 0;
+  }
+
+  &.red{
+    .slider-btn{
+      border-color: var(--cl-e);
+      color: var(--cl-e);
+    }
   }
 }
 

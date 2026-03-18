@@ -1,0 +1,166 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+@use "../components/cards/donate-card" as *;
+
+.quote-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-bottom: var(--default-padding);
+  background: var(--cl-e);
+  margin-top: calc(var(--default-padding) + 0.3rem);
+
+
+  &:before {
+	content: '';
+	position: absolute;
+	z-index: -2;
+	background: var(--cl-a);
+	width: 47.2vw;
+	height: calc(100% + 8rem);
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+
+	@include  tablet{
+	  height: 400px;
+	  top: initial;
+	  bottom: 0;
+	  width: 100vw;
+	  left: 50%;
+	  transform: translateX(-50%);
+	}
+
+	@include mobile{
+	  height: 299px;
+	}
+  }
+
+  &__bg {
+	position: absolute;
+	z-index: -1;
+	pointer-events: none;
+	width: 31.7rem;
+	height: 74.5rem;
+	top: 50%;
+	transform: translate(-7%,-51%);
+	left: 0;
+
+	img, picture {
+	  width: 100%;
+	  height: 100%;
+	}
+
+	@include  tablet{
+		top: initial;
+	  bottom: 0;
+	  height: 400px;
+	  transform: translate(-6%, 0%);
+	}
+
+	@include mobile{
+	  width: 190px;
+	  transform: translate(-8%, 0%);
+	  height: 299px;
+	}
+  }
+
+  .h1 {
+	@include mobile {
+	  letter-spacing: -0.02em;
+	}
+  }
+
+  &__image {
+	margin: 4rem 0;
+	width: 100%;
+	height: 52rem;
+	flex-shrink: 0;
+	aspect-ratio: 71/99;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	z-index: 2;
+
+
+	img, picture, svg {
+	  width: 37.2961rem;
+	  height: 100%;
+	  margin-right: 3.7rem;
+
+	  @include  tablet{
+		margin: 0;
+		width: 258.204px;
+	  }
+
+	  @include mobile{
+		width: 185.763px;
+	  }
+	}
+
+	@include  tablet{
+	  order: 2;
+	  height: 360px;
+	  margin: 0;
+	}
+
+	@include mobile{
+	  height: 259px;
+	}
+  }
+
+  &__box {
+	display: grid;
+	gap: 4rem;
+
+	& > .editor {
+	  height: fit-content;
+	  align-self: center;
+	  padding-left: 0.4rem;
+
+	  .h2{
+		@include mobile{
+		  line-height: 119%;
+		}
+	  }
+	  * {
+		color: var(--cl-a);
+	  }
+
+	  @include  tablet{
+		padding: 40px 0 0;
+	  }
+
+	  @include mobile{
+		padding: 32px 0 0;
+	  }
+
+	  @include for-mobile {
+		gap: 2.4rem;
+	  }
+	}
+
+	@include for-mini-tablet {
+	  grid-template-columns: 1fr 1.068fr;
+	}
+
+	@include  tablet{
+	  gap: 58px;
+	  padding-bottom: 20px;
+	}
+
+	@include mini-tablet {
+	  grid-template-columns: 100%;
+	}
+
+	@include mobile {
+	  gap: 44px;
+	}
+  }
+
+  @include tablet{
+	margin-top: 21px;
+  }
+
+}
