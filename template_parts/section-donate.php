@@ -4,7 +4,7 @@ $editor = get_sub_field('editor');
 $list = get_sub_field('list');
 
 if (!$shower) : ?>
-    <section class="donate-section">
+    <section class="donate-section" id="donate">
         <div class="donate-section__bg">
             <img width="248" height="240"
                  src="<?= esc_url(get_template_directory_uri() . '/assets/img/star_bg_author.png'); ?>"

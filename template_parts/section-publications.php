@@ -76,11 +76,10 @@
                                         $alt       = $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '';
 
 
-                                        $authors = get_field('authors', $post_id);
 
                                         $authors = get_field('authors', $post_id);
                                         $authors_list = [];
-
+                                        $author_link = $authors ? get_permalink($authors[0]) : '';
                                         $authors_text = '';
 
                                         if ($authors) {
@@ -93,20 +92,20 @@
                                         ?>
 
                                         <li class="swiper-slide">
-                                            <a class="publications-card" href="<?= esc_url($permalink); ?>">
+                                            <div class="publications-card">
                                                 <?php if ($thumb_url): ?>
-                                                    <div class="publications-card__thumb">
+                                                    <a href="<?= esc_url($permalink); ?>" class="publications-card__thumb">
                                                         <img src="<?= esc_url($thumb_url); ?>" alt="<?= esc_attr($alt ?: $title); ?>" loading="lazy">
-                                                    </div>
+                                                    </a>
                                                 <?php endif; ?>
 
                                                 <div class="publications-card__body">
-                                                    <span class="h2"><?= esc_html($title); ?></span>
+                                                    <a href="<?= esc_url($permalink); ?>" class="h2"><?= esc_html($title); ?></a>
                                                     <?php if ($authors_text): ?>
-                                                        <p><?= esc_html($authors_text); ?></p>
+                                                        <a href="<?= esc_url($author_link); ?>"><?= esc_html($authors_text); ?></a>
                                                     <?php endif; ?>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </li>
                                     <?php endforeach; ?>
 

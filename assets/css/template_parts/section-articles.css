@@ -1,0 +1,113 @@
+/* stylelint-disable */
+/* stylelint-disable */
+.blog-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+}
+.blog-section__box {
+  gap: clamp(32px, 7.29vw, 5.6rem);
+  display: flex;
+  flex-direction: column;
+}
+.blog-section__list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.blog-section__list:before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0.1rem;
+  left: -2rem;
+  transform: translateX(-50%);
+  background: #CCC;
+  pointer-events: none;
+}
+.blog-section__inner {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+.blog-section + .cta-section + .blog-section {
+  margin-top: 0.7rem;
+}
+@media (min-width: 576px) {
+  .blog-section + .cta-section {
+    margin-top: 0.8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .blog-section + .cta-section + .blog-section {
+    margin-bottom: 6.3rem;
+  }
+}
+@media (max-width: 1440px) and (min-width: 1024px) {
+  .blog-section__inner {
+    grid-template-columns: calc(50% + 0.5rem - 2rem) calc(50% - 2.5rem);
+  }
+}
+@media (max-width: 1023px) {
+  .blog-section__list:before {
+    top: -20px;
+    width: 100%;
+    height: 1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .blog-section__inner {
+    grid-template-columns: 100%;
+  }
+}
+@media (max-width: 1023px) and (max-width: 575px) {
+  .blog-section__list:before {
+    top: -23.5px;
+    width: 100vw;
+  }
+}
+@media (max-width: 991px) and (min-width: 576px) {
+  .blog-section + .cta-section + .blog-section {
+    margin-top: -7px;
+  }
+}
+@media (max-width: 575px) {
+  .blog-section + .cta-section {
+    margin-top: 3px;
+  }
+  .blog-section__box {
+    gap: 32px;
+  }
+  .blog-section__item {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 24px;
+  }
+  .blog-section__item:before {
+    content: "";
+    position: absolute;
+    background: #CCC;
+    pointer-events: none;
+    height: 1px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: -24px;
+    width: 100vw;
+  }
+  .blog-section__list {
+    gap: 24px;
+  }
+  .blog-section__inner {
+    gap: 47px;
+  }
+  .blog-section + .cta-section + .blog-section {
+    margin-top: 3px;
+  }
+}
+@media (max-width: 375px) {
+  .blog-section__item:nth-child(2) .h3 {
+    margin-bottom: 5px;
+  }
+}
+/*# sourceMappingURL=section-articles.css.map */

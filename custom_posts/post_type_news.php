@@ -2,18 +2,17 @@
 // Регистрируем CPT "News"
 function register_news_post_type() {
     $labels = [
-        'name'               => __('Новини', THEME_SLUG),
-        'singular_name'      => __('Новина', THEME_SLUG),
-        'menu_name'          => __('Новини', THEME_SLUG),
-        'name_admin_bar'     => __('Новина', THEME_SLUG),
-        'add_new'            => __('Додати новину', THEME_SLUG),
-        'add_new_item'       => __('Додати нову новину', THEME_SLUG),
-        'new_item'           => __('Нова новина', THEME_SLUG),
-        'edit_item'          => __('Редагувати новину', THEME_SLUG),
-        'view_item'          => __('Переглянути новину', THEME_SLUG),
-        'all_items'          => __('Всі новини', THEME_SLUG),
-        'not_found'          => __('Новину не знайдено', THEME_SLUG),
-        'not_found_in_trash' => __('Видаленний нових не знайдено', THEME_SLUG),
+        'name' => 'Наші публікації',
+        'singular_name' => 'Публікація',
+        'menu_name' => 'Наші публікації',
+        'all_items' => 'Всі публікації',
+        'add_new_item' => 'Додати публікацію',
+        'edit_item' => 'Редагувати публікацію',
+        'new_item' => 'Нова публікація',
+        'view_item' => 'Переглянути публікацію',
+        'search_items' => 'Пошук публікацій',
+        'not_found' => 'Публікацій не знайдено',
+        'not_found_in_trash' => 'У кошику публікацій не знайдено',
     ];
 
     $args = [

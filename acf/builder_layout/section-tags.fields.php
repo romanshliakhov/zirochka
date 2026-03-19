@@ -2,7 +2,7 @@
 
 	use StoutLogic\AcfBuilder\FieldsBuilder;
 
-	function section_building_types( $layout_name ) {
+	function section_tags( $layout_name ) {
 
 		$layout = new FieldsBuilder( $layout_name );
 		$layout
@@ -12,7 +12,7 @@
 				'required'          => 0,
 				'conditional_logic' => [],
 				'wrapper'           => [
-					'width' => '',
+					'width' => '100',
 					'class' => '',
 					'id'    => '',
 				],
@@ -21,26 +21,25 @@
 				'ui'                => 1,
 				'ui_on_text'        => __( 'Hide', 'ACF' ),
 				'ui_off_text'       => __( 'Show', 'ACF' ),
-			])
-			->addWysiwyg('editor', [
-				'label' => 'WYSIWYG Field',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => [],
-				'wrapper' => [
-					'width' => '100',
-					'class' => '',
-					'id' => '',
-				],
-				'default_value' => '',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => 1,
-				'delay' => 0,
-			]);
+			] )
+
+            ->addText('editor', [
+                'label' => 'Section Title',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ])
+            ->addLink('link', [
+                'label' => 'Section link',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ])
+        ;
 
 		return [
 			'layout'  => $layout,
 			'display' => 'block',
 		];
 	}
+

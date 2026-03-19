@@ -1,0 +1,112 @@
+/* stylelint-disable */
+/* stylelint-disable */
+.books-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+  background: var(--cl-d);
+  padding: clamp(32px, 10.42vw, 8rem) 0;
+}
+.books-section__more {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--cl-a);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap;
+  transition: all 0.4s;
+  text-decoration: underline;
+  text-underline-offset: 0.4rem;
+  text-decoration-color: transparent;
+}
+.books-section__more svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.books-section__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+.books-section__top > .editor * {
+  color: var(--cl-a);
+}
+.books-section__box {
+  gap: clamp(32px, 7.29vw, 5.6rem);
+  display: flex;
+  flex-direction: column;
+}
+.books-section__slider {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.books-section__slider:before, .books-section__slider:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 50vw;
+  z-index: 3;
+  pointer-events: none;
+}
+.books-section__slider:before {
+  right: 0;
+  background: linear-gradient(270deg, rgb(65, 71, 85) 98%, rgba(65, 71, 85, 0) 100%);
+  transform: translateX(100%);
+}
+.books-section__slider:after {
+  left: 0;
+  background: linear-gradient(90deg, rgb(65, 71, 85) 98%, rgba(65, 71, 85, 0) 100%);
+  transform: translateX(-100%);
+}
+.books-section__slider .swiper-container {
+  overflow: initial;
+}
+.books-section__slider .swiper-slide {
+  height: auto;
+  display: flex;
+}
+@media (max-width: 1440px) {
+  .books-section__slider {
+    margin: 0 -7px 0 0;
+  }
+}
+@media (max-width: 1240px) {
+  .books-section__slider {
+    margin: 0 -5px 0 0;
+  }
+}
+@media (max-width: 1025px) and (min-width: 1020px) {
+  .books-section__more {
+    margin-right: -5px;
+  }
+}
+@media (max-width: 991px) {
+  .books-section__slider {
+    margin: 0;
+  }
+}
+@media (max-width: 575px) {
+  .books-section__box {
+    gap: 32px;
+  }
+  .books-section {
+    padding: 32px 0;
+    margin-bottom: 18px;
+  }
+}
+@media (hover: hover) {
+  .books-section__more:hover {
+    text-decoration-color: inherit;
+  }
+}
+@media (hover: none) {
+  .books-section__more:active {
+    text-decoration-color: inherit;
+  }
+}
+/*# sourceMappingURL=section-books.css.map */

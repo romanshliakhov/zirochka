@@ -1,6 +1,6 @@
 <?php
 	get_header();
-	
+
 	$post_id = get_the_ID();
 
 	if (have_rows('builder', $post_id)) {

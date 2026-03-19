@@ -86,7 +86,7 @@
                                 <a href="#">Культура</a>
                             </li>
                             <li>
-                                <a href="#">Огляди</a>
+                                <a href="/oglyady">Огляди</a>
                             </li>
                             <li>
                                 <a href="#">Блоги</a>

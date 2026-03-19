@@ -1,6 +1,8 @@
 <?php
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
+
+
 add_action('acf/init', function () {
     $options = new FieldsBuilder('book_info', [
         'title' => 'Info',
@@ -9,6 +11,13 @@ add_action('acf/init', function () {
     $options
         ->addText('release', [
             'label' => 'Release date',
+            'wrapper' => [
+                'width' => '100',
+            ],
+        ])
+        ->addTextarea('description', [
+            'label' => 'Description',
+            'rows' => 4,
             'wrapper' => [
                 'width' => '100',
             ],

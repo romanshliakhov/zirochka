@@ -1,0 +1,59 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.tags-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+  background: var(--cl-d);
+  padding: clamp(32px, 10.42vw, 8rem) 0;
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+	& > .editor {
+	  * {
+		color: var(--cl-a);
+	  }
+	}
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__list {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: clamp(12px, 2.08vw, 1.6rem);
+  }
+
+  &__content {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+
+	& > .main-button {
+	  align-self: center;
+	  min-width: 310px;
+
+	  @include for-tablet {
+		margin-right: -0.4rem;
+	  }
+
+	  @include mobile {
+		min-width: 100%;
+	  }
+	}
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  @include mobile {
+	padding: 32px 0;
+  }
+}

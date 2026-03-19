@@ -14,13 +14,13 @@
                 ],
             ])
 
-//            ->addTextarea('description', [
-//                'label' => 'Description',
-//                'rows' => 4,
-//                'wrapper' => [
-//                    'width' => '100',
-//                ],
-//            ])
+            ->addTextarea('description', [
+                'label' => 'Description',
+                'rows' => 4,
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ])
 
 			->setLocation('post_type', '==', 'authors');
 

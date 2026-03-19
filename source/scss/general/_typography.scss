@@ -1,7 +1,13 @@
 @use "../mixins/breakpoint" as *;
 @use "../mixins/mini" as *;
 @use "../mixins/disable-mob-hover" as *;
+.main-title{
+  margin: 3.8rem 0 2.4rem 0.1rem;
 
+  @include mobile{
+    margin: 24px 0;
+  }
+}
 h1,
 .h1 {
   color: var(--cl-b);
@@ -89,6 +95,18 @@ h5,
   gap: 1rem;
   background: var(--cl-f);
   letter-spacing: 0.003em;
+  transition: all 0.25s ease;
+  will-change: transform;
+
+  @include hover{
+    background: #cfe9fb;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
   
   @include  mobile{
     height: 24px;

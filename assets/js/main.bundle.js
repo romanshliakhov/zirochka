@@ -20,6 +20,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_contentSwither__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/contentSwither */ "./source/js/components/contentSwither.js");
 /* harmony import */ var _components_servicesAnimation__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/servicesAnimation */ "./source/js/components/servicesAnimation.js");
 /* harmony import */ var _components_newsAjax__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/newsAjax */ "./source/js/components/newsAjax.js");
+/* harmony import */ var _components_anchor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/anchor */ "./source/js/components/anchor.js");
+/* harmony import */ var _components_articlesAjax__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/articlesAjax */ "./source/js/components/articlesAjax.js");
 
  //use
 
@@ -31,7 +33,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import './components/acc';
-// import './components/anchor';
+
+
 // import './components/module3D';
 
 // import './components/customFilters';
@@ -74,6 +77,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./source/js/components/anchor.js":
+/*!****************************************!*\
+  !*** ./source/js/components/anchor.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_vars.js */ "./source/js/_vars.js");
+/* harmony import */ var smooth_scroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! smooth-scroll */ "./node_modules/smooth-scroll/dist/smooth-scroll.polyfills.min.js");
+/* harmony import */ var smooth_scroll__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(smooth_scroll__WEBPACK_IMPORTED_MODULE_1__);
+
+const {
+  header
+} = _vars_js__WEBPACK_IMPORTED_MODULE_0__["default"];
+
+document.addEventListener("DOMContentLoaded", function () {
+  const scroll = new (smooth_scroll__WEBPACK_IMPORTED_MODULE_1___default())('a[href*="#"]', {
+    speed: 600,
+    updateURL: false,
+    offset: (anchor, toggle) => {
+      const h = header ? header.offsetHeight : 0;
+      return h;
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./source/js/components/animateBtn.js":
 /*!********************************************!*\
   !*** ./source/js/components/animateBtn.js ***!
@@ -103,6 +135,62 @@ function setRipplePosition(e, button, ripple) {
   ripple.style.top = e.clientY - rect.top + 'px';
 }
 initAnimatedButtons();
+
+/***/ }),
+
+/***/ "./source/js/components/articlesAjax.js":
+/*!**********************************************!*\
+  !*** ./source/js/components/articlesAjax.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _functions_scripts_loaderInstanse__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../functions/scripts/loaderInstanse */ "./source/js/functions/scripts/loaderInstanse.js");
+
+document.addEventListener('DOMContentLoaded', () => {
+  const list = document.querySelector('.blog-list');
+  const btns = document.querySelectorAll('.load-more');
+  if (!list) return;
+  const {
+    ajax_url,
+    once
+  } = ajax_params; // nonce
+
+  function getOffset() {
+    return list.querySelectorAll('.blog-list__item').length;
+  }
+  function loadMore() {
+    (0,_functions_scripts_loaderInstanse__WEBPACK_IMPORTED_MODULE_0__.loaderInstanse)(list, true);
+    const params = new URLSearchParams();
+    params.append('action', 'get_articles');
+    params.append('nonce', once);
+    params.append('offset', getOffset());
+    fetch(ajax_url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      },
+      body: params.toString()
+    }).then(res => res.json()).then(res => {
+      if (res.success) {
+        list.insertAdjacentHTML('beforeend', res.data.html);
+      } else {
+        console.error('Ошибка AJAX:', res);
+      }
+      (0,_functions_scripts_loaderInstanse__WEBPACK_IMPORTED_MODULE_0__.loaderInstanse)(list, false);
+    }).catch(err => {
+      console.error('Ошибка соединения:', err);
+      (0,_functions_scripts_loaderInstanse__WEBPACK_IMPORTED_MODULE_0__.loaderInstanse)(list, false);
+    });
+  }
+  btns.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      loadMore();
+    });
+  });
+});
 
 /***/ }),
 
@@ -1254,7 +1342,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -1318,6 +1406,18 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 				}
 /******/ 			}
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

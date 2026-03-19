@@ -44,14 +44,20 @@
                 'label'   => __('HERO №1', 'ACF'),
                 'display' => 'block',
             ])
-
-            ->addWysiwyg('editor', [
-                'label' => false,
-                'media_upload' => 0,
-                'toolbar' => 'based',
+            ->addText('editor', [
+                'label' => 'Section Title',
                 'wrapper' => [
-                    'width' => '60',
+                    'width' => '100',
                 ],
+            ])
+            ->addRelationship('selected_articles', [   // <-- новое поле
+                'label'         => __('Вибір редакції', 'ACF'),
+                'post_type'     => ['articles', 'books'],        // здесь выбираем только CPT "articles"
+                'filters'       => ['search', 'post_type'],
+                'elements'      => ['post_type', 'title'],
+                'max'           => 1,                    // максимум выбираемых статей (по желанию)
+                'return_format' => 'id',                // можно 'object' если нужны все данные
+                'wrapper'       => ['width' => '100'],
             ])
 
             ->addLayout('hero_2', [

@@ -10,7 +10,6 @@
 		<?php
 	});
 
-
 	add_filter('mce_buttons', function ($buttons) {
 		array_unshift($buttons, 'styleselect', 'cf7_shortcode_button');
 		return $buttons;

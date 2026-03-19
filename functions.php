@@ -84,6 +84,7 @@
         '/custom_posts/post_type_news.php',
         '/custom_posts/post_type_authors.php',
         '/custom_posts/post_type_books.php',
+        '/custom_posts/post_type_posts.php',
 
 		'/hooks/display_breadcrumbs.php',
 		'/hooks/display_editors_blocks.php',
@@ -135,27 +136,41 @@
         ],
     ]);
 
-	// add_filter('tiny_mce_before_init', function ($init) {
-	// 	$map = [
-	// 		"FBFBFB", "White",        // --bg-a
-	// 		"000000", "Black",        // --bg-b
-	// 		"292929", "Dark Gray",    // --bg-c
-	// 		"1C1C1C", "Graphite",     // --bg-d
-	// 		"A41C35", "Burgundy",     // --bg-e
-	// 		"2E7BB2", "Blue",         // --bg-f
-	// 		"C23A53", "Red",          // --bg-g
-	// 		"900821", "Dark Red",     // --bg-h
-	// 		"56A3DA", "Light Blue",   // --bg-i
-	// 		"2471A8", "Dark Blue",    // --bg-j
-	// 	];
-		
-	// 	$pairs = [];
-	// 	foreach (array_chunk($map, 2) as [$hex, $name]) {
-	// 		$pairs[] = '"' . ltrim($hex, '#') . '","' . $name . '"';
-	// 	}
+    post_relationships([
+        [
+            'from'        => 'articles',
+            'to'          => 'authors',
 
-	// 	$init['textcolor_map']  = '[' . implode(',', $pairs) . ']';
-	// 	$init['textcolor_rows'] = 5; // 10 colors → 5 rows x 2
+            'field_from'  => 'articles',        // в post
+            'field_to'    => 'Articles',          // у автора
 
-	// 	return $init;
-	// });
+            'label_from'  => 'Authors',
+            'label_to'    => 'Articles',
+
+            'group_title' => 'Relations',
+            'menu_order'  => 20,
+        ],
+    ]);
+    function custom_time_ago($timestamp) {
+        $diff = current_time('timestamp') - $timestamp;
+
+        $minutes = floor($diff / 60);
+        $hours   = floor($diff / 3600);
+        $days    = floor($diff / 86400);
+
+        if ($diff < 3600) {
+            return $minutes . ' ' . __('хв', 'zirochka');
+        } elseif ($diff < 86400) {
+            return $hours . ' ' . __('год', 'zirochka');
+        } else {
+            return $days . ' ' . __('д', 'zirochka');
+        }
+    }
+
+    add_action('wp_enqueue_scripts', function () {
+        wp_localize_script('articles-ajax', 'ajax_params', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('ajax_global')
+        ]);
+
+    });

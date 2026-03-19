@@ -13,7 +13,8 @@ import './components/servicesAnimation';
 
 import './components/newsAjax';
 // import './components/acc';
-// import './components/anchor';
+import './components/anchor';
+import './components/articlesAjax';
 // import './components/module3D';
 
 // import './components/customFilters';

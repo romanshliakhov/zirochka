@@ -1,0 +1,95 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.all-books-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0 0.7rem;
+
+  &__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	gap: 4rem;
+
+	.book-card {
+
+	  & * {
+		color: var(--cl-d);
+	  }
+
+	  &__image {
+		img, picture {
+		  @include mini-tablet {
+			width: 157px;
+			margin-right: -3px;
+		  }
+
+		  @include mobile {
+			width: 130px;
+		  }
+		}
+	  }
+
+	  &__bottom {
+		@include mini-tablet {
+		  flex-direction: column;
+		  align-items: flex-start;
+		  gap: 6px;
+		}
+	  }
+	}
+
+	@media (min-width: 1435px) {
+	  grid-template-columns: repeat(5, 24rem);
+	}
+
+	@include tablet {
+	  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	}
+
+	@include mini-tablet {
+	  gap: 24px 40px;
+
+
+	}
+
+
+	@include mobile {
+	  grid-template-columns: repeat(2, 1fr);
+	  gap: 24px 16px;
+	}
+
+
+  }
+
+  & + .cta-section {
+	& + .all-books-section {
+	  margin-top: 0.7rem;
+
+	  @include mini-tablet {
+		@include for-mobile {
+		  margin-top: -7px;
+		}
+	  }
+
+	  @include mobile {
+		margin-top: 3px;
+	  }
+
+	  @include for-tablet{
+		margin-bottom: 6.3rem;
+	  }
+	}
+  }
+
+  @include mini-tablet {
+	@include for-mobile {
+	  margin-bottom: -9px;
+	}
+  }
+
+  @include mobile {
+	padding: 0;
+	margin-bottom: 5px;
+  }
+}
+

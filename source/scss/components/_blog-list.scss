@@ -11,6 +11,15 @@
 	z-index: 1;
 	grid-column: span 3;
 
+	&:has(+ .blog-list__item.mode) {
+	  &:not(.mode) {
+		&:before {
+		  @include for-mini-tablet {
+			content: none;
+		  }
+		}
+	  }
+	}
 	&:nth-child(even) {
 	  &:not(.mode) {
 		&:before {

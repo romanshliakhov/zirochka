@@ -1,0 +1,116 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.books-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+  background: var(--cl-d);
+  padding: clamp(32px, 10.42vw, 8rem) 0;
+
+  &__more {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	color: var(--cl-a);
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	white-space: nowrap;
+	transition: all .4s;
+	text-decoration: underline;
+	text-underline-offset: 0.4rem;
+	text-decoration-color: transparent;
+
+	svg {
+	  width: 2.4rem;
+	  height: 2.4rem;
+	}
+
+	@include hover {
+	  text-decoration-color: inherit;
+	}
+
+	@media (max-width: 1025px) {
+	  @media (min-width: 1020px) {
+		margin-right: -5px;
+	  }
+	}
+  }
+
+  &__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1.6rem;
+
+	& > .editor {
+	  * {
+		color: var(--cl-a);
+	  }
+	}
+  }
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__slider {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&:before, &:after {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  top: 0;
+	  width: 50vw;
+	  z-index: 3;
+	  pointer-events: none;
+	}
+
+	&:before {
+	  right: 0;
+	  background: linear-gradient(270deg, rgba(65, 71, 85, 1) 98%, rgba(65, 71, 85, 0) 100%);
+	  transform: translateX(100%);
+	}
+
+	&:after {
+	  left: 0;
+	  background: linear-gradient(90deg, rgba(65, 71, 85, 1) 98%, rgba(65, 71, 85, 0) 100%);
+	  transform: translateX(-100%);
+	}
+
+	.swiper-container {
+	  overflow: initial;
+	}
+
+	.swiper-slide {
+	  height: auto;
+	  display: flex;
+	}
+
+	@include desktop {
+	  margin: 0 -7px 0 0;
+	}
+	@include laptop {
+	  margin: 0 -5px 0 0;
+	}
+	@include mini-tablet {
+	  margin: 0;
+	}
+  }
+
+  @include mobile {
+	padding: 32px 0;
+	margin-bottom: 18px;
+  }
+}

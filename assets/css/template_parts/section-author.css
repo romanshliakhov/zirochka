@@ -1,0 +1,104 @@
+/* stylelint-disable */
+.author-section {
+  padding: 4rem 0;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.9rem;
+  border-bottom: solid 0.1rem #CCC;
+}
+.author-section__bg {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+}
+.author-section__bg img, .author-section__bg picture, .author-section__bg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.author-section__thumb {
+  width: 16.2rem;
+  height: 16.2rem;
+  display: flex;
+}
+.author-section__thumb img, .author-section__thumb picture, .author-section__thumb svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.author-section__box {
+  display: grid;
+  grid-template-columns: 16.2rem 1fr;
+  gap: 2.4rem 4.1rem;
+}
+.author-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 116rem;
+}
+.author-section__inner p {
+  font-size: 1.6rem;
+  line-height: 150%;
+  letter-spacing: 0.006em;
+  font-family: var(--font-second);
+}
+.author-section__info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.author-section__info:last-child {
+  flex: 1;
+  min-width: 0;
+}
+.author-section__info:last-child span {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.author-section__info svg {
+  flex-shrink: 0;
+}
+.author-section + section {
+  margin-top: 0 !important;
+}
+@media (max-width: 991px) and (min-width: 576px) {
+  .author-section {
+    padding-bottom: 38px;
+  }
+}
+@media (max-width: 766px) {
+  .author-section__inner {
+    gap: 1.6rem;
+  }
+}
+@media (max-width: 575px) {
+  .author-section__thumb {
+    width: 100px;
+    justify-self: center;
+    height: 100px;
+  }
+  .author-section__box {
+    grid-template-columns: 100%;
+  }
+  .author-section {
+    padding: 24px 0 21px;
+    margin-bottom: 32px;
+  }
+}
+/*# sourceMappingURL=section-author.css.map */

@@ -84,7 +84,6 @@
   width: 100%;
   height: 30.1rem;
   overflow: hidden;
-  pointer-events: none;
   flex-shrink: 0;
 }
 .publications-section .publications-card__thumb img, .publications-section .publications-card__thumb picture, .publications-section .publications-card__thumb svg {

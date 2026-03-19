@@ -4,16 +4,14 @@ const { header } = vars;
 import SmoothScroll from "smooth-scroll";
 
 document.addEventListener("DOMContentLoaded", function () {
-  const headerHeight = header ? header.offsetHeight : 0;
 
   const scroll = new SmoothScroll('a[href*="#"]', {
     speed: 600,
     updateURL: false,
     offset: (anchor, toggle) => {
-      if (window.matchMedia('(max-width: 1024px)').matches) {
-        return headerHeight;
-      }
-      return 0;
+      const h = header ? header.offsetHeight : 0;
+
+      return h;
     }
   });
 

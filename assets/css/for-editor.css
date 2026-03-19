@@ -71,7 +71,7 @@
   --cl-g: #F5EFEF;
   --cl-h: #DFEBDD;
   --cl-i: #5AA04C;
-  --cl-j: #f5f4f1;
+  --cl-j: #CCC;
   --cl-k: #e6e1db;
   --cl-l: #F4F0EC;
   --gr-a: linear-gradient(
@@ -93,6 +93,10 @@
 
 /* stylelint-disable */
 /* stylelint-disable */
+.main-title {
+  margin: 3.8rem 0 2.4rem 0.1rem;
+}
+
 h1,
 .h1 {
   color: var(--cl-b);
@@ -176,6 +180,11 @@ h5,
   gap: 1rem;
   background: var(--cl-f);
   letter-spacing: 0.003em;
+  transition: all 0.25s ease;
+  will-change: transform;
+}
+.tag:active {
+  transform: translateY(0);
 }
 
 .langs {
@@ -496,6 +505,9 @@ h5,
     --default-padding: 20px;
     --container-offset: 16px;
   }
+  .main-title {
+    margin: 24px 0;
+  }
   .tag {
     height: 24px;
     font-size: 14px;
@@ -521,6 +533,11 @@ h5,
   }
 }
 @media (hover: hover) {
+  .tag:hover {
+    background: #cfe9fb;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+  }
   .langs a:hover {
     color: var(--cl-e);
   }
@@ -532,6 +549,11 @@ h5,
   }
 }
 @media (hover: none) {
+  .tag:active {
+    background: #cfe9fb;
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+  }
   .langs a:active {
     color: var(--cl-e);
   }
