@@ -33,6 +33,9 @@ function register_authors_post_type() {
         'supports'           => ['title', 'thumbnail', 'custom-fields'],
     ];
 
+
     register_post_type('authors', $args);
 }
 add_action('init', 'register_authors_post_type');
+
+

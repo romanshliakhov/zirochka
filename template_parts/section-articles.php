@@ -48,7 +48,6 @@ $posts = $query->posts;
     <div class="container">
         <div class="blog-section__box">
             <?php if (!empty($editor)) : ?>
-
                 <div class="editor">
                     <h2 class="h1">
                         <i class="sprite">
@@ -166,8 +165,6 @@ $posts = $query->posts;
                     </li>
 
                 <?php endforeach; wp_reset_postdata(); ?>
-
-
             </ul>
 
         </div>

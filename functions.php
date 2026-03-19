@@ -86,6 +86,7 @@
         '/custom_posts/post_type_books.php',
         '/custom_posts/post_type_posts.php',
 
+		'/hooks/display_articles_card.php',
 		'/hooks/display_breadcrumbs.php',
 		'/hooks/display_editors_blocks.php',
 		'/hooks/display_image.php',
@@ -166,11 +167,11 @@
             return $days . ' ' . __('д', 'zirochka');
         }
     }
-
-    add_action('wp_enqueue_scripts', function () {
-        wp_localize_script('articles-ajax', 'ajax_params', [
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce'    => wp_create_nonce('ajax_global')
-        ]);
-
-    });
+//
+//    add_action('wp_enqueue_scripts', function () {
+//        wp_localize_script('articles-ajax', 'ajax_params', [
+//            'ajax_url' => admin_url('admin-ajax.php'),
+//            'nonce'    => wp_create_nonce('ajax_global')
+//        ]);
+//
+//    });

@@ -49,13 +49,79 @@ $author_thumb_alt = $author_thumb_id
         </div>
     </section>
 
-<?php
-if (have_rows('post_builder', get_the_ID())) {
-    while (have_rows('post_builder', get_the_ID())) {
-        the_row();
-        get_template_part('template_parts/' . str_replace('_', '-', get_row_layout()));
-    }
-}
-?>
+    <?php
+        $first_posts = array_slice($related_articles, 0, 5);
+        $second_posts = array_slice($related_articles, 5);
+    ?>
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-section__box">
+
+                <div class="editor">
+                    <h2 class="h1">
+                        <i class="sprite"><?php sprite(29, 28, 'star_icon') ?></i>
+                        <?= __('Статті автора', 'zirochka') ?>
+                    </h2>
+                </div>
+
+                <ul class="blog-list">
+                    <?php foreach ($first_posts as $index => $post) : setup_postdata($post); ?>
+
+                        <?php
+                        $item_class = ( ($index % 5) >= 2 ) ? 'mode' : '';
+                        ?>
+
+                        <?php
+                        $post_id = is_object($post) ? $post->ID : $post;
+                        ?>
+
+                        <li class="blog-list__item <?= esc_attr($item_class); ?>">
+                            <?php display_articles_card($post_id); ?>
+                        </li>
+
+                    <?php endforeach; wp_reset_postdata(); ?>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+    <?php
+        if (have_rows('builder', get_the_ID())) {
+            while (have_rows('builder', get_the_ID())) {
+                the_row();
+                get_template_part('template_parts/' . str_replace('_', '-', get_row_layout()));
+            }
+        }
+    ?>
+
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-section__box">
+
+                <ul class="blog-list">
+
+                    <?php foreach ($second_posts as $index => $post) : setup_postdata($post); ?>
+
+                        <?php
+                        $item_class = ( ($index % 5) >= 2 ) ? 'mode' : '';
+                        ?>
+
+                        <?php
+                        $post_id = is_object($post) ? $post->ID : $post;
+                        ?>
+
+                        <li class="blog-list__item <?= esc_attr($item_class); ?>">
+                            <?php display_articles_card($post_id); ?>
+                        </li>
+
+                    <?php endforeach; wp_reset_postdata(); ?>
+
+                </ul>
+
+            </div>
+        </div>
+    </section>
 
 <?php get_footer(); ?>

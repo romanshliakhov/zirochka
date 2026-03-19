@@ -29,17 +29,75 @@
 		return null;
 	}
 
-	function get_archive_by_post($post_type) {
-		$archives = get_option('custom_fake_archives', []);
+/**
+ * Текущий языковой ключ для опций.
+ * Если WPML нет — 'default'.
+ */
+function fa_current_lang(): string {
+    if (function_exists('icl_object_id')) {
+        $cur = apply_filters('wpml_current_language', null);
+        if (is_string($cur) && $cur !== '') {
+            return $cur;
+        }
+    }
+    return 'default';
+}
+
+/**
+ * Эффективная карта архивов с учётом языка, default и legacy.
+ * Требует существующую fa_current_lang() из вашего кода.
+ */
+function fa_get_archives_effective(): array {
+    $lang = fa_current_lang();
+
+    $cur    = get_option( 'custom_fake_archives_' . $lang, [] );
+    $def    = get_option( 'custom_fake_archives_default', [] );
+    $legacy = get_option( 'custom_fake_archives', [] );
+
+    $cur    = is_array( $cur ) ? $cur : [];
+    $def    = is_array( $def ) ? $def : [];
+    $legacy = is_array( $legacy ) ? $legacy : [];
+
+    // Нормализация: sanitize_key + (int) > 0
+    $normalize = static function ( array $map ): array {
+        $out = [];
+        foreach ( $map as $pt => $id ) {
+            $pt = sanitize_key( (string) $pt );
+            $id = (int) $id;
+            if ( $pt !== '' && $id > 0 ) {
+                $out[ $pt ] = $id;
+            }
+        }
+
+        return $out;
+    };
+
+    $cur    = $normalize( $cur );
+    $def    = $normalize( $def );
+    $legacy = $normalize( $legacy );
+
+    // Приоритет: текущий язык -> default -> legacy
+    return $cur + $def + $legacy;
+}
 
 
-		if ( isset($archives[$post_type]) ) {
-			$page_id = intval($archives[$post_type]);
 
-			return get_post($page_id);
-		}
-		return null;
-	}
+function get_archive_by_post( $post_type ) {
+        $post_type = sanitize_key( (string) $post_type );
+        if ( $post_type === '' ) {
+            return null;
+        }
+
+        $map     = fa_get_archives_effective();
+        $page_id = (int) ( $map[ $post_type ] ?? 0 );
+        if ( $page_id <= 0 ) {
+            return null;
+        }
+
+        $post = get_post( $page_id );
+
+        return ( $post instanceof WP_Post && $post->post_status !== 'trash' ) ? $post : null;
+    }
 
 
 

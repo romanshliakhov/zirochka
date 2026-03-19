@@ -53,7 +53,9 @@ add_action('acf/init', function () {
 
     $builder
         ->setLocation('post_template', '==', 'default')
-        ->or('post_type', '==', 'news');
+        ->or('post_type', '==', 'authors')
+        ->or('post_type', '==', 'news')
+        ->or('taxonomy', '==', 'article_tag');
 
     acf_add_local_field_group($builder->build());
 
