@@ -85,6 +85,7 @@
         '/custom_posts/post_type_authors.php',
         '/custom_posts/post_type_books.php',
         '/custom_posts/post_type_posts.php',
+        '/custom_posts/post_type_blog.php',
 
 		'/hooks/display_articles_card.php',
 		'/hooks/display_breadcrumbs.php',
@@ -152,6 +153,22 @@
             'menu_order'  => 20,
         ],
     ]);
+
+    post_relationships([
+        [
+            'from'        => 'blog',
+            'to'          => 'authors',
+
+            'field_from'  => 'blog',        // в post
+            'field_to'    => 'Blog',          // у автора
+
+            'label_from'  => 'Authors',
+            'label_to'    => 'Blog',
+
+            'group_title' => 'Relations',
+            'menu_order'  => 20,
+        ],
+    ]);
     function custom_time_ago($timestamp) {
         $diff = current_time('timestamp') - $timestamp;
 
@@ -167,6 +184,15 @@
             return $days . ' ' . __('д', 'zirochka');
         }
     }
+
+function tooltip_shortcode($atts, $content = null) {
+    $atts = shortcode_atts([
+        'text' => ''
+    ], $atts);
+
+    return '<span class="tooltip" data-tippy-content="' . esc_attr($atts['text']) . '">' . $content . '</span>';
+}
+add_shortcode('tooltip', 'tooltip_shortcode');
 //
 //    add_action('wp_enqueue_scripts', function () {
 //        wp_localize_script('articles-ajax', 'ajax_params', [

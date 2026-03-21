@@ -29,7 +29,7 @@ function register_news_post_type() {
         ],
         'menu_position'      => 6,
         'menu_icon'          => 'dashicons-edit-page',
-        'supports'           => ['title', 'editor', 'thumbnail', 'custom-fields'],
+        'supports'           => ['title', 'thumbnail', 'custom-fields'],
     ];
 
     register_post_type('news', $args);

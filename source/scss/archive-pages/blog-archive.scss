@@ -1,0 +1,436 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.default-section {
+  margin-bottom: 0.8rem;
+
+  .container {
+	--container-width: calc(69.4rem + (var(--container-offset) * 2));
+  }
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+  }
+
+  .editor {
+
+	p:not([class]) {
+	  letter-spacing: 0.005em;
+
+	  & + p:not([class]) {
+		margin-top: 8px;
+	  }
+	}
+
+	.h3 {
+	  font-family: var(--font-second);
+	  font-size: 2.4rem;
+	  font-style: normal;
+	  font-weight: 400;
+	  line-height: 3.1rem;
+	}
+  }
+
+  &__bottom {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	flex-wrap: nowrap;
+	min-width: 0;
+
+	@include mobile {
+	  margin-top: -2px;
+	}
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
+	}
+  }
+
+  @include mobile {
+	margin-bottom: 23px;
+
+	& + .cta-section {
+	  .h2 {
+		line-height: 144%;
+	  }
+	}
+  }
+}
+
+.hero-section {
+  margin-bottom: var(--default-padding);
+  background: var(--cl-g);
+
+  &__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	justify-content: space-between;
+	padding: 7rem 0;
+
+	& > .h3 {
+	  margin-left: -0.2rem;
+	}
+
+	.editor {
+	  margin-top: -2.4rem;
+	  gap: 2.4rem;
+
+	  .h1 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		letter-spacing: 0.005em;
+
+		@include mobile {
+		  -webkit-line-clamp: 5;
+		  margin-bottom: -4px;
+		}
+	  }
+
+	  p:not([class]) {
+		letter-spacing: 0.0063em;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include desktop {
+		  max-width: 95%;
+		}
+
+		@include mobile {
+		  max-width: 100%;
+		  -webkit-line-clamp: 4;
+		}
+	  }
+
+	  @include desktop {
+		margin-top: -1px;
+	  }
+	}
+
+	&:has(.editor:only-of-type) {
+	  justify-content: center;
+
+	  .h1 {
+		@include mini-tablet {
+		  br {
+			display: none;
+		  }
+		}
+	  }
+
+	  p:not([class]) {
+		-webkit-line-clamp: 4;
+
+		@include mobile {
+		  -webkit-line-clamp: 8;
+		}
+	  }
+	}
+
+	@include laptop {
+	  padding: 33px 0 34px;
+	}
+
+	@media (max-width: 1024px) {
+	  padding: 47px 0 45px;
+	}
+
+	@include mini-tablet {
+	  padding: 0 0 41px;
+
+	  @include for-mobile {
+		gap: 38px;
+	  }
+	}
+
+	@include mobile {
+	  gap: 24px;
+	  padding: 0 0 32px;
+	}
+  }
+
+  &__box {
+	display: grid;
+	grid-template-columns: 1fr .85fr;
+	gap: 4rem;
+
+	@include desktop {
+	  grid-template-columns: 1fr .93fr;
+	}
+
+	@include laptop {
+	  grid-template-columns: 1fr .9fr;
+	}
+
+	@include mini-tablet {
+	  gap: 60px;
+	  grid-template-columns: 100%;
+	}
+
+	@include mobile {
+	  gap: 61px;
+	}
+  }
+
+  &__bottom {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	flex-wrap: nowrap;
+	min-width: 0;
+
+	@include mobile {
+	  margin-top: -2px;
+	}
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
+	}
+  }
+
+  &__image {
+	display: flex;
+	position: relative;
+	z-index: 1;
+
+	.tag {
+	  position: absolute;
+	  top: 0.8rem;
+	  left: 0.8rem;
+	  background-color: var(--cl-d);
+	  color: var(--cl-a);
+
+	  @include mini-tablet {
+		left: var(--container-offset);
+	  }
+
+	  @include mobile {
+		left: 8px;
+	  }
+	}
+
+	svg, img, picture {
+	  margin-top: auto;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	p {
+	  color: var(--cl-k);
+	  font-size: 1.4rem;
+	  font-style: italic;
+	  font-family: var(--font-main);
+	  font-weight: 400;
+	  line-height: normal;
+
+	  flex: 1 0 0;
+	  position: absolute;
+	  letter-spacing: -0.015em;
+	  top: calc(100% + 0.6rem);
+	  left: 0;
+	  max-width: 95%;
+
+	  @include mini-tablet {
+		left: var(--container-offset);
+		max-width: 91%;
+	  }
+
+	  @include for-mobile {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+	  }
+	}
+
+	&--book {
+	  align-items: center;
+	  justify-content: center;
+	  background: var(--cl-c);
+
+	  svg, img, picture {
+		margin-top: 0;
+		width: 37.2rem;
+		height: 52rem;
+		box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.40);
+
+		@include tablet {
+		  width: 258.204px;
+		  height: 360px;
+		}
+
+		@include mobile {
+		  width: 186.481px;
+		  height: 260px;
+		}
+	  }
+	}
+
+	@include for-mini-tablet {
+	  height: 600px;
+	  width: calc(100% + var(--container-offset));
+	  margin-right: calc(-1 * var(--container-offset));
+	}
+
+	@include mini-tablet {
+	  order: -1;
+	  height: 400px;
+	  width: calc(100% + (var(--container-offset) * 2));
+	  margin-left: calc(-1 * var(--container-offset));
+	}
+
+	@include mobile {
+	  height: 300px;
+	}
+  }
+
+  &--blog {
+	.hero-section {
+	  &__inner {
+		.editor {
+		  p:not([class]) {
+			@include for-mobile {
+			  max-width: 99%;
+			}
+		  }
+
+		  @include for-laptop {
+			margin-top: -2.6rem;
+		  }
+
+		  @include laptop {
+			@include for-mobile {
+			  margin-top: 0;
+			}
+		  }
+
+		  @include mobile {
+			gap: 26px;
+		  }
+		}
+
+		@include for-laptop {
+		  padding: 2.1rem 0 2.4rem;
+		}
+	  }
+	}
+
+	@include mini-tablet {
+	  @include for-mobile {
+		margin-bottom: 6px;
+	  }
+	}
+  }
+
+  &:has(.hero-section__image--book) {
+	background: var(--cl-j);
+
+	.hero-section {
+	  &__inner {
+
+		.editor {
+		  @include for-laptop {
+			margin-top: -5rem;
+		  }
+
+		  @include laptop {
+			@include for-mobile {
+			  margin-top: 2px;
+			}
+		  }
+		}
+
+		@include for-laptop {
+		  padding: 7rem 0 6.8rem;
+		}
+	  }
+	}
+  }
+
+  &.is-culture {
+	background-color: var(--cl-g);
+  }
+
+  &.is-reviews {
+	background-color: var(--cl-j);
+  }
+
+  &.is-ideas {
+	background-color: var(--cl-f);
+  }
+
+  &.is-politics {
+	background-color: var(--cl-d);
+
+	& * {
+	  color: var(--cl-a) !important;
+	}
+
+	.hero-section__image {
+	  p {
+		color: var(--cl-k) !important;
+	  }
+	}
+  }
+}

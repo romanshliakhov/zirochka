@@ -1,9 +1,31 @@
 <?php
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-
-
 add_action('acf/init', function () {
+    // === Excerpt ===
+    $editor = new FieldsBuilder('book_excerpt', [
+        'style' => 'seamless',
+        'position' => 'acf_after_title',
+    ]);
+
+    $editor
+        ->addText('info', [
+            'label' => 'Image text',
+        ])
+        ->addWysiwyg('excerpt', [
+            'label' => false,
+            'instructions' => 'Excerpt',
+            'toolbar' => 'basic',
+            'media_upload' => 0,
+            'delay' => 0,
+            'wrapper' => [
+                'class' => 'mini-editor'
+            ]
+        ])
+        ->setLocation('post_type', '==', 'books');
+
+    acf_add_local_field_group($editor->build());
+
     $options = new FieldsBuilder('book_info', [
         'title' => 'Info',
     ]);

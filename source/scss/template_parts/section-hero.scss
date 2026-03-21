@@ -22,6 +22,11 @@
 	  gap: 2.4rem;
 
 	  .h1 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
 		letter-spacing: 0.005em;
 	  }
 
@@ -222,6 +227,76 @@
 	}
   }
 
+  &--blog{
+
+	.hero-section{
+	  &__inner {
+
+
+		.h3{
+		  font-size: clamp(21px, 3.65vw, 2.8rem);
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: .003em;
+
+		  @include for-mobile{
+			font-weight: 400;
+			font-family:var(--font-third);
+		  }
+
+		  @include mobile{
+			.sprite{
+			  width: 23px;
+			  height: 22px;
+			}
+		  }
+		}
+
+		.editor{
+
+
+		  .h1{
+			@include for-laptop{
+			  max-width: 63rem;
+			}
+
+
+		  }
+
+		  p:not([class]) {
+			@include for-mobile{
+			  max-width: 99%;
+			}
+		  }
+
+		  @include for-laptop{
+			margin-top: .1rem;
+		  }
+
+		  @include laptop{
+			@include for-mobile {
+			  margin-top: 2px;
+			}
+		  }
+
+		  @include mobile{
+			gap: 26px;
+		  }
+		}
+
+		@include for-laptop {
+		  padding: 4.2rem 0 4.3rem;
+		}
+	  }
+	}
+
+	@include mini-tablet{
+	  @include for-mobile{
+		margin-bottom: 29px;
+	  }
+	}
+  }
+
   &:has(.hero-section__image--book){
 	background: var(--cl-j);
 
@@ -369,6 +444,22 @@
 		}
 	  }
 	}
+  }
+
+  &.is-culture{
+	background-color: var(--cl-g);
+  }
+
+  &.is-reviews{
+	background-color: var(--cl-j);
+  }
+
+  &.is-ideas{
+	background-color: var(--cl-f);
+  }
+
+  &.is-politics{
+	background-color:  var(--cl-d);
   }
 }
 

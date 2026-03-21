@@ -20,6 +20,11 @@
   gap: 2.4rem;
 }
 .hero-section__inner .editor .h1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   letter-spacing: 0.005em;
 }
 .hero-section__inner .editor p:not([class]) {
@@ -102,6 +107,12 @@
   height: 52rem;
   box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.4);
 }
+.hero-section--blog .hero-section__inner .h3 {
+  font-size: clamp(21px, 3.65vw, 2.8rem);
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.003em;
+}
 .hero-section:has(.hero-section__image--book) {
   background: var(--cl-j);
 }
@@ -153,6 +164,27 @@
   -o-object-fit: contain;
      object-fit: contain;
 }
+.hero-section.is-culture {
+  background-color: var(--cl-g);
+}
+.hero-section.is-reviews {
+  background-color: var(--cl-j);
+}
+.hero-section.is-ideas {
+  background-color: var(--cl-f);
+}
+.hero-section.is-politics {
+  background-color: var(--cl-d);
+}
+@media (min-width: 576px) {
+  .hero-section--blog .hero-section__inner .h3 {
+    font-weight: 400;
+    font-family: var(--font-third);
+  }
+  .hero-section--blog .hero-section__inner .editor p:not([class]) {
+    max-width: 99%;
+  }
+}
 @media (min-width: 992px) {
   .hero-section__image {
     height: 600px;
@@ -164,6 +196,15 @@
   }
 }
 @media (min-width: 1241px) {
+  .hero-section--blog .hero-section__inner .editor .h1 {
+    max-width: 63rem;
+  }
+  .hero-section--blog .hero-section__inner .editor {
+    margin-top: 0.1rem;
+  }
+  .hero-section--blog .hero-section__inner {
+    padding: 4.2rem 0 4.3rem;
+  }
   .hero-section:has(.hero-section__image--book) .hero-section__inner .editor {
     margin-top: -5rem;
   }
@@ -208,6 +249,9 @@
   }
 }
 @media (max-width: 1240px) and (min-width: 576px) {
+  .hero-section--blog .hero-section__inner .editor {
+    margin-top: 2px;
+  }
   .hero-section:has(.hero-section__image--book) .hero-section__inner .editor {
     margin-top: 2px;
   }
@@ -250,6 +294,9 @@
   .hero-section__inner {
     gap: 38px;
   }
+  .hero-section--blog {
+    margin-bottom: 29px;
+  }
   .hero-section.small .hero-section__image {
     height: 308px;
   }
@@ -281,6 +328,13 @@
   }
   .hero-section__image {
     height: 300px;
+  }
+  .hero-section--blog .hero-section__inner .h3 .sprite {
+    width: 23px;
+    height: 22px;
+  }
+  .hero-section--blog .hero-section__inner .editor {
+    gap: 26px;
   }
   .hero-section.public .hero-section__image img, .hero-section.public .hero-section__image picture, .hero-section.public .hero-section__image .sprite {
     width: 300px;

@@ -49,7 +49,7 @@ add_action('init', function () {
         'menu_name'         => 'Категорії',
     ];
 
-    register_taxonomy('article_category', ['articles'], [
+    register_taxonomy('article_category', ['articles', 'blog', 'books','news'], [
         'labels'            => $cat_labels,
         'hierarchical'      => true,
         'show_admin_column' => true,
@@ -58,7 +58,6 @@ add_action('init', function () {
         ],
         'show_in_rest'      => true,
     ]);
-
 
     // === Таксономія: Теги ===
     $tag_labels = [
@@ -77,7 +76,7 @@ add_action('init', function () {
         'menu_name'                  => 'Теги',
     ];
 
-    register_taxonomy('article_tag', ['articles', 'books'], [
+    register_taxonomy('article_tag', ['articles', 'books','blog'], [
         'labels'            => $tag_labels,
         'hierarchical'      => false,
         'show_admin_column' => true,

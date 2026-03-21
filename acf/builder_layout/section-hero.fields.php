@@ -50,13 +50,13 @@
                     'width' => '100',
                 ],
             ])
-            ->addRelationship('selected_articles', [   // <-- новое поле
+            ->addRelationship('selected_articles', [
                 'label'         => __('Вибір редакції', 'ACF'),
-                'post_type'     => ['articles', 'books'],        // здесь выбираем только CPT "articles"
+                'post_type'     => ['articles', 'books','blog'],        // здесь выбираем только CPT
                 'filters'       => ['search', 'post_type'],
                 'elements'      => ['post_type', 'title'],
-                'max'           => 1,                    // максимум выбираемых статей (по желанию)
-                'return_format' => 'id',                // можно 'object' если нужны все данные
+                'max'           => 1,
+                'return_format' => 'id',
                 'wrapper'       => ['width' => '100'],
             ])
 

@@ -1,149 +1,144 @@
 <?php
+/**
+ * Template name: Single Blog
+ */
 get_header();
 
-$post_id    = get_the_ID();
-$post_title = get_the_title($post_id);
+$post_id   = get_the_ID();
+$title     = get_the_title($post_id);
+$excerpt   = get_the_excerpt($post_id);
+$post_type = get_post_type($post_id);
 
-/**
- * ACF banner (TOP image)
- */
-$banner = get_field('news_banner', $post_id); // return_format = array
+// ACF
+$authors = get_field('authors', $post_id);
+$deskr   = get_field('excerpt', $post_id);
+$info   = get_field('info', $post_id);
 
-$fallback_url = get_template_directory_uri() . '/assets/img/news-placeholder.jpg';
+// Автор
+$author_name = '';
+$author_link = '';
 
-$top_image_url = !empty($banner['url'])
-    ? $banner['url']
-    : $fallback_url;
+if (!empty($authors)) {
+    $author_id   = $authors[0];
+    $author_name = get_the_title($author_id);
+    $author_link = get_permalink($author_id);
+}
 
-$top_image_alt = !empty($banner['alt'])
-    ? $banner['alt']
-    : $post_title;
+// Дата
+$date = get_the_date('d.m.y', $post_id);
+$time = get_post_time('U', true, $post_id);
 
-/**
- * Featured image (CONTENT image)
- */
+// Теги
+$tags = get_the_terms($post_id, 'article_tag');
+$tags = (!empty($tags) && !is_wp_error($tags)) ? $tags : [];
+
+// Категория
+$terms    = get_the_terms($post_id, 'article_category');
+$category = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->name : '';
+$category_class = '';
+
+if ($terms && !is_wp_error($terms)) {
+    $category_slug = $terms[0]->slug;
+
+    switch ($category_slug) {
+        case 'polityka':
+            $category_class = 'is-politics';
+            break;
+
+        case 'kultura':
+            $category_class = 'is-culture';
+            break;
+
+        case 'oglyady':
+            $category_class = 'is-reviews';
+            break;
+
+        case 'ideyi':
+            $category_class = 'is-ideas';
+            break;
+    }
+}
+
+// Картинка
 $thumb_id  = get_post_thumbnail_id($post_id);
 $thumb_url = $thumb_id ? wp_get_attachment_image_url($thumb_id, 'full') : '';
-$thumb_alt = $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '';
+$alt       = $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '';
 ?>
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<section class="article">
-    <div class="container container--small">
-        <div class="article__wrapp">
-            <div class="article__top">
+    <section class="hero-section hero-section--blog <?= esc_attr($category_class); ?>">
+        <div class="container">
+            <div class="hero-section__box">
 
-                <!-- TOP IMAGE: banner OR placeholder -->
-                <div class="article__image<?= empty($banner['url']) ? ' is-placeholder' : ''; ?>">
-                    <img
-                        src="<?= esc_url($top_image_url); ?>"
-                        alt="<?= esc_attr($top_image_alt); ?>"
-                        loading="eager"
-                        fetchpriority="high"
-                        decoding="async"
-                    >
-                </div>
+                <div class="hero-section__inner">
 
-                <div class="article__top-info">
-                    <div class="article__top-head">
-                        <p class="aticle__pubtime">
-                            <?php echo get_the_date('F d, Y'); ?>
-                        </p>
-
-                        <div class="article__views">
-                            <?php sprite(16, 16, 'eye'); ?>
-                            <p><?php echo get_post_views(get_the_ID()); ?></p>
-                        </div>
-                    </div>
-
-                    <h1 class="article__title">
-                        <?php echo esc_html($post_title); ?>
-                    </h1>
-                </div>
-            </div>
-
-            <div class="article__inner">
-                <div class="article__share">
-                    <span class="article__share-heading">
-                        <?php esc_html_e('Поширити', 'dental'); ?>
+                    <?php if ($category): ?>
+                        <span class="h3">
+                        <i class="sprite"><?php sprite(29, 28, 'star_icon') ?></i>
+                        <?= esc_html($category); ?>
                     </span>
-
-                    <ul class="article__share-socials">
-                        <li>
-                            <a href="<?php echo get_share('fb'); ?>" target="_blank">
-                                <?php sprite(26, 26, 'facebook'); ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo get_share('telegram'); ?>" target="_blank">
-                                <?php sprite(26, 26, 'telegram'); ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo get_share('whatsapp'); ?>" target="_blank">
-                                <?php sprite(26, 26, 'whatsapp'); ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo get_share('viber'); ?>" target="_blank">
-                                <?php sprite(26, 26, 'viber'); ?>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="article__content">
-                    <!-- CONTENT IMAGE: featured image ONLY -->
-                    <?php if ($thumb_url): ?>
-                        <div class="article__thumbnail">
-                            <img
-                                src="<?= esc_url($thumb_url); ?>"
-                                alt="<?= esc_attr($thumb_alt ?: $post_title); ?>"
-                                loading="eager"
-                                fetchpriority="high"
-                            >
-                        </div>
                     <?php endif; ?>
 
                     <div class="editor">
-                        <?php the_content(); ?>
+                        <p class="h1"><?= esc_html($title); ?></p>
+
+                        <?php if ($deskr): ?>
+                            <p><?= esc_html(wp_strip_all_tags($deskr)); ?></p>
+                        <?php endif; ?>
                     </div>
+
+                    <div class="hero-section__bottom">
+                    <span class="hero-section__info">
+                        <i class="sprite"><?php sprite(16, 16, 'clock') ?></i>
+                        <?= esc_html(custom_time_ago($time)); ?>
+                    </span>
+
+                        <span class="hero-section__info">
+                        <i class="sprite"><?php sprite(16, 16, 'calendar') ?></i>
+                        <?= esc_html($date); ?>
+                    </span>
+
+                        <?php if ($author_name): ?>
+                            <span class="hero-section__info">
+                            <i class="sprite"><?php sprite(16, 16, 'user') ?></i>
+                            <a href="<?= esc_url($author_link); ?>">
+                                <?= esc_html($author_name); ?>
+                            </a>
+                        </span>
+                        <?php endif; ?>
+                    </div>
+
                 </div>
 
-                <ul class="article__related">
-                    <?php
-                    $query = new WP_Query([
-                        'post_type'      => 'news',
-                        'posts_per_page' => 3,
-                        'post__not_in'   => [get_the_ID()],
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
-                    ]);
+                <div class="hero-section__image">
 
-                    if ($query->have_posts()):
-                        while ($query->have_posts()): $query->the_post(); ?>
-                            <li class="article__related-item">
-                                <?php display_news_card(get_the_ID()); ?>
-                            </li>
-                        <?php endwhile;
-                        wp_reset_postdata();
-                    else: ?>
-                        <li><?php esc_html_e('Немає статей', 'novolipki'); ?></li>
+                    <?php if ($thumb_url): ?>
+                        <img src="<?= esc_url($thumb_url); ?>" alt="<?= esc_attr($alt ?: $title); ?>" loading="lazy">
                     <?php endif; ?>
-                </ul>
+
+                    <?php if (!empty($tags)): ?>
+                        <?php foreach ($tags as $tag):
+                            $tag_link = get_term_link($tag);
+                            if (is_wp_error($tag_link)) continue;
+                            ?>
+                            <a href="<?= esc_url($tag_link); ?>" class="tag">
+                                # <?= esc_html($tag->name); ?>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <?php if ($info): ?>
+                        <p><?= esc_html($info); ?></p>
+                    <?php endif; ?>
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
-<?php endwhile; endif; ?>
+    </section>
 
-<?php
-if (have_rows('post_builder', get_the_ID())) {
-    while (have_rows('post_builder', get_the_ID())) {
-        the_row();
-        get_template_part('template_parts/' . str_replace('_', '-', get_row_layout()));
-    }
-}
-?>
+<?php if (have_rows('builder', $post_id)) : ?>
+    <?php while (have_rows('builder', $post_id)) : the_row(); ?>
+        <?php get_template_part('template_parts/' . str_replace('_', '-', get_row_layout())); ?>
+    <?php endwhile; ?>
+<?php endif; ?>
 
 <?php get_footer(); ?>

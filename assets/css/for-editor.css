@@ -72,7 +72,7 @@
   --cl-h: #DFEBDD;
   --cl-i: #5AA04C;
   --cl-j: #CCC;
-  --cl-k: #e6e1db;
+  --cl-k: #9699A1;
   --cl-l: #F4F0EC;
   --gr-a: linear-gradient(
                   120deg,
@@ -185,6 +185,78 @@ h5,
 }
 .tag:active {
   transform: translateY(0);
+}
+
+.wp-caption {
+  width: calc(100% + 0.4rem) !important;
+  display: inline-flex;
+  flex-direction: column;
+}
+.wp-caption img, .wp-caption picture {
+  width: 100%;
+}
+.wp-caption .wp-caption-text {
+  margin-top: 8px;
+  color: var(--cl-d);
+  font-family: var(--font-main);
+  font-size: 1.4rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.015em;
+}
+
+.tooltip {
+  color: var(--cl-b);
+  cursor: pointer;
+  font-family: var(--font-second);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.4rem;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  display: inline-flex;
+  padding: 0 0.4rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.3rem;
+  background: var(--cl-f);
+}
+.tooltip:after {
+  content: "";
+  position: relative;
+  top: 0.2rem;
+  display: inline-flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 12 12'%3E%3Cpath fill='%23414755' d='m5.943.207.003-.012c.02-.07.05-.148.118-.18.167-.079.281.174.289.354.031.785.154 1.565.365 2.323.107.384.285.813.676.938.616.197 1.345-.748 1.64-.505.193.145-.217.786-.397 1.097-.144.436-.182.892.176 1.147.357.255.565.21 1.002.288.624.113 1.294.104 1.909.257.146.036.331.151.26.28a.5.5 0 0 1-.203.18c-.617.17-1.236.102-1.87.188-.578.077-1.078.202-1.274.734-.175.474.217 1.074.452 1.523.032.06.063.134.03.194-.05.091-.238.087-.335.043-.298-.135-.485-.385-.757-.564s-.48-.301-.782-.173c-.336.142-.47.53-.524.881-.136.89-.015 2.774-.554 2.8-.413-.021-.354-2.158-.622-3.194-.033-.196-.08-.414-.251-.523-.23-.147-.534-.012-.774.12-.39.215-.604.424-1.001.626-.11.056-.26.107-.346.02-.062-.064-.051-.164-.029-.248.11-.407.392-.748.578-1.129.079-.161.12-.464.053-.63-.1-.249-.603-.321-.876-.358-.935-.126-1.486-.137-2.42-.264-.16-.021-.644-.143-.421-.372.083-.085.36-.088.475-.111.177-.036.381-.04.558-.076.693-.144.983-.138 1.67-.301.265-.063.87-.202 1.018-.424.158-.237.115-.656-.004-.914s-.434-.53-.485-.808c-.013-.072-.014-.154.041-.204.053-.047.135-.043.206-.028.355.072.498.306.826.457.328.15.748.189.961-.096a.9.9 0 0 0 .135-.35c.215-.986.2-2.015.483-2.985z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.tippy-box {
+  background: var(--cl-f);
+  border-radius: 0;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+}
+.tippy-box .tippy-arrow {
+  color: var(--cl-f);
+}
+.tippy-box .tippy-content {
+  padding: 1rem;
+  color: var(--cl-d);
+  font-family: var(--font-second);
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .langs {
@@ -368,27 +440,46 @@ h5,
 .editor blockquote {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-width: 450px;
-  margin: 0 auto;
-  border-radius: 2px;
-  padding-left: 18px;
-  border-left: solid 2px #c4ee50;
+  gap: 2rem;
+  margin: 0;
+  padding: 1.6rem 0;
+  position: relative;
+  z-index: 2;
+  padding-left: 5rem;
+  width: 100%;
+  max-width: 100%;
 }
 .editor blockquote p:not([class]) {
-  font-family: var(--font-main);
-  font-size: clamp(12px, 1.5625vw, 16px);
+  font-family: var(--font-second);
+  color: var(--cl-a);
+  font-size: 1.6rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 150%;
 }
-.editor blockquote span {
-  font-family: var(--font-main);
-  font-size: clamp(18px, 2.3438vw, 24px);
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-transform: capitalize;
+.editor blockquote:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  width: 100vw;
+  background-color: var(--cl-d);
+  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  top: 0;
+}
+.editor blockquote:before {
+  content: "";
+  position: absolute;
+  top: 1.6rem;
+  left: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='24' fill='none' viewBox='0 0 32 24'%3E%3Cg fill='%23fff' clip-path='url(%23a)'%3E%3Cpath d='M7.5 0S6.3 2.248 5.853 4.47c-.71 3.53.71 4.589.71 4.589H15V24H0V12.353s-.085-4.046 1.635-6.824C4.33 1.176 7.5 0 7.5 0M24.5 0s-1.2 2.248-1.647 4.47c-.71 3.53.71 4.589.71 4.589H32V24H17V12.353s-.085-4.046 1.635-6.824C21.33 1.176 24.5 0 24.5 0'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h32v24H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 3.2rem;
+  height: 2.4rem;
+  pointer-events: none;
 }
 .editor > div:not([class]) {
   font-size: clamp(16px, 1.25vw, 24px);
@@ -517,16 +608,6 @@ h5,
   }
   .editor .row .main-button {
     width: 100%;
-  }
-  .editor blockquote p:not([class]):last-of-type {
-    max-width: 200px;
-    margin-left: auto;
-  }
-  .editor blockquote span {
-    font-family: var(--second-family);
-  }
-  .editor blockquote {
-    margin-left: 16px;
   }
   .slider-controls {
     margin: 32px auto 0;

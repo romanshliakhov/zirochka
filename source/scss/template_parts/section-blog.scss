@@ -1,0 +1,232 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+@use "../components/cards/info-card" as *;
+
+.blogs-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+
+  & + .cta-section {
+	@include for-mobile {
+	  margin-top: 0.8rem;
+	}
+
+	@include mobile {
+	  margin-top: 3px;
+	}
+  }
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__item {
+	position: relative;
+	z-index: 1;
+	grid-column: span 2;
+
+	&:first-of-type {
+	  &:before {
+		@include mini-tablet {
+		  content: none;
+		}
+	  }
+	}
+
+	&:before {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  width: 0.1rem;
+	  right: -2rem;
+	  transform: translateX(50%);
+	  background: #CCC;
+	  pointer-events: none;
+
+	  @include tablet {
+		top: -20px;
+		width: 100vw;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		@include mobile {
+		  top: -23.5px;
+
+		}
+	  }
+	}
+
+	&.mode{
+	  grid-column:  span 4;
+
+	  & + li{
+		&:before{
+		  content: none;
+		}
+	  }
+	}
+
+	&:last-of-type{
+	  &:not(:first-of-type) {
+		&:before {
+		  content: none;
+		}
+	  }
+
+	  @include tablet{
+		@include for-mobile{
+		  height: 493px;
+
+		  .h2{
+			margin-top: 3px;
+		  }
+		}
+	  }
+	}
+
+	&.second{
+	  .info-card{
+		overflow: hidden;
+		position: relative;
+		z-index: 1;
+
+		&__box, & > p{
+		  padding: 0 1.6rem;
+		}
+
+		&__bottom{
+		  padding: 0 1.6rem 1.6rem;
+		}
+
+		& * {
+		  color: var(--cl-a);
+		}
+
+		.h2{
+		  margin-top: -1.7rem;
+
+		  @include  tablet{
+			margin-top: -7px;
+		  }
+		}
+
+		&:before{
+		  content: '';
+		  position: absolute;
+		  z-index: -1;
+		  pointer-events: none;
+		  width: 100%;
+		  left: 0;
+		  bottom: 0;
+		  background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+		  height: 25.7rem;
+
+		  @include tablet{
+			height: 250px;
+		  }
+
+		  @include mobile{
+			height: 100%;
+		  }
+		}
+		&__image{
+		  z-index: initial;
+		  position: static;
+		  overflow: initial;
+		  img,picture{
+			position: absolute;
+			z-index: -2;
+			inset: 0;
+			pointer-events: none;
+		  }
+
+		  @include mobile{
+			height: initial;
+		  }
+		}
+
+		@include  tablet{
+		  height: 511px;
+		}
+
+		@include mobile{
+		  height: 300px;
+		  justify-content: flex-end;
+		  min-height: initial;
+		}
+	  }
+
+	  & + li{
+		&:before{
+		  content: none;
+		}
+	  }
+	}
+
+	@include mini-tablet {
+	  grid-column: initial !important;
+	}
+  }
+
+  &__list {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 4rem;
+
+	@include desktop {
+	  margin: 0 -7px 0 3px;
+	}
+	@include laptop {
+	  margin: 0 -5px 0 0;
+	}
+	@include tablet {
+	  margin: 0;
+	  grid-template-columns: 100%;
+	  gap: 40px;
+
+	  li{
+		grid-column: initial !important;
+	  }
+	}
+	@include mobile {
+	  gap: 47px;
+	}
+  }
+
+  & + .cta-section {
+	& + .blogs-section {
+	  margin-top: 0.7rem;
+
+	  @include for-laptop {
+		.blogs-section__item:nth-child(-n+3) {
+		  .info-card {
+			height: 50.2rem;
+		  }
+		}
+	  }
+
+	  @include mini-tablet {
+		@include for-mobile {
+		  margin-top: 10px;
+		}
+	  }
+
+	  @include mobile {
+		margin-top: 3px;
+	  }
+
+	  @include for-tablet{
+		margin-bottom: 6.3rem;
+	  }
+	}
+  }
+
+  @include info-card;
+}
