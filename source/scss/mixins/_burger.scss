@@ -55,22 +55,23 @@
   }
 
   &.active {
+    background: var(--cl-a);
     &::before {
-      background: currentColor;
+      background: var(--cl-d);
       top: 50%;
       transform: rotate(45deg) translate(-50%, -50%);
       transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
     }
 
     &::after {
-      background: currentColor;
+      background: var(--cl-d);
       top: 50%;
       transform: rotate(-45deg) translate(-50%, -50%);
       transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
     }
 
     .burger__line {
-      background: currentColor;
+      background: var(--cl-d);
       transform: scale(0);
       transition: transform 0.3s ease-in-out;
     }

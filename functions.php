@@ -184,20 +184,11 @@
             return $days . ' ' . __('д', 'zirochka');
         }
     }
+    function tooltip_shortcode($atts, $content = null) {
+        $atts = shortcode_atts([
+            'text' => ''
+        ], $atts);
 
-function tooltip_shortcode($atts, $content = null) {
-    $atts = shortcode_atts([
-        'text' => ''
-    ], $atts);
-
-    return '<span class="tooltip" data-tippy-content="' . esc_attr($atts['text']) . '">' . $content . '</span>';
-}
-add_shortcode('tooltip', 'tooltip_shortcode');
-//
-//    add_action('wp_enqueue_scripts', function () {
-//        wp_localize_script('articles-ajax', 'ajax_params', [
-//            'ajax_url' => admin_url('admin-ajax.php'),
-//            'nonce'    => wp_create_nonce('ajax_global')
-//        ]);
-//
-//    });
+        return '<span class="tooltip" data-tippy-content="' . esc_attr($atts['text']) . '">' . $content . '</span>';
+    }
+    add_shortcode('tooltip', 'tooltip_shortcode');

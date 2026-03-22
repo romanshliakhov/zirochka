@@ -1,0 +1,1086 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+@use "../components/cards/news-card" as *;
+
+.selected-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__item {
+	@include mobile {
+	  position: relative;
+	  z-index: 1;
+	  padding-bottom: 24px;
+
+	  &:before {
+		content: "";
+		position: absolute;
+		background: #CCC;
+		pointer-events: none;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		top: -24px;
+		width: 100vw;
+
+	  }
+	}
+
+	@include small-ios {
+	  &:nth-child(2) {
+		.h3 {
+		  margin-bottom: 5px;
+		}
+	  }
+	}
+  }
+
+  &__list {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	&:before {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  width: 0.1rem;
+	  left: -2rem;
+	  transform: translateX(-50%);
+	  background: #CCC;
+	  pointer-events: none;
+
+	  @include tablet {
+		top: -20px;
+		width: 100%;
+		height: 1px;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		@include mobile {
+		  top: -23.5px;
+		  width: 100vw;
+		}
+	  }
+	}
+
+
+	@include mobile {
+	  gap: 24px;
+	}
+  }
+
+  &__inner {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4rem;
+
+	@include desktop {
+	  @include for-tablet {
+		grid-template-columns: calc(50% + 0.5rem - 2rem) calc(50% - 2.5rem);
+	  }
+	}
+
+	@media (max-width: 1025px) {
+	  @media (min-width: 1020px) {
+		margin-right: 5px;
+	  }
+	}
+
+	@include tablet {
+	  grid-template-columns: 100%;
+	}
+	@include mobile {
+	  gap: 47px;
+	}
+  }
+
+  @include laptop {
+	@include for-tablet {
+	  margin-top: calc(var(--default-padding) - 3px);
+	}
+  }
+
+  @include mobile {
+	& + .books-section {
+	  margin-top: -4px;
+	}
+  }
+
+  @include news-card;
+}
+
+.hero-section {
+  overflow: hidden;
+  margin-bottom: var(--default-padding);
+  background: var(--cl-g);
+
+  &__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	justify-content: space-between;
+	padding: 7rem 0;
+
+	& > .h3 {
+	  margin-left: -0.2rem;
+	}
+
+	.editor {
+	  margin-top: -2.4rem;
+	  gap: 2.4rem;
+
+	  .h1 {
+		display: -webkit-box;
+		-webkit-line-clamp: 4;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		letter-spacing: 0.005em;
+	  }
+
+	  p:not([class]) {
+		letter-spacing: 0.0063em;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		@include desktop {
+		  max-width: 95%;
+		}
+
+		@include mobile {
+		  max-width: 100%;
+		  -webkit-line-clamp: 4;
+		}
+	  }
+
+	  @include desktop {
+		margin-top: -1px;
+	  }
+	}
+
+	&:has(.editor:only-of-type) {
+	  justify-content: center;
+
+	  .h1 {
+		@include mini-tablet {
+		  br {
+			display: none;
+		  }
+		}
+	  }
+
+	  p:not([class]) {
+		-webkit-line-clamp: 4;
+
+		@include mobile {
+		  -webkit-line-clamp: 8;
+		}
+	  }
+	}
+
+	@include laptop {
+	  padding: 33px 0 34px;
+	}
+
+	@media (max-width: 1024px) {
+	  padding: 47px 0 45px;
+	}
+
+	@include mini-tablet {
+	  padding: 0 0 41px;
+
+	  @include for-mobile {
+		gap: 38px;
+	  }
+	}
+
+	@include mobile {
+	  gap: 24px;
+	  padding: 0 0 32px;
+	}
+  }
+
+  &__box {
+	display: grid;
+	grid-template-columns: 1fr .85fr;
+	gap: 4rem;
+
+	@include desktop {
+	  grid-template-columns: 1fr .93fr;
+	}
+
+	@include laptop {
+	  grid-template-columns: 1fr .9fr;
+	}
+
+	@include mini-tablet {
+	  grid-template-columns: 100%;
+	}
+
+	@include mobile {
+	  gap: 23px;
+	}
+  }
+
+  &__bottom {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	flex-wrap: nowrap;
+	min-width: 0;
+
+	@include mobile {
+	  margin-top: -2px;
+	}
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
+	}
+  }
+
+  &__image {
+	display: flex;
+	position: relative;
+	z-index: 1;
+
+
+	.tag {
+	  position: absolute;
+	  top: 0.8rem;
+	  left: 0.8rem;
+	  background-color: var(--cl-d);
+	  color: var(--cl-a);
+
+	  @include mini-tablet {
+		left: var(--container-offset);
+	  }
+
+	  @include mobile {
+		left: 8px;
+	  }
+	}
+
+	svg, img, picture {
+	  margin-top: auto;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	&--book {
+	  align-items: center;
+	  justify-content: center;
+	  background: var(--cl-c);
+
+	  svg, img, picture {
+		margin-top: 0;
+		width: 37.2rem;
+		height: 52rem;
+		box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.40);
+
+		@include tablet {
+		  width: 258.204px;
+		  height: 360px;
+		}
+
+		@include mobile {
+		  width: 186.481px;
+		  height: 260px;
+		}
+	  }
+	}
+
+	@include for-mini-tablet {
+	  height: 600px;
+	  width: calc(100% + var(--container-offset));
+	  margin-right: calc(-1 * var(--container-offset));
+	}
+
+	@include mini-tablet {
+	  order: -1;
+	  height: 400px;
+	  width: calc(100% + (var(--container-offset) * 2));
+	  margin-left: calc(-1 * var(--container-offset));
+	}
+
+	@include mobile {
+	  height: 300px;
+	}
+  }
+
+  &--blog {
+
+	.hero-section {
+	  &__inner {
+
+
+		.h3 {
+		  font-size: clamp(21px, 3.65vw, 2.8rem);
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: .003em;
+
+		  @include for-mobile {
+			font-weight: 400;
+			font-family: var(--font-third);
+		  }
+
+		  @include mobile {
+			.sprite {
+			  width: 23px;
+			  height: 22px;
+			}
+		  }
+		}
+
+		.editor {
+
+
+		  .h1 {
+			@include for-laptop {
+			  max-width: 63rem;
+			}
+
+
+		  }
+
+		  p:not([class]) {
+			@include for-mobile {
+			  max-width: 99%;
+			}
+		  }
+
+		  @include for-laptop {
+			margin-top: .1rem;
+		  }
+
+		  @include laptop {
+			@include for-mobile {
+			  margin-top: 2px;
+			}
+		  }
+
+		  @include mobile {
+			gap: 26px;
+		  }
+		}
+
+		@include for-laptop {
+		  padding: 4.2rem 0 4.3rem;
+		}
+	  }
+	}
+
+	@include mini-tablet {
+	  @include for-mobile {
+		margin-bottom: 29px;
+	  }
+	}
+  }
+
+  &:has(.hero-section__image--book) {
+	background: var(--cl-j);
+
+	.hero-section {
+	  &__inner {
+
+		.editor {
+		  @include for-laptop {
+			margin-top: -5rem;
+		  }
+
+		  @include laptop {
+			@include for-mobile {
+			  margin-top: 2px;
+			}
+		  }
+		}
+
+		@include for-laptop {
+		  padding: 7rem 0 6.8rem;
+		}
+	  }
+	}
+
+	& + .cta-section.mode {
+	  .cta-section__box {
+		max-width: 124.1rem;
+
+		.main-button {
+		  @include for-laptop {
+			min-width: 34.3rem;
+			margin-right: -0.3rem;
+		  }
+		}
+	  }
+	}
+  }
+
+  &.small {
+	margin-bottom: 0;
+
+	& + .donate-section {
+	  margin-top: 0;
+	}
+
+	.editor {
+
+	  .main-button {
+		min-width: 31rem;
+	  }
+	}
+
+	.hero-section {
+
+
+	  &__image {
+		display: flex;
+		position: relative;
+		z-index: 1;
+		height: 30rem;
+
+		@include mini-tablet {
+		  @include for-mobile {
+			height: 308px;
+		  }
+		}
+	  }
+
+	}
+  }
+
+  &.public {
+	background: var(--cl-e);
+	margin-bottom: 0;
+
+	& + .donate-section {
+	  margin-top: 0;
+	}
+
+	.editor {
+
+	  * {
+		color: var(--cl-a);
+	  }
+
+	  .main-button {
+		min-width: 31rem;
+	  }
+	}
+
+	.hero-section {
+
+	  &__box {
+		@include for-mini-tablet {
+		  grid-template-columns: 1.068fr 1fr;
+		}
+	  }
+
+	  &__inner {
+		.editor {
+		  @media (max-width: 1450px) {
+			@include for-laptop {
+			  width: calc(100% + 3.3rem);
+			}
+		  }
+
+		  p:not([class]) {
+			@include laptop {
+			  max-width: 100%;
+			}
+		  }
+		}
+
+		@include tablet {
+		  gap: 23px;
+		}
+	  }
+
+	  &__image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		z-index: 1;
+		background: var(--cl-a);
+
+		img, picture, .sprite {
+		  max-width: 50rem;
+		  max-height: 26.9rem;
+		  width: 100%;
+		  aspect-ratio: 158/85;
+		  margin: 0 0 0 0.3rem;
+		  object-fit: contain;
+
+		  @include laptop {
+			@include for-tablet {
+			  max-width: 400px;
+			}
+		  }
+
+		  @include mobile {
+			width: 300px;
+			aspect-ratio: 50/27;
+		  }
+		}
+	  }
+	}
+  }
+
+  &.is-culture {
+	background-color: var(--cl-g);
+
+	.hero-section {
+	  &__inner {
+		.editor {
+		  @include mobile {
+			gap: 30px;
+		  }
+		}
+	  }
+
+	  &__box {
+		@include mini-tablet {
+		  gap: 41px;
+		}
+
+		@include mobile {
+		  gap: 24px;
+
+		  .h3 {
+			svg {
+			  max-width: 21px;
+			  max-height: 22px;
+			}
+		  }
+
+		}
+	  }
+	}
+  }
+
+  &.is-reviews {
+	background-color: var(--cl-j);
+
+	.hero-section {
+	  &__inner {
+		.editor {
+		  @include mobile {
+			gap: 30px;
+		  }
+		}
+	  }
+
+	  &__box {
+		@include mini-tablet {
+		  gap: 41px;
+		}
+
+		@include mobile {
+		  gap: 24px;
+
+		  .h3 {
+			svg {
+			  max-width: 21px;
+			  max-height: 22px;
+			}
+		  }
+
+		}
+	  }
+	}
+  }
+
+  &.is-ideas {
+	background-color: var(--cl-f);
+
+	.hero-section {
+	  &__inner {
+		.editor {
+		  @include mobile {
+			gap: 30px;
+		  }
+		}
+	  }
+
+	  &__box {
+		@include mini-tablet {
+		  gap: 41px;
+		}
+
+		@include mobile {
+		  gap: 24px;
+
+		  .h3 {
+			svg {
+			  max-width: 21px;
+			  max-height: 22px;
+			}
+		  }
+
+		}
+	  }
+	}
+  }
+
+  &.is-politics {
+	background-color: var(--cl-d);
+
+	.hero-section {
+	  &__inner {
+
+		& > .h3{
+		  @include mobile{
+			margin-left: 2px;
+		  }
+		}
+		.editor {
+		  .h1{
+			@include mobile{
+			  -webkit-line-clamp: 3;
+			}
+		  }
+		  p:not([class]) {
+			-webkit-line-clamp: 4;
+		  }
+
+		  @include mobile {
+			gap: 30px;
+		  }
+		}
+	  }
+
+	  &__box {
+		@include mini-tablet {
+		  gap: 41px;
+		}
+
+		@include mobile {
+		  gap: 24px;
+
+		  .h3 {
+			svg {
+			  max-width: 21px;
+			  max-height: 22px;
+			}
+		  }
+
+		}
+	  }
+	}
+  }
+}
+
+.cta-section {
+  margin: var(--default-padding) 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: var(--cl-f);
+  padding: clamp(32px, 5.21vw, 4rem) 0;
+
+  &__bg {
+	position: absolute;
+	z-index: -1;
+	inset: 0;
+	pointer-events: none;
+
+	.sprite {
+	  width: 100%;
+	  height: 100%;
+	  display: flex;
+	}
+
+	img, picture, svg {
+	  display: block;
+	  width: 100%;
+	  height: 100%;
+	  object-fit: cover;
+	}
+  }
+
+  &__box {
+	max-width: 120.8rem;
+	margin: 0 auto;
+	display: grid;
+	width: 100%;
+	align-items: center;
+
+	gap: 1.6rem clamp(40px, 5.14vw, 7.4rem);
+
+	grid-template-columns: 1fr auto;
+
+	@include for-desktop {
+	  padding: 0 12.6rem 0 7.7rem;
+	}
+	@include desktop {
+	  @include for-laptop {
+		padding: 0 124px 0 77px;
+	  }
+	}
+	@include laptop {
+	  padding: 0;
+	}
+
+	.editor {
+	  p {
+		@include laptop {
+		  @include for-tablet {
+			margin-top: 1px;
+		  }
+		}
+	  }
+
+	  .main-button {
+		min-width: 310px;
+
+		@media (max-width: 1024px) {
+		  min-width: 260px;
+		}
+		@include small-tablet {
+		  margin: 0 auto;
+		}
+		@include mobile {
+		  min-width: 100%;
+		}
+	  }
+	}
+
+	@include laptop {
+	  @include for-small-tablet {
+		gap: 36px;
+
+		.main-button {
+		  margin-right: -7px;
+		}
+	  }
+	}
+	@include small-tablet {
+	  grid-template-columns: 100%;
+	}
+  }
+
+  &.mode {
+	background: transparent;
+	padding: 0;
+
+	.container {
+	  @include laptop {
+		padding: 0;
+	  }
+	}
+
+	.cta-section {
+	  &__box {
+		background: var(--cl-c);
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+
+		p {
+		  margin: 0;
+		}
+
+		.main-button {
+		  margin: 0;
+		}
+
+		@include for-desktop {
+		  padding: clamp(32px, 5.21vw, 4rem) 10rem;
+		}
+		@include desktop {
+		  @include for-laptop {
+			padding: clamp(32px, 5.21vw, 4rem) 10rem;
+		  }
+		}
+		@include laptop {
+		  padding: clamp(32px, 5.21vw, 4rem) clamp(16px, 5.21vw, 40px);
+
+		  @media (min-width: 1025px) {
+			gap: 1.6rem clamp(70px, 5.14vw, 7.4rem);
+		  }
+		}
+		@include for-laptop {
+		  grid-template-columns: 1fr auto;
+		}
+		@include mobile {
+		  padding: 24px 16px;
+		}
+	  }
+
+	  &__bg {
+		inset: initial;
+		left: 0;
+		width: 419px;
+		height: 448px;
+		bottom: 0;
+		transform: translate(-41%, 47%);
+
+		img, picture, svg {
+		  object-fit: contain;
+		}
+
+		@include mobile {
+		  height: auto;
+		  width: 489px;
+		  transform: translate(-37%, 47%) rotate(90deg);
+		}
+	  }
+	}
+
+	@include laptop {
+	  max-width: calc(var(--container-width) + 7px);
+	  margin: var(--default-padding) calc(var(--container-offset) - 7px) var(--default-padding) var(--container-offset);
+	}
+
+	@include mini-tablet {
+	  margin: var(--default-padding) var(--container-offset);
+	}
+  }
+}
+
+.all-books-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0 0.7rem;
+
+  &__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+	gap: 4rem;
+
+	.book-card {
+
+	  & * {
+		color: var(--cl-d);
+	  }
+
+	  &__image {
+		img, picture {
+		  @include mini-tablet {
+			width: 157px;
+			margin-right: -3px;
+		  }
+
+		  @include mobile {
+			width: 130px;
+		  }
+		}
+	  }
+
+	  &__bottom {
+		@include mini-tablet {
+		  flex-direction: column;
+		  align-items: flex-start;
+		  gap: 6px;
+		}
+	  }
+	}
+
+	@media (min-width: 1435px) {
+	  grid-template-columns: repeat(5, 24rem);
+	}
+
+	@include tablet {
+	  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	}
+
+	@include mini-tablet {
+	  gap: 24px 40px;
+
+
+	}
+
+
+	@include mobile {
+	  grid-template-columns: repeat(2, 1fr);
+	  gap: 24px 16px;
+	}
+
+
+  }
+
+  & + .cta-section {
+	& + .all-books-section {
+	  margin-top: 0.7rem;
+
+	  @include mini-tablet {
+		@include for-mobile {
+		  margin-top: -7px;
+		}
+	  }
+
+	  @include mobile {
+		margin-top: 3px;
+	  }
+
+	  @include for-tablet {
+		margin-bottom: 6.3rem;
+	  }
+	}
+  }
+
+  @include mini-tablet {
+	@include for-mobile {
+	  margin-bottom: -9px;
+	}
+  }
+
+  @include mobile {
+	padding: 0;
+	margin-bottom: 5px;
+  }
+}
+
+.books-section {
+  overflow: hidden;
+  margin: var(--default-padding) 0;
+  background: var(--cl-d);
+  padding: clamp(32px, 10.42vw, 8rem) 0;
+
+  &__more {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	color: var(--cl-a);
+	font-size: 1.6rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	white-space: nowrap;
+	transition: all .4s;
+	text-decoration: underline;
+	text-underline-offset: 0.4rem;
+	text-decoration-color: transparent;
+
+	svg {
+	  width: 2.4rem;
+	  height: 2.4rem;
+	}
+
+	@include hover {
+	  text-decoration-color: inherit;
+	}
+
+	@media (max-width: 1025px) {
+	  @media (min-width: 1020px) {
+		margin-right: -5px;
+	  }
+	}
+  }
+
+  &__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1.6rem;
+
+	& > .editor {
+	  * {
+		color: var(--cl-a);
+	  }
+	}
+  }
+
+  &__box {
+	gap: clamp(32px, 7.29vw, 5.6rem);
+	display: flex;
+	flex-direction: column;
+
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  &__slider {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&:before, &:after {
+	  content: "";
+	  position: absolute;
+	  height: 100%;
+	  top: 0;
+	  width: 50vw;
+	  z-index: 3;
+	  pointer-events: none;
+	}
+
+	&:before {
+	  right: 0;
+	  background: linear-gradient(270deg, rgba(65, 71, 85, 1) 98%, rgba(65, 71, 85, 0) 100%);
+	  transform: translateX(100%);
+	}
+
+	&:after {
+	  left: 0;
+	  background: linear-gradient(90deg, rgba(65, 71, 85, 1) 98%, rgba(65, 71, 85, 0) 100%);
+	  transform: translateX(-100%);
+	}
+
+	.swiper-container {
+	  overflow: initial;
+	}
+
+	.swiper-slide {
+	  height: auto;
+	  display: flex;
+	}
+
+	@include desktop {
+	  margin: 0 -7px 0 0;
+	}
+	@include laptop {
+	  margin: 0 -5px 0 0;
+	}
+	@include mini-tablet {
+	  margin: 0;
+	}
+  }
+
+  @include mobile {
+	padding: 32px 0;
+	margin-bottom: 18px;
+  }
+}

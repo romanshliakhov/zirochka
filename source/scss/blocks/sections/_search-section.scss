@@ -1,0 +1,101 @@
+@use "../../mixins/breakpoint" as *;
+
+.search-section {
+  margin-bottom: 6.4rem !important;
+  margin-top: 4rem;
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	@include mobile {
+	  gap: 25px;
+	}
+  }
+
+  .editor {
+	gap: 2.5rem;
+	align-items: center;
+	max-width: 70rem;
+	width: 100%;
+	align-self: center;
+
+	* {
+	  text-align: center;
+	}
+
+	.h1, .h2, .h3, .h4 {
+	  @include mobile {
+		-webkit-line-clamp: 2;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		& + p {
+		  margin-top: -10px;
+		}
+	  }
+	}
+
+	.sprite, img, svg {
+	  width: 100%;
+	  height: 100%;
+	  max-width: 20.3rem;
+	  max-height: 19.6rem;
+
+	  @include mobile {
+		max-width: 166px;
+		max-height: 160px;
+	  }
+	}
+  }
+
+  &__top {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
+	}
+  }
+
+  &__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+  }
+
+  @include mobile {
+	margin-top: 2.4rem;
+	margin-bottom: 145px !important;
+  }
+}

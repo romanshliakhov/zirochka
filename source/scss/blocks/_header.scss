@@ -18,10 +18,28 @@
   right: 0;
   width: 100%;
   background-color: var(--cl-a);
-  border-bottom: solid 0.1rem #CCC;
+  transition: border-color 0.3s;
 
   &.open-menu {
     z-index: 30;
+  }
+
+  &.header-hidden{
+    @include for-mini-tablet{
+      border-color: transparent;
+      .header__nav{
+        max-height: 0;
+        transition: max-height .3s ease;
+      }
+    }
+  }
+
+  .header__nav{
+    @include for-mini-tablet{
+      overflow: hidden;
+      max-height: 250px;
+      transition: max-height .7s ease;
+    }
   }
 
   &__box {
@@ -120,6 +138,14 @@
         display: flex;
       }
 
+      .menu-link{
+        &:has(.sprite){
+          .menu-text{
+            display:  none;
+          }
+        }
+      }
+
       a,button,span{
         color: var(--cl-b);
         text-align: center;
@@ -129,8 +155,16 @@
         line-height: normal;
         transition: all .3s;
 
+        svg{
+          transition: all .3s;
+        }
+
         @include hover{
           color: var(--cl-e);
+
+          svg{
+            transform: scale(1.05);
+          }
         }
 
       }
@@ -174,5 +208,9 @@
     @include  for-mini-tablet {
       display: none;
     }
+  }
+
+  @include for-mini-tablet{
+    border-bottom: solid 0.1rem var(--cl-j);
   }
 }

@@ -171,7 +171,7 @@ h5,
 .tippy-box{
   background: var(--cl-f);
   border-radius: 0;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0.8rem 0 rgba(0, 0, 0, 0.25);
 
   .tippy-arrow{
     color: var(--cl-f);
@@ -202,7 +202,7 @@ h5,
 
   a{
     color:  var(--cl-d);
-    font-family: "TT Travels";
+    font-family: var(--font-third);
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
@@ -255,6 +255,7 @@ h5,
     }
   }
 }
+
 .editor {
   width: 100%;
   position: relative;
@@ -282,10 +283,17 @@ h5,
     display: flex;
   }
 
+  a:not([class]){
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    transition: all .3s;
 
-  .accent-label {
-    @include mobile {
-      margin: 0 auto;
+    @include hover{
+      text-decoration-color: transparent;
     }
   }
 
@@ -306,64 +314,60 @@ h5,
   ul:not([class]) {
     display: flex;
     flex-direction: column;
-    gap: 12px;
 
     li {
-      font-family: var(--font-main);
-      font-size: clamp(14px, 1.563vw, 16px);
+      font-family: var(--font-second);
+      font-size: 1.6rem;
       font-style: normal;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 150%;
       position: relative;
 
-      div {
-        display: flex;
-        align-items: center;
-        font-size: clamp(16px, 3.125vw, 24px);
-        line-height: 150%;
-        font-weight: 500;
+      &::before {
+        position: absolute;
+        left: 0.9rem;
+        top: 1rem;
+        width: 0.4rem;
+        height: 0.4rem;
+        content: '';
+        background: var(--cl-b);
+        border-radius: 100%;
       }
 
-      i {
-        margin-right: clamp(16px, 3.125vw, 24px);
-
-        svg {
-          width: clamp(24px, 4.557vw, 35px);
-          height: clamp(24px, 4.557vw, 35px);
-        }
-      }
+      padding-left: 2.3rem;
     }
   }
 
   ol:not([class]) {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    counter-reset: item;
+
+    & > li{
+      counter-increment: item;
+
+      &::before {
+        content: counter(item) ".";
+        position: absolute;
+        left: 0.6rem;
+        top: 0;
+        font-family: var(--font-second);
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+
+      padding-left: 2.3rem;
+    }
 
     li {
-      font-family: var(--font-main);
-      font-size: clamp(14px, 1.563vw, 16px);
+      font-family: var(--font-second);
+      font-size: 1.6rem;
       font-style: normal;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 150%;
       position: relative;
-
-      div {
-        display: flex;
-        align-items: center;
-        font-size: clamp(16px, 3.125vw, 24px);
-        line-height: 150%;
-        font-weight: 500;
-      }
-
-      i {
-        margin-right: clamp(16px, 3.125vw, 24px);
-
-        svg {
-          width: clamp(24px, 4.557vw, 35px);
-          height: clamp(24px, 4.557vw, 35px);
-        }
-      }
     }
   }
 

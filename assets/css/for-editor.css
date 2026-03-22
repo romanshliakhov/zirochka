@@ -51,7 +51,7 @@
   --container-offset: clamp(40px, 4.17vw, 8rem);
   --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
   --default-padding: calc(clamp(4rem, 8.33vw, 6.4rem) / 2);
-  --header-height: 80px;
+  --header-height: 15.4rem;
   --scrollbar-thumb: #dad9d9;
   --scrollbar-track: rgba(33,33, 33, 0.07);
   --scrollbar-track-hover: transparent;
@@ -73,7 +73,6 @@
   --cl-i: #5AA04C;
   --cl-j: #CCC;
   --cl-k: #9699A1;
-  --cl-l: #F4F0EC;
   --gr-a: linear-gradient(
                   120deg,
                   rgba(255, 255, 255, 0.15),
@@ -84,10 +83,10 @@
   --gr-d: linear-gradient(135deg, #eb001b, #f79e1b);
   --loader: linear-gradient(
                   90deg,
-                  rgba(212, 149, 149, 1) 0%,
+                  rgb(146, 37, 34) 0%,
                   rgba(255, 255, 255, 1) 45%,
                   rgba(255, 255, 255, 1) 55%,
-                  rgba(212, 149, 149, 1) 100%
+                  rgb(146, 37, 34) 100%
   );
 }
 
@@ -244,7 +243,7 @@ h5,
 .tippy-box {
   background: var(--cl-f);
   border-radius: 0;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0.8rem 0 rgba(0, 0, 0, 0.25);
 }
 .tippy-box .tippy-arrow {
   color: var(--cl-f);
@@ -270,7 +269,7 @@ h5,
 }
 .langs a {
   color: var(--cl-d);
-  font-family: "TT Travels";
+  font-family: var(--font-third);
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
@@ -321,6 +320,16 @@ h5,
 .editor p:has(image) {
   display: flex;
 }
+.editor a:not([class]) {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  transition: all 0.3s;
+}
 .editor iframe {
   max-width: 100%;
   width: 100%;
@@ -336,56 +345,53 @@ h5,
 .editor ul:not([class]) {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 .editor ul:not([class]) li {
-  font-family: var(--font-main);
-  font-size: clamp(14px, 1.563vw, 16px);
+  font-family: var(--font-second);
+  font-size: 1.6rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 150%;
   position: relative;
+  padding-left: 2.3rem;
 }
-.editor ul:not([class]) li div {
-  display: flex;
-  align-items: center;
-  font-size: clamp(16px, 3.125vw, 24px);
-  line-height: 150%;
-  font-weight: 500;
-}
-.editor ul:not([class]) li i {
-  margin-right: clamp(16px, 3.125vw, 24px);
-}
-.editor ul:not([class]) li i svg {
-  width: clamp(24px, 4.557vw, 35px);
-  height: clamp(24px, 4.557vw, 35px);
+.editor ul:not([class]) li::before {
+  position: absolute;
+  left: 0.9rem;
+  top: 1rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  content: "";
+  background: var(--cl-b);
+  border-radius: 100%;
 }
 .editor ol:not([class]) {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  counter-reset: item;
+}
+.editor ol:not([class]) > li {
+  counter-increment: item;
+  padding-left: 2.3rem;
+}
+.editor ol:not([class]) > li::before {
+  content: counter(item) ".";
+  position: absolute;
+  left: 0.6rem;
+  top: 0;
+  font-family: var(--font-second);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
 }
 .editor ol:not([class]) li {
-  font-family: var(--font-main);
-  font-size: clamp(14px, 1.563vw, 16px);
+  font-family: var(--font-second);
+  font-size: 1.6rem;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 150%;
   position: relative;
-}
-.editor ol:not([class]) li div {
-  display: flex;
-  align-items: center;
-  font-size: clamp(16px, 3.125vw, 24px);
-  line-height: 150%;
-  font-weight: 500;
-}
-.editor ol:not([class]) li i {
-  margin-right: clamp(16px, 3.125vw, 24px);
-}
-.editor ol:not([class]) li i svg {
-  width: clamp(24px, 4.557vw, 35px);
-  height: clamp(24px, 4.557vw, 35px);
 }
 .editors {
   display: grid;
@@ -505,8 +511,8 @@ h5,
   z-index: 1;
   width: -moz-fit-content;
   width: fit-content;
-  height: 43px;
-  padding: 12px 60px;
+  height: 4.3rem;
+  padding: 1.2rem 6rem;
   border: 0.1rem solid transparent;
   display: flex;
   align-items: center;
@@ -520,7 +526,7 @@ h5,
   font-weight: 500;
   line-height: normal;
   color: var(--cl-a);
-  transition: 0.4s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .main-button:disabled {
   opacity: 0.6;
@@ -583,6 +589,11 @@ h5,
     margin-top: 57px;
   }
 }
+@media (max-width: 991px) {
+  :root {
+    --header-height: 86px;
+  }
+}
 @media (max-width: 766px) {
   .editor .wpcf7 {
     max-width: 576px;
@@ -603,9 +614,6 @@ h5,
     height: 24px;
     font-size: 14px;
   }
-  .editor .accent-label {
-    margin: 0 auto;
-  }
   .editor .row .main-button {
     width: 100%;
   }
@@ -625,6 +633,21 @@ h5,
   .search-form__btn:hover svg, .search-form__btn:hover img {
     transform: scale(1.1);
   }
+  .editor a:not([class]):hover {
+    text-decoration-color: transparent;
+  }
+  .main-button--transparent:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+  .main-button--green:hover {
+    background-color: rgb(78.3305084746, 139.2542372881, 66.1457627119);
+    box-shadow: 0 0.6rem 1.6rem rgba(90, 160, 76, 0.25);
+  }
+  .main-button:hover {
+    background-color: rgb(78.26, 85.484, 102.34);
+    box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.15);
+  }
   .slider-btn:hover svg {
     transform: scale(1.2);
   }
@@ -640,6 +663,21 @@ h5,
   }
   .search-form__btn:active svg, .search-form__btn:active img {
     transform: scale(1.1);
+  }
+  .editor a:not([class]):active {
+    text-decoration-color: transparent;
+  }
+  .main-button--transparent:active {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+  .main-button--green:active {
+    background-color: rgb(78.3305084746, 139.2542372881, 66.1457627119);
+    box-shadow: 0 0.6rem 1.6rem rgba(90, 160, 76, 0.25);
+  }
+  .main-button:active {
+    background-color: rgb(78.26, 85.484, 102.34);
+    box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.15);
   }
   .slider-btn:active svg {
     transform: scale(1.2);

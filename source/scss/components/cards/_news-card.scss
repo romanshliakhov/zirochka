@@ -5,10 +5,16 @@
 @mixin news-card {
   .news-card {
 	height: 100%;
-	display: grid;
-	grid-template-columns: 100%;
+	display: flex;
+	flex-direction: column;
 	position: relative;
 	z-index: 1;
+
+	&__inner{
+	  display: flex;
+	  flex-direction: column;
+	  gap: 1.6rem;
+	}
 
 	&__box {
 	  height: 100%;
@@ -49,6 +55,17 @@
 	  * {
 		color: var(--cl-a);
 	  }
+
+	  &.mode{
+		flex-grow: 1;
+
+		& + .news-card__bottom{
+		  padding: 0 1.6rem 1.6rem 1.6rem;
+		  * {
+			color: var(--cl-a);
+		  }
+		}
+	  }
 	}
 
 	&__bottom {
@@ -74,7 +91,7 @@
 		flex: 1;
 		min-width: 0;
 
-		span {
+		span,a {
 		  display: block;
 		  flex: 1;
 		  min-width: 0;
@@ -97,7 +114,6 @@
 	  left: 0;
 	  top: 0;
 	  overflow: hidden;
-	  pointer-events: none;
 
 	  img, picture, svg {
 		width: 100%;
@@ -139,6 +155,7 @@
 	}
 
 	&.small {
+	  display: grid;
 	  min-height: initial;
 	  grid-template-columns: clamp(207px, 21.53vw, 31rem) 1fr;
 	  gap: 2.4rem 2rem;

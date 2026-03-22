@@ -199,6 +199,20 @@
 .hero-section.is-politics .hero-section__image p {
   color: var(--cl-k) !important;
 }
+
+.similar-section {
+  position: relative;
+  z-index: 1;
+  margin: 0.5rem 0 4rem !important;
+}
+.similar-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 7.29vw, 5.6rem);
+}
+.similar-section .blog-list__item {
+  grid-column: initial;
+}
 @media (min-width: 576px) {
   .hero-section__image p {
     overflow: hidden;
@@ -217,6 +231,15 @@
     width: calc(100% + var(--container-offset));
     margin-right: calc(-1 * var(--container-offset));
   }
+  .similar-section .blog-list__item:nth-of-type(2):before {
+    content: "" !important;
+  }
+  .similar-section .blog-list__item .blog-card__box p:not([class]) {
+    -webkit-line-clamp: 4;
+  }
+  .similar-section .blog-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (min-width: 1241px) {
   .hero-section--blog .hero-section__inner .editor {
@@ -231,6 +254,9 @@
   .hero-section:has(.hero-section__image--book) .hero-section__inner {
     padding: 7rem 0 6.8rem;
   }
+  .similar-section__box {
+    padding: 0 4rem;
+  }
 }
 @media (max-width: 1440px) {
   .hero-section__inner .editor p:not([class]) {
@@ -241,6 +267,11 @@
   }
   .hero-section__box {
     grid-template-columns: 1fr 0.93fr;
+  }
+}
+@media (max-width: 1440px) and (min-width: 1241px) {
+  .similar-section .blog-list {
+    margin: -3px -7px 0 3px;
   }
 }
 @media (max-width: 1240px) {
@@ -259,6 +290,14 @@
     margin-top: 2px;
   }
 }
+@media (max-width: 1240px) and (min-width: 992px) {
+  .similar-section .blog-list__item:before {
+    right: -14px;
+  }
+  .similar-section .blog-list {
+    gap: 42px 28px;
+  }
+}
 @media (max-width: 1024px) {
   .hero-section__inner {
     padding: 47px 0 45px;
@@ -268,6 +307,11 @@
   .hero-section__image--book svg, .hero-section__image--book img, .hero-section__image--book picture {
     width: 258.204px;
     height: 360px;
+  }
+}
+@media (max-width: 1023px) and (min-width: 576px) {
+  .similar-section {
+    margin-bottom: 40px !important;
   }
 }
 @media (max-width: 991px) {
@@ -346,6 +390,12 @@
   }
   .hero-section--blog .hero-section__inner .editor {
     gap: 26px;
+  }
+  .similar-section__box {
+    gap: 32px;
+  }
+  .similar-section {
+    margin: 13px 0 32px !important;
   }
 }
 /*# sourceMappingURL=blog-archive.css.map */

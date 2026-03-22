@@ -30,7 +30,7 @@
                 ],
             ])
             ->addLink('link', [
-                'label' => 'Section link',
+                'label' => 'Section all link',
                 'wrapper' => [
                     'width' => '50',
                 ],

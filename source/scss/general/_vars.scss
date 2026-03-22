@@ -25,7 +25,11 @@
   }
 
   // --------------- default JS variable ---------------
-  --header-height: 80px;
+  --header-height: 15.4rem;
+
+  @include mini-tablet{
+    --header-height: 86px;
+  }
 
   // --------------- default scroll variable ---------------
   --scrollbar-thumb: #dad9d9;
@@ -59,11 +63,6 @@
   --cl-k: #9699A1; // var(--cl-k);
 
 
-  --cl-l: #F4F0EC; // var(--cl-l);
-
-
-  
-
   // --------------- default gradient color variable ---------------
   --gr-a: linear-gradient(
                   120deg,
@@ -77,10 +76,10 @@
   //-----------------custom loader----------------------------------
   --loader: linear-gradient(
                   90deg,
-                  rgba(212, 149, 149, 1) 0%,
+                  rgb(146, 37, 34) 0%,
                   rgba(255, 255, 255, 1) 45%,
                   rgba(255, 255, 255, 1) 55%,
-                  rgba(212, 149, 149, 1) 100%
+                  rgb(146, 37, 34) 100%
   ); // var(--loader);
 }
 

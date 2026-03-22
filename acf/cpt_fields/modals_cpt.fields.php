@@ -24,15 +24,7 @@
 				'label'   => 'Modal',
 				'display' => 'block',
 				'min'     => '',
-				'max'     => '',
-			])
-				->addFields(editors(1))
-
-			->addLayout( 'custom', [
-				'label'   => 'СTA №1',
-				'display' => 'table',
-				'min'     => '',
-				'max'     => '',
+				'max'     => '1',
 			])
 				->addFields(editors(1))
 			->endFlexibleContent();

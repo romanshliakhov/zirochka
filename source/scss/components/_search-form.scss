@@ -1,0 +1,91 @@
+@use "../mixins/breakpoint" as *;
+
+@mixin search-form {
+  .search-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+
+	input:not([type="submit"]), textarea {
+	  padding: 1.1rem 1.6rem;
+	  width: 100%;
+	  background-color: var(--cl-a);
+	  font-family: var(--font-main);
+	  font-size: 1.6rem;
+	  font-style: normal;
+	  font-weight: 500;
+	  line-height: normal;
+	  height: 4.2rem;
+	  border: 1px solid var(--cl-j);
+	  transition: all .4s;
+	  color: var(--cl-b);
+
+	  &::placeholder {
+		color: var(--cl-d);
+	  }
+
+	  &:focus {
+		border-color: var(--cl-e);
+	  }
+	}
+  }
+
+  .search-results{
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+
+	.blog-card{
+	  height: 7rem;
+	  display: grid;
+	  align-items: center;
+	  grid-template-columns: 7rem 1fr;
+	  gap: 0.8rem 1.7rem;
+
+	  &__bottom {
+		@include ios {
+		  display: grid;
+		  gap: 8px;
+		  grid-template-columns: auto 1fr;
+		}
+	  }
+	  &__info{
+		@include ios{
+		  &:last-of-type{
+			grid-column: 1/-1;
+		  }
+		}
+	  }
+	  &__image{
+		height: 7rem;
+
+		@include mobile{
+		  height: 50px;
+		  align-self: start;
+		}
+	  }
+
+	  &__box{
+		gap: 0.8rem;
+	  }
+
+	  .h2{
+		font-family: var(--font-main);
+		font-size: 2.1rem;
+		font-weight: 500;
+		min-height: 4.6rem;
+		max-width: 99%;
+
+		@include mobile{
+		  font-size: 1.6rem;
+		  min-height: initial;
+		}
+	  }
+
+	  @include mobile{
+		height: fit-content;
+		grid-template-columns: 50px 1fr;
+	  }
+	}
+  }
+}

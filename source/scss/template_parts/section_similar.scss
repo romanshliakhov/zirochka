@@ -1,0 +1,35 @@
+@use "../mixins/breakpoint" as *;
+@use "../mixins/disable-mob-hover" as *;
+
+.similar-section{
+  position: relative;
+  z-index: 1;
+  margin: 4rem 0 !important;
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(32px, 7.29vw, 5.6rem);
+
+	@include mobile {
+	  gap: 32px;
+	}
+  }
+
+  .blog-list{
+	@include for-mini-tablet {
+	  grid-template-columns: repeat(3, 1fr);
+	}
+  }
+
+
+  @include  tablet {
+	@include for-mobile {
+	  margin-bottom: 40px !important;
+	}
+  }
+
+  @include mobile{
+	margin: 13px 0 32px !important;
+  }
+}

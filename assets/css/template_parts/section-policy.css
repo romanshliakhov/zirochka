@@ -1,0 +1,88 @@
+/* stylelint-disable */
+.policy-section {
+  margin-top: 4rem;
+  margin-bottom: 6rem !important;
+}
+.policy-section .container {
+  --container-width: calc(69.4rem + (var(--container-offset) * 2));
+}
+.policy-section__info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-family: var(--font-main);
+}
+.policy-section__info:last-child {
+  flex: 1;
+  min-width: 0;
+}
+.policy-section__info:last-child span {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.policy-section__info svg {
+  flex-shrink: 0;
+}
+.policy-section__top {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+.policy-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.policy-section .editor p:not([class]) {
+  letter-spacing: 0.005em;
+}
+.policy-section .editor p:not([class]) + p:not([class]) {
+  margin-top: 0.8rem;
+}
+.policy-section .editor p:not([class]) + ol {
+  margin-top: -1.7rem;
+}
+.policy-section .editor p:not([class]) + ul {
+  margin-top: -1.7rem;
+}
+.policy-section .editor p:not([class]) + ul + p:not([class]) {
+  margin-top: -1.6rem;
+}
+.policy-section__bottom {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+@media (max-width: 991px) and (min-width: 576px) {
+  .policy-section__top > h1 {
+    margin-left: -0.5rem;
+  }
+  .policy-section {
+    margin-bottom: 6.3rem !important;
+  }
+}
+@media (max-width: 575px) {
+  .policy-section__top {
+    gap: 16px;
+  }
+  .policy-section__bottom {
+    margin-top: -2px;
+  }
+  .policy-section {
+    margin: 24px 0 39px !important;
+  }
+}
+/*# sourceMappingURL=section-policy.css.map */

@@ -1,7 +1,12 @@
 body.wp-admin {
   background-color: #fff !important;
 }
-
+body.js .postbox.hide-if-js {
+  display: block !important;
+}
+#slugdiv{
+  display: none !important;
+}
 .acf-repeater .acf-row-handle.order {
   background: #2271b1 !important;
   color: #fff !important;

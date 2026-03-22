@@ -14,9 +14,8 @@
 
   &::before {
     inset: -2px;
-    // background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(6px);
-    border-radius: 0.8rem;
   }
 
   &::after {

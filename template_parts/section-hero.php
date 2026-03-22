@@ -2,6 +2,7 @@
 $shower = get_sub_field('shower');
 $hero_sections       = get_sub_field( 'hero_section' );
 
+
 if (!$shower) : ?>
     <?php
     	if ( $hero_sections ) :
@@ -11,6 +12,9 @@ if (!$shower) : ?>
                 $main_title = $hero['editor'] ?? '';
                 $section_id = get_field('section_id');
                 $articles = $hero['selected_articles'] ?? [];
+                $term = get_queried_object();
+                $title_cat = ($term && !is_wp_error($term)) ? $term->name : '';
+
 
 
                 if (!empty($articles) && isset($articles[0])) :
@@ -51,7 +55,7 @@ if (!$shower) : ?>
                     }
 
                     $date = get_the_date('d.m.y', $post_id);
-                    $time = get_the_time('H:i', $post_id);
+                    $time = get_the_time('U', $post_id);
 
                     $tags = get_the_terms($post_id, 'article_tag');
                     $tag_name = ($tags && !is_wp_error($tags)) ? $tags[0]->name : '';
@@ -60,24 +64,55 @@ if (!$shower) : ?>
                     $thumb_url = $thumb_id ? wp_get_attachment_image_url($thumb_id, 'full') : '';
                     $alt       = $thumb_id ? get_post_meta($thumb_id, '_wp_attachment_image_alt', true) : '';
 
+                    // Категория
+                    $category_class = '';
+
+                    if (!is_front_page()) {
+                        $terms = get_the_terms($post_id, 'article_category');
+
+                        if ($terms && !is_wp_error($terms)) {
+                            $category_slug = $terms[0]->slug;
+
+                            switch ($category_slug) {
+                                case 'polityka':
+                                    $category_class = 'is-politics';
+                                    break;
+
+                                case 'kultura':
+                                    $category_class = 'is-culture';
+                                    break;
+
+                                case 'oglyady':
+                                    $category_class = 'is-reviews';
+                                    break;
+
+                                case 'ideyi':
+                                    $category_class = 'is-ideas';
+                                    break;
+                            }
+                        }
+                    }
                     ?>
-                <?php if ($post_type === 'books') :  ?>
-                    <div class="main-title">
-                        <div class="container">
-                            <h1 class="h1"><?php echo __('Огляди', 'zirochka')?></h1>
-                        </div>
-                    </div>
-                <?php endif; ?>
+                    <?php if (!is_front_page()) : ?>
+                        <?php if ($post_type === 'books' || $post_type === 'articles') : ?>
+                            <div class="main-title">
+                                <div class="container">
+                                    <h1 class="h1"><?= esc_html($title_cat); ?></h1>
+                                </div>
+                            </div>
+                        <?php endif; ?>
 
-                <?php if ($post_type === 'blog') :  ?>
-                    <div class="main-title">
-                        <div class="container">
-                            <h1 class="h1"><?php echo __('Блоги', 'zirochka')?></h1>
-                        </div>
-                    </div>
-                <?php endif; ?>
+                        <?php if ($post_type === 'blog') : ?>
+                            <?php $title_cat = get_the_title(get_option('page_for_posts')) ?>
+                            <div class="main-title">
+                                <div class="container">
+                                    <h1 class="h1"><?= esc_html($title_cat); ?></h1>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
 
-                    <section class="hero-section <?= $post_type === 'blog' ? 'hero-section--blog' : ''; ?>">
+                    <section class="hero-section <?= $post_type === 'blog' ? 'hero-section--blog' : ''; ?> <?= esc_attr($category_class); ?>">
                         <div class="container">
                             <div class="hero-section__box">
                                 <div class="hero-section__inner">
@@ -104,7 +139,7 @@ if (!$shower) : ?>
                                     <div class="hero-section__bottom">
                                         <span class="hero-section__info">
                                             <i class="sprite"><?php sprite(16, 16, 'clock') ?></i>
-                                            <?= esc_html($time); ?>
+                                            <?= esc_html(custom_time_ago($time)); ?>
                                         </span>
                                         <span class="hero-section__info">
                                             <i class="sprite"><?php sprite(16, 16, 'calendar') ?></i>

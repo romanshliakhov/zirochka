@@ -6,8 +6,9 @@
   gap: 2.3rem;
   display: flex;
   flex-direction: column;
-	height: 100%;
+  height: 100%;
   width: 100%;
+
   &__image {
 	display: flex;
 	align-items: center;
@@ -29,7 +30,7 @@
 		width: 121px;
 	  }
 
-	  @include  mobile{
+	  @include mobile {
 		width: 130px;
 	  }
 	}
@@ -42,7 +43,7 @@
 	  height: 255px;
 	}
 
-	@include mobile{
+	@include mobile {
 	  height: 214px;
 	}
   }
@@ -66,7 +67,7 @@
 	  color: var(--cl-a);
 	}
 
-	@include mobile{
+	@include mobile {
 	  gap: 16px;
 	}
   }
@@ -78,7 +79,7 @@
 	flex-wrap: nowrap;
 	min-width: 0;
 
-	@include  mobile{
+	@include mobile {
 	  flex-direction: column;
 	  align-items: flex-start;
 	  gap: 7px;
@@ -115,9 +116,9 @@
 	}
   }
 
-  @include hover{
-	.book-card__image{
-	  img,picture{
+  @include hover {
+	.book-card__image {
+	  img, picture {
 		transform: scale(1.03);
 	  }
 	}

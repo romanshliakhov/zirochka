@@ -22,4 +22,18 @@ function initTooltips(scope = document) {
 
 document.addEventListener('DOMContentLoaded', () => {
     initTooltips();
+
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('.js-show-all-tags');
+        if (!btn) return;
+
+        e.preventDefault();
+
+        console.log('test');
+        const section = btn.closest('.tags-section');
+        if (!section) return;
+console.log('test12');
+        section.classList.add('is-expanded');
+    });
 });
+

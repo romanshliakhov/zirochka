@@ -30,6 +30,18 @@
 	gap: clamp(12px, 2.08vw, 1.6rem);
   }
 
+  .tag-hidden {
+	display: none;
+  }
+
+  &.is-expanded .tag-hidden {
+	display: list-item;
+  }
+
+  &.is-expanded .tags-section__all {
+	display: none;
+  }
+
   &__content {
 	display: flex;
 	flex-direction: column;

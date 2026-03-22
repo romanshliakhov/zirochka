@@ -1,244 +1,192 @@
 @use "../../mixins/breakpoint" as *;
+@use "../../mixins/disable-mob-hover" as *;
 
-.main-form {
+@mixin main-form {
+  .main-form {
 	width: 100%;
-	padding: clamp(16px, 3.125vw, 32px);
 	display: flex;
 	flex-direction: column;
-	gap: clamp(24px, 3.125vw, 32px);
-	border-radius: 12px;
-	border: 1px solid rgba(237, 237, 237, 0.50);
-	background: rgba(0, 0, 0, 0.44);
-	backdrop-filter: blur(6.449999809265137px);
-
-	&__title {
-		font-size: clamp(24px, 3.125vw, 32px);
-		line-height: 100%;
-		font-weight: 500;
-	}
-
-	&__box {
-		display: flex;
-		flex-direction: column;
-		gap: clamp(12px, 2.344vw, 24px);
-	}
-
-	&__labels {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: clamp(12px, 2.344vw, 24px);
-
-		@include mobile {
-			grid-template-columns: 100%;
-		}
-	}
+	gap: 1.6rem;
 
 	&__label {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-	    gap: 8px;
-	}
-
-	&__heading {
-		font-family: var(--font-main);
-		font-size: clamp(14px, 1.563vw, 16px);
-		line-height: 150%;
-		font-weight: 500;
-		color: rgba(237, 237, 237, 0.64);
+	  position: relative;
+	  display: flex;
+	  flex-direction: column;
+	  gap: 0.8rem;
 	}
 
 	input:not([type="submit"]), textarea {
-		padding: 11px;
-		width: 100%;
-		background-color: transparent;
-		font-family: var(--font-main);
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 150%;
-		border-radius: 8px;
-		border: 1px solid rgba(237, 237, 237, 0.50);
-		transition: all .4s;
-		color: var(--cl-a);
+	  padding: 1.1rem 1.6rem;
+	  width: 100%;
+	  background-color: var(--cl-a);
+	  font-family: var(--font-main);
+	  font-size: 1.6rem;
+	  font-style: normal;
+	  font-weight: 500;
+	  line-height: normal;
+	  height: 4.2rem;
+	  border: 1px solid var(--cl-j);
+	  transition: all .4s;
+	  color: var(--cl-b);
 
-		&::placeholder {
-		  color: rgba(237, 237, 237, 0.64);
-		}
+	  &::placeholder {
+		color: var(--cl-d);
+	  }
+
+	  &:focus {
+		border-color: var(--cl-e);
+	  }
 	}
 
 	textarea {
-		max-height: 96px;
+	  max-height: 96px;
 	}
 
-	&__select {
-		.select-field {
-			padding: 12px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			height: 48px;
-			background-color: transparent;
-			font-family: var(--font-main);
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 500;
-			line-height: 150%;
-			border-radius: 8px;
-			border: 1px solid rgba(237, 237, 237, 0.50);
-			cursor: pointer;
-		}
-
-		.selected-option {
-			background-color: transparent;
-			padding: 0;
-		}
-
-		.placeholder {
-			font-family: var(--font-main);
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 500;
-			line-height: 150%;
-			color: rgba(237, 237, 237, 0.64);
-		}
-
-		.arrow-down {
-			font-size: 20px;
-			line-height: 20px;
-			display: flex;
-		}
-
-		.options-container {
-			border: 1px solid rgba(237, 237, 237, 0.50);
-			background-color: var(--bg-d);
-
-			li {
-				border-top: 1px solid rgba(237, 237, 237, 0.50);
-
-				&:first-child {
-					border-top: none;
-				}
-			}
-		}
-
-		.option.active {
-			background-color: transparent;
-		}
-
-		.option-text {
-			font-family: var(--font-main);
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 500;
-			line-height: 150%;
-			color: rgba(237, 237, 237, 0.64);
-		}
-
-		.custom-select .option:hover:not(.disabled) {
-			background-color: transparent;
-		}
-	}
-
-	.main-form__submit input.wpcf7-form-control {
-		height: 48px;
-		padding: 0 24px;
-		background-color: var(--bg-e);
-		border: 2px solid var(--br-d);
-		border-radius: 12px;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 10px;
-
-		font-family: var(--font-main);
-		font-size: 16px;
-		font-style: normal;
-		font-weight: 500;
-		line-height: normal;
-		color: var(--cl-a);
-		text-decoration: none;
-		transition: all .3s;
-		cursor: pointer;
-
-		&:hover {
-			background-color: var(--bg-n);
-		}
-	}
-
-	.wpcf7-radio {
-		width: 100%;
-		padding: 4px;
-		border-radius: 8px;
-		border: 1px solid rgba(237, 237, 237, 0.50);
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-
-		.wpcf7-list-item label {
-			position: relative;
-			width: 100%;
-			height: 100%;
-			cursor: pointer;
-
-			span {
-				height: 48px;
-				width: 100%;
-				border-radius: 5px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				transition: all 0.3s ease;
-				font-family: var(--font-main);
-				font-size: clamp(12px, 1.563vw, 16px);
-				font-style: normal;
-				font-weight: 500;
-				line-height: 150%;
-				color: rgba(237, 237, 237, 0.64);
-			}
-
-			input {
-				position: absolute;
-				inset: 0;
-				z-index: -1;
-				visibility: hidden;
-				opacity: 0;
-				margin: 0;
-
-				&:checked + span {
-					background-color: var(--bg-f);
-					color: var(--cl-a);
-				}
-			}
-		}
+	.main-button {
+	  cursor:  pointer;
+	  width: 100%;
 	}
 
 	.wpcf7 {
-		position: relative;
-		z-index: 1;
+	  position: relative;
+	  z-index: 1;
 
-		&-form-control-wrap {
-			display: flex;
-		}
+	  &-form-control-wrap {
+		display: flex;
+		width: 100%;
+	  }
 
-		&-spinner {
-			display: none;
-		}
+	  &-spinner {
+		display: none;
+	  }
 
-		&-not-valid-tip {
-			bottom: 2px;
-			left: Max(20px, 20px);
-			position: absolute;
-			opacity: 0;
-			transition: opacity .2s;
-			transition-delay: .2s;
-		}
+	  &-not-valid-tip {
+		bottom: 2px;
+		left: Max(20px, 20px);
+		position: absolute;
+		opacity: 0;
+		transition: opacity .2s;
+		transition-delay: .2s;
+	  }
 
-		&-response {
-			&-output {
-				display: none;
-				position: absolute;
-			}
+	  &-response {
+		&-output {
+		  display: none;
+		  position: absolute;
 		}
+	  }
 	}
+  }
+
+
+  .file-upload {
+
+	&__placeholder {
+	  color: var(--cl-d);
+	  text-align: center;
+	  letter-spacing: -0.01em;
+	  margin-left: 0.3rem;
+	  font-family: var(--font-second);
+	  font-size: 1.6rem;
+	  font-style: normal;
+	  font-weight: 400;
+	  line-height: 2.4rem;
+	  transition: all .3s;
+	}
+
+	&__filename {
+	  display: none;
+	  flex-grow: 1;
+	  margin-left: 0.8rem;
+	  color: var(--cl-d);
+	  font-family:  var(--font-second);
+	  font-size: 1.6rem;
+	  font-style: normal;
+	  font-weight: 400;
+	  line-height: 2.4rem;
+	  letter-spacing: -0.01em;
+	}
+
+	&__remove {
+	  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath stroke='%23414755' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333' d='m4.667 4.667 6.666 6.666m-6.666 0 6.666-6.666'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h16v16H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+	  width: 1.6rem;
+	  height: 1.6rem;
+	  background-position: center;
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  transition: all .3s;
+	  display: none;
+
+	  @include hover {
+		opacity: .7;
+	  }
+	}
+
+	&__label {
+	  border: 0.1rem dashed var(--cl-d);
+	  padding: 1.2rem 1.6rem;
+	  cursor: pointer;
+	  position: relative;
+	  display: flex;
+	  flex-direction: column;
+
+	  align-items: center;
+
+	  &:before {
+		content: "";
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cg stroke='%23414755' stroke-linejoin='round' stroke-width='2' clip-path='url(%23a)'%3E%3Cpath stroke-linecap='round' d='M7 21a2 2 0 0 1-2-2V3h9l5 5v11a2 2 0 0 1-2 2z'/%3E%3Cpath d='M13 3v6h6'/%3E%3Cpath stroke-linecap='round' d='M9 13h6M9 17h6'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h24v24H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+		width: 2.4rem;
+		display: block;
+		height: 2.4rem;
+		flex-shrink: 0;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		margin-bottom: 0.7rem;
+		margin-left: 0.1rem;
+		margin-top: -0.2rem;
+		transition: all .3s;
+	  }
+	}
+
+	&__input {
+	  display: none;
+	}
+
+	&.is-loaded {
+	  height: 2.4rem;
+
+	  .wpcf7-form-control-wrap{
+		width: 0;
+	  }
+	  .file-upload__label{
+		padding: 0;
+		border-color: transparent;
+		flex-direction: row;
+
+		&:before{
+		  margin: 0 0 0 -0.2rem;
+		}
+	  }
+	  .file-upload__remove {
+		display: block;
+	  }
+
+	  .file-upload__placeholder {
+		display: none;
+	  }
+
+	  .file-upload__filename {
+		display: inline-block;
+	  }
+	}
+
+	@include hover {
+	  .file-upload__label:before, .file-upload__placeholder {
+		opacity: .7;
+	  }
+	}
+  }
+
+
 }

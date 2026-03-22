@@ -58,6 +58,7 @@ add_action('acf/init', function () {
         ->or('post_type', '==', 'blog')
         ->or('post_type', '==', 'books')
         ->or('post_type', '==', 'articles')
+        ->or('taxonomy', '==', 'article_category')
         ->or('taxonomy', '==', 'article_tag');
 
     acf_add_local_field_group($builder->build());

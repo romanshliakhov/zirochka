@@ -1,0 +1,110 @@
+@use "../mixins/breakpoint" as *;
+
+.policy-section {
+  margin-top: 4rem;
+  margin-bottom: 6rem !important;
+
+  .container {
+	--container-width: calc(69.4rem + (var(--container-offset) * 2));
+  }
+
+  &__info {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-size: 1.4rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	font-family: var(--font-main);
+
+	&:last-child {
+	  flex: 1;
+	  min-width: 0;
+
+	  span {
+		display: block;
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	  }
+	}
+
+	svg {
+	  flex-shrink: 0;
+	}
+  }
+
+  &__top{
+	display: flex;
+	flex-direction: column;
+	gap: 2.2rem;
+	margin-bottom: 1.5rem;
+
+	& > h1{
+	  @include mini-tablet {
+		@include for-mobile {
+		  margin-left: -0.5rem;
+		}
+	  }
+	}
+
+	@include mobile{
+	  gap: 16px;
+	}
+  }
+
+  &__box {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+  }
+
+  .editor {
+	p:not([class]) {
+	  letter-spacing: 0.005em;
+
+	  & + p:not([class]) {
+		margin-top: 0.8rem;
+	  }
+
+	  & + ol{
+		margin-top: -1.7rem;
+	  }
+
+	  & + ul{
+		margin-top: -1.7rem;
+
+		& + p:not([class]) {
+		  margin-top: -1.6rem;
+		}
+	  }
+	}
+  }
+
+  &__bottom {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+	flex-wrap: nowrap;
+	min-width: 0;
+
+	@include mobile {
+	  margin-top: -2px;
+	}
+  }
+
+  @include mini-tablet {
+	@include for-mobile {
+	  margin-bottom: 6.3rem !important;
+	}
+  }
+
+  @include mobile {
+	margin: 24px 0 39px !important;
+  }
+}

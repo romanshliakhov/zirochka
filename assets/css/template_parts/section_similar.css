@@ -1,0 +1,31 @@
+/* stylelint-disable */
+/* stylelint-disable */
+.similar-section {
+  position: relative;
+  z-index: 1;
+  margin: 4rem 0 !important;
+}
+.similar-section__box {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 7.29vw, 5.6rem);
+}
+@media (min-width: 992px) {
+  .similar-section .blog-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1023px) and (min-width: 576px) {
+  .similar-section {
+    margin-bottom: 40px !important;
+  }
+}
+@media (max-width: 575px) {
+  .similar-section__box {
+    gap: 32px;
+  }
+  .similar-section {
+    margin: 13px 0 32px !important;
+  }
+}
+/*# sourceMappingURL=section_similar.css.map */

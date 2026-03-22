@@ -1,7 +1,7 @@
 <?php
 // 🔧 1. Specify supported CPTs
 	add_filter('fake_archive_supported_post_types', function () {
-		return ['category', 'news', 'blog'];
+		return ['articles', 'news', 'blog'];
 	});
 
 // 🧩 2. Option and UI

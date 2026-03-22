@@ -31,99 +31,15 @@
 					// Лейаут editors
 					if (get_row_layout() === 'editors') : ?>
 						<div class="<?php echo esc_attr(implode(' ', $classes)); ?>" data-popup="modal_<?php echo esc_attr($modal_id); ?>">
-							<div class="close modal__close">
-								<?php sprite(14, 14, 'close'); ?>
-							</div>
+                            <div class="modal__bg">
+                                <?php sprite(248, 240, 'decor2'); ?>
+                            </div>
+
 							<div class="modal__container">
-								<?= display_editor_blocks(get_sub_field('editors'), 'modal_box editor'); ?>
-							</div>
-						</div>
-					<?php endif;
-
-					if (get_row_layout() === 'sizeguide') : 
-							$size_charts = get_sub_field('size_charts'); 
-							$measure_image  = get_sub_field('measure_image'); 
-							$measure_editor = get_sub_field('measure_editor'); 
-						?>
-						<div class="modal modal--sizeguide" data-popup="modal_<?php echo esc_attr($modal_id); ?>">
-							<div class="close modal__close">
-								<?php sprite(14, 14, 'close'); ?>
-							</div>
-
-							<div class="modal__sizes">
-								<button class="modal__sizes-btn active">CM</button>
-								<button class="modal__sizes-btn">IN</button>
-							</div>
-
-							<div class="modal__sizeguide" data-tabs-init>
-								<ul class="modal__sizeguide-nav">
-									<li class="active">
-										<button class="modal__sizeguide-btn active" type="button" data-tab="size-chart">
-											<span>Size Chart</span>
-										</button>
-									</li>
-									<li class="">
-										<button class="modal__sizeguide-btn" type="button" data-tab="measure">
-											<span>How to measure</span>
-										</button>
-									</li>
-								</ul>
-
-								<ul class="modal__sizeguide-content tabs-content">
-									<li class="tabs-content__item active" data-tab-content="size-chart">
-										<?php if ($size_charts) : ?>
-											<ul class="modal__sizings">
-												<?php foreach ($size_charts as $item) :
-													$size_editor   = $item['size_editor'];
-												?>                  
-													<li>
-														<div class="editor">
-															<?= $size_editor; ?>
-														</div>
-													</li>
-												<?php endforeach; ?>
-											</ul>
-										<?php endif; ?>
-									</li>
-
-									<li class="tabs-content__item" data-tab-content="measure">
-										<div class="modal__measure">
-											<?php if ($measure_image) :
-												display_image($measure_image, 450, 300, 'modal__measure-img');
-											endif; ?>
-
-											<?php if ($measure_editor) : ?>
-												<div class="modal__measure-editor editor">
-													<?= $measure_editor; ?>
-												</div>
-											<?php endif; ?>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					<?php endif;
-
-					// Лейаут Promo 
-					if (get_row_layout() === 'promo') : 
-							$promo_media  = get_sub_field('promo_media'); 
-							$promo_editor = get_sub_field('promo_editor'); 
-						?>
-						<div class="modal modal--promo" data-popup="modal_<?php echo esc_attr($modal_id); ?>">
-							<div class="close modal__close">
-								<?php sprite(14, 14, 'close'); ?>
-							</div>
-
-							<div class="modal__promo">
-								<?php if ($promo_media) :
-									display_image($promo_media[0], 1200, 800, 'modal__promo-media');
-								endif; ?>
-
-								<?php if ($promo_editor) : ?>
-									<div class="modal__promo-editor editor">
-										<?= $promo_editor; ?>
-									</div>
-								<?php endif; ?>
+                                <div class="close modal__close">
+                                    <?php sprite(14, 14, 'close'); ?>
+                                </div>
+								<?= display_editor_blocks(get_sub_field('editors'), 'modal__box editor'); ?>
 							</div>
 						</div>
 					<?php endif;
@@ -133,6 +49,200 @@
 		endwhile;
 	endif;
 
+
+
+
 	wp_reset_postdata();
 	?>
+
+<!--    TODO-->
+<!--    Модалка поиска-->
+    <div class="modal modal--search" data-popup="search">
+        <div class="modal__container">
+            <div class="modal__header">
+                <span class="h2"><?= __('Пошук новин', 'zirochka') ?></span>
+
+                <button type="button" class="close modal__close">
+                    <?php sprite(14, 14, 'close'); ?>
+                </button>
+            </div>
+
+            <form role="search" method="get" action="<?php echo home_url('/'); ?>" class="search-form" data-search-form>
+                <input
+                        type="search"
+                        name="s"
+                        placeholder="Пошта"
+                        required
+                        data-search-input
+                        autocomplete="off"
+                >
+            </form>
+
+            <div class="search-results" data-search-results>
+                <div class="blog-card">
+                    <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="blog-card__image">
+                        <img src="//localhost:3000/wp-content/uploads/2026/03/rectangle-2.png"
+                             alt="<?= esc_attr($alt ?: $title); ?>"
+                             loading="lazy">
+                    </a>
+
+                    <div class="blog-card__box">
+                        <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="h2">Невдала російська революція? Повстання декабристів 1825 року</a>
+
+                        <div class="blog-card__bottom">
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'clock'); ?></i>
+                                9 хв
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'calendar'); ?></i>
+                                16.01.26
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'user'); ?></i>
+                                <a href="/authors/andrij-kravczov/">
+                                   Андрій Кравцов
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+                    <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="blog-card__image">
+                        <img src="//localhost:3000/wp-content/uploads/2026/03/rectangle-2.png"
+                             alt="<?= esc_attr($alt ?: $title); ?>"
+                             loading="lazy">
+                    </a>
+
+                    <div class="blog-card__box">
+                        <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="h2">Невдала російська революція? Повстання декабристів 1825 року</a>
+
+                        <div class="blog-card__bottom">
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'clock'); ?></i>
+                                9 хв
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'calendar'); ?></i>
+                                16.01.26
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'user'); ?></i>
+                                <a href="/authors/andrij-kravczov/">
+                                   Андрій Кравцов
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+                    <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="blog-card__image">
+                        <img src="//localhost:3000/wp-content/uploads/2026/03/rectangle-2.png"
+                             alt="<?= esc_attr($alt ?: $title); ?>"
+                             loading="lazy">
+                    </a>
+
+                    <div class="blog-card__box">
+                        <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="h2">Невдала російська революція? Повстання декабристів 1825 року</a>
+
+                        <div class="blog-card__bottom">
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'clock'); ?></i>
+                                9 хв
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'calendar'); ?></i>
+                                16.01.26
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'user'); ?></i>
+                                <a href="/authors/andrij-kravczov/">
+                                   Андрій Кравцов
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+                    <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="blog-card__image">
+                        <img src="//localhost:3000/wp-content/uploads/2026/03/rectangle-2.png"
+                             alt="<?= esc_attr($alt ?: $title); ?>"
+                             loading="lazy">
+                    </a>
+
+                    <div class="blog-card__box">
+                        <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="h2">Невдала російська революція? Повстання декабристів 1825 року</a>
+
+                        <div class="blog-card__bottom">
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'clock'); ?></i>
+                                9 хв
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'calendar'); ?></i>
+                                16.01.26
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'user'); ?></i>
+                                <a href="/authors/andrij-kravczov/">
+                                   Андрій Кравцов
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="blog-card">
+                    <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="blog-card__image">
+                        <img src="//localhost:3000/wp-content/uploads/2026/03/rectangle-2.png"
+                             alt="<?= esc_attr($alt ?: $title); ?>"
+                             loading="lazy">
+                    </a>
+
+                    <div class="blog-card__box">
+                        <a href="/article/nevdala-rosijska-revolyucziya-povstannya-dekabrystiv-1825-roku/" class="h2">Невдала російська революція? Повстання декабристів 1825 року</a>
+
+                        <div class="blog-card__bottom">
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'clock'); ?></i>
+                                9 хв
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'calendar'); ?></i>
+                                16.01.26
+                            </span>
+
+                            <span class="blog-card__info">
+                                <i class="sprite"><?php sprite(16, 16, 'user'); ?></i>
+                                <a href="/authors/andrij-kravczov/">
+                                   Андрій Кравцов
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="<?php echo home_url('/?s='); ?>" class="main-button" data-search-submit>
+                <?= __('Більше статей', 'zirochka') ?>
+            </a>
+        </div>
+    </div>
 </div>

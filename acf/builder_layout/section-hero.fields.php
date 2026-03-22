@@ -23,18 +23,6 @@
 				'ui_off_text'       => __( 'Show', 'ACF' ),
 			] )
 
-        ->addTrueFalse('breadcrumbs', [
-            'label' => __('Breadcrumbs fields', 'ACF Fields'),
-            'instructions' => __('Turn on to display breadcrumbs', 'ACF Fields'),
-            'wrapper' => [
-                'width' => '50',
-            ],
-            'ui' => 1,
-            'default_value' => 0,
-            'ui_on_text' => 'Show Breadcrumbs',
-            'ui_off_text' => 'Hide Breadcrumbs',
-        ])
-
             ->addFlexibleContent('hero_section', [
                 'label'        => __('Editors', 'ACF'),
                 'button_label' => __('Add Section', 'ACF'),

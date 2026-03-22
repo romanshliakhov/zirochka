@@ -1,26 +1,30 @@
 <?php get_header(); ?>
 
-	<section class="error-section">
-		<div class="container">
-			<div class="error-section__box">
-				<?php if ( have_rows( '404', 'options_404' ) ) : ?>
-					<?php while ( have_rows( '404' , 'options_404' ) ) : the_row();
-						$editor = get_sub_field('editor');
-						$image = get_sub_field('image');
-					?>
+<?php
+$global_setting = get_field('global_contacts', 'settings');
+$data = $global_setting['page_404'] ?? [];
 
-						<div class="error-section__inner editor">
-							<?= $editor;?>
-						</div>
-						<?php display_image($image, 880, 500)?>
-					<?php endwhile; ?>
-				<?php endif; ?>
+?>
+    <section class="error-section">
+        <div class="container">
+            <div class="error-section__box">
 
+                <?php
+                if ($data):
+                    $editor = $data['editor'] ?? '';
+                    $image  = $data['image'] ?? null;
+                    ?>
 
-			</div>
-		</div>
-	</section>
+                    <?php display_image($image, 1360, 320); ?>
+
+                    <div class="error-section__inner editor">
+                        <?= $editor; ?>
+                    </div>
+
+                <?php endif; ?>
+
+            </div>
+        </div>
+    </section>
 
 <?php get_footer(); ?>
-
-

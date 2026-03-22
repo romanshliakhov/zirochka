@@ -23,7 +23,7 @@ add_action('init', function () {
         'public'             => true,
         'has_archive'        => true,
         'rewrite'            => [
-            'slug' => 'articles',
+            'slug' => 'article',
             'with_front' => false,
         ],
         'supports'           => ['title', 'thumbnail', 'excerpt'],
@@ -54,7 +54,7 @@ add_action('init', function () {
         'hierarchical'      => true,
         'show_admin_column' => true,
         'rewrite'           => [
-            'slug' => 'category',
+            'slug'         => false,
         ],
         'show_in_rest'      => true,
     ]);

@@ -19,18 +19,20 @@ function stickyHeaderFunction(breakpoint) {
         window.addEventListener('scroll', () => {
             const currentScroll = scrollPosition();
 
-            if (currentScroll > lastScroll && !containHide() && currentScroll > defaultOffset) {
+            // 👉 вниз
+            if (currentScroll > lastScroll  && currentScroll > defaultOffset) {
                 addCustomClass(header, "sticky");
-                header.classList.add("scroll-up");
-
-                setTimeout(() => {
-                    header.classList.remove("scroll-up");
-                    header.classList.add("return-to-place");
-                }, scrollUpDelay);
+                header.classList.add("header-hidden");
             }
 
+            // 👉 вверх
+            if (currentScroll < lastScroll) {
+                header.classList.remove("header-hidden");
+            }
+
+            // 👉 вверху страницы
             if (currentScroll < defaultOffset) {
-                header.classList.remove("sticky", "scroll-up", "return-to-place");
+                header.classList.remove("sticky", "header-hidden");
             }
 
             lastScroll = currentScroll;

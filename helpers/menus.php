@@ -67,7 +67,7 @@
 
 	function custom_admin_css() {
 		echo '<style>
-        #add-category, #add-post-type-modals {
+        #add-post-type-modals {
             display: none !important;
         }
         

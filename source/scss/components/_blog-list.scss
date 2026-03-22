@@ -20,6 +20,14 @@
 		}
 	  }
 	}
+
+	&:last-of-type{
+	  &:before {
+		@include for-mini-tablet {
+		  content: none;
+		}
+	  }
+	}
 	&:nth-child(even) {
 	  &:not(.mode) {
 		&:before {

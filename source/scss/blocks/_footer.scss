@@ -94,6 +94,15 @@
 	  gap: 2.4rem 3.9rem;
 	  flex-wrap: wrap;
 
+
+	  .menu-link{
+		&:has(.sprite){
+		  .menu-text{
+			display:  none;
+		  }
+		}
+	  }
+
 	  a, span {
 		color: var(--cl-d);
 		font-size: 1.6rem;
@@ -105,10 +114,15 @@
 		  display: flex;
 		  max-width: 2.9rem;
 		  max-height: 2.9rem;
+		  transition: all .3s;
 		}
 
 		@include hover {
 		  color: var(--cl-e);
+
+		  svg{
+			transform: scale(1.05);
+		  }
 		}
 	  }
 

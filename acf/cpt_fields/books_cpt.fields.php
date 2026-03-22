@@ -48,4 +48,23 @@ add_action('acf/init', function () {
         ->setLocation('post_type', '==', 'books');
 
     acf_add_local_field_group($options->build());
+
+
+    // ===========  Excerpt Fields =========== //
+    $editor2 = new FieldsBuilder('articles_info', [
+        'style' => 'seamless',
+        'position' => 'acf_after_title',
+    ]);
+
+    $editor2
+        ->addText('info', [
+            'label' => 'Image text',
+            'wrapper' => [
+                'width' => '100',
+            ],
+        ])
+    ;
+
+    $editor2->setLocation('post_type', '==', 'articles');
+    acf_add_local_field_group($editor2->build());
 });
