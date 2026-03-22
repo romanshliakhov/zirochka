@@ -41,6 +41,21 @@
 .hero-section__inner:has(.editor:only-of-type) p:not([class]) {
   -webkit-line-clamp: 4;
 }
+.hero-section__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.hero-section__info a {
+  position: relative;
+  z-index: 3;
+}
+.hero-section__image .tag {
+  z-index: 4;
+}
+.hero-section__box {
+  position: relative;
+}
 .hero-section__box {
   display: grid;
   grid-template-columns: 1fr 0.85fr;
@@ -82,7 +97,7 @@
 .hero-section__image {
   display: flex;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 .hero-section__image .tag {
   position: absolute;

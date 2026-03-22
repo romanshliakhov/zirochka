@@ -26,9 +26,6 @@
 .tags-section.is-expanded .tag-hidden {
   display: list-item;
 }
-.tags-section.is-expanded .tags-section__all {
-  display: none;
-}
 .tags-section__content {
   display: flex;
   flex-direction: column;

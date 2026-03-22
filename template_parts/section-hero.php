@@ -22,6 +22,7 @@ if (!$shower) : ?>
                     $title = get_the_title($post_id);
                     $excerpt = get_the_excerpt($post_id);
                     $post_type = get_post_type($post_id);
+                    $post_link = get_permalink($post_id);
 
                     if ($post_type === 'articles') {
 
@@ -115,6 +116,7 @@ if (!$shower) : ?>
                     <section class="hero-section <?= $post_type === 'blog' ? 'hero-section--blog' : ''; ?> <?= esc_attr($category_class); ?>">
                         <div class="container">
                             <div class="hero-section__box">
+                                <a href="<?= esc_url($post_link); ?>" class="hero-section__link"></a>
                                 <div class="hero-section__inner">
                                 <span class="h3">
                                     <i class="sprite"><?php sprite(29, 28, 'star_icon') ?></i>
@@ -155,6 +157,7 @@ if (!$shower) : ?>
                                 </div>
 
                                 <div class="hero-section__image <?= $post_type === 'books' ? 'hero-section__image--book' : ''; ?>">
+                                    <a href="<?= esc_url($post_link); ?>" class="hero-section__link"></a>
                                     <?php if ($thumb_id): ?>
                                         <img src="<?= esc_url($thumb_url); ?>" alt="<?= esc_attr($alt ?: $title); ?>" loading="lazy">
                                     <?php endif; ?>

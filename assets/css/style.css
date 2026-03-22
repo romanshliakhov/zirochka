@@ -1397,6 +1397,21 @@
   margin-bottom: var(--default-padding);
   background: var(--cl-g);
 }
+.hero-section__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.hero-section__info a {
+  position: relative;
+  z-index: 3;
+}
+.hero-section__image .tag {
+  z-index: 4;
+}
+.hero-section__box {
+  position: relative;
+}
 .hero-section__inner {
   display: flex;
   flex-direction: column;
@@ -1474,7 +1489,7 @@
 .hero-section__image {
   display: flex;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 .hero-section__image .tag {
   position: absolute;
